@@ -1,0 +1,46 @@
+# Local working notes (not part of the submission)
+PLAN.md
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.egg-info/
+.venv/
+venv/
+
+# Secrets and local agent settings
+.env
+.env.*
+.claude/settings.local.json
+
+# Data: only READMEs and .gitkeep are committed; the processed set is rebuilt
+# from test_data/ with `python -m src.prepare_dataset` and checked by reports/manifest.sha256
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+*.cache
+
+# CVAT round-trip files (imports, exports, pre-labels)
+cvat/
+
+# Generated sample images (rebuilt by prepare_dataset)
+reports/samples/*
+!reports/samples/.gitkeep
+
+# Experiment runs, weights, logs
+runs/*
+!runs/.gitkeep
+*.pt
+*.pth
+*.onnx
+*.engine
+events.out.tfevents.*
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
