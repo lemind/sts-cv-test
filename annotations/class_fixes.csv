@@ -1,0 +1,5 @@
+image,line,old_class,new_class,reason
+Снимок экрана от 2023-06-07 16-42-06.png,34,11,10,unknown class 11; visually confirmed a person (traffic officer between cars) -> pedestrian
+Снимок экрана от 2023-06-07 16-42-06.png,41,11,10,unknown class 11; visually confirmed a person at the crossing -> pedestrian
+Снимок экрана от 2023-06-05 16-05-35.png,15,9,7,labeled fire_truck but visually a police car (ДПС livery and light bar) -> police
+4d3c2d6s-1920.jpg,2,7,1,labeled police but visually a private white Mazda with no police livery -> car
