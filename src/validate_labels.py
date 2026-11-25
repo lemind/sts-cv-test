@@ -29,11 +29,13 @@ from src.utils import (
     yolo_to_corners,
 )
 
-# A box that crosses the image border by more than this (fraction of the image side)
-# is an error; less is a warning, usually an annotator dragging a bit past the edge.
+# Triage only: a box crossing the border by more than this (fraction of the image side) is an
+# error, less is a warning. With --strict (final labels) any real overflow is an error.
 OUT_OF_BOUNDS_TOLERANCE = 0.01
-# Labels are written with 6 decimals; a box touching the edge can land 1e-6 outside it.
-ROUNDING_EPSILON = 1e-4
+# Labels are written with 6 decimals; a box touching the edge can land a fraction of a pixel
+# outside it. Used in pixels when the image size is known, normalized otherwise.
+ROUNDING_TOLERANCE_PIXELS = 0.5
+ROUNDING_TOLERANCE_NORMALIZED = 1e-4
 TINY_BOX_PIXELS = 2
 NEAR_DUPLICATE_IOU = 0.9
 # Ultralytics drops images smaller than this or in other formats as corrupt.
@@ -138,7 +140,12 @@ def parse_label_file(
     except UnicodeDecodeError as error:
         issues.append(Issue(ERROR, "label_not_utf8", image_name, str(error)))
         return []
+    return parse_label_text(text, image_name, num_classes, issues)
 
+
+def parse_label_text(
+    text: str, image_name: str, num_classes: int, issues: list[Issue]
+) -> list[Box]:
     boxes = []
     for line_number, line in enumerate(text.splitlines(), start=1):
         fields = line.split()
@@ -188,7 +195,9 @@ def parse_label_file(
     return boxes
 
 
-def check_box_geometry(box: Box, report: ImageReport, issues: list[Issue]) -> bool:
+def check_box_geometry(
+    box: Box, report: ImageReport, issues: list[Issue], strict: bool = False
+) -> bool:
     """Report geometry problems. False when the box is not a usable box at all.
 
     A box crossing the border is still a real object (fixable), so it stays usable.
@@ -212,15 +221,25 @@ def check_box_geometry(box: Box, report: ImageReport, issues: list[Issue]) -> bo
         return False
 
     x1, y1, x2, y2 = yolo_to_corners(box.x_center, box.y_center, box.width, box.height)
-    overflow = max(-x1, -y1, x2 - 1, y2 - 1, 0.0)
-    if overflow > ROUNDING_EPSILON:
-        severity = ERROR if overflow > OUT_OF_BOUNDS_TOLERANCE else WARNING
+    overflow_x = max(-x1, x2 - 1, 0.0)
+    overflow_y = max(-y1, y2 - 1, 0.0)
+    overflow = max(overflow_x, overflow_y)
+    if report.width and report.height:
+        overflow_px = max(overflow_x * report.width, overflow_y * report.height)
+        is_rounding = overflow_px <= ROUNDING_TOLERANCE_PIXELS
+        size_text = f", {overflow_px:.1f} px"
+    else:
+        is_rounding = overflow <= ROUNDING_TOLERANCE_NORMALIZED
+        size_text = ""
+    if not is_rounding:
+        severity = ERROR if strict or overflow > OUT_OF_BOUNDS_TOLERANCE else WARNING
         issues.append(
             Issue(
                 severity,
                 "box_out_of_bounds",
                 image_name,
-                f"corners x1={x1:.4f} y1={y1:.4f} x2={x2:.4f} y2={y2:.4f}, overflow {overflow:.4f}",
+                f"corners x1={x1:.4f} y1={y1:.4f} x2={x2:.4f} y2={y2:.4f}, "
+                f"overflow {overflow:.4f}{size_text}",
                 box.line,
             )
         )
@@ -292,7 +311,8 @@ def validate_dataset(
     strict: bool = False,
     names_file: Path | None = None,
 ) -> tuple[list[ImageReport], list[Issue], list[str]]:
-    """strict: a missing label file is an error (use it for the final labels).
+    """strict: final-label acceptance — a missing label file and any box crossing the image
+    border (beyond rounding) are errors.
     names_file: class names of a CVAT export, compared to classes_file.
     """
     class_names = read_class_names(classes_file)
@@ -345,7 +365,9 @@ def validate_dataset(
                     Issue(WARNING, "label_empty", image_path.name, "label file has no boxes")
                 )
             # Only usable boxes go into the statistics; the rest are already reported.
-            report.boxes = [box for box in parsed if check_box_geometry(box, report, issues)]
+            report.boxes = [
+                box for box in parsed if check_box_geometry(box, report, issues, strict)
+            ]
             find_duplicate_boxes(report, issues)
         reports.append(report)
 
@@ -417,7 +439,9 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--classes", type=Path, help="classes file (default: <input>/classes.txt)")
     parser.add_argument("--json", type=Path, help="also write the full result as JSON")
     parser.add_argument(
-        "--strict", action="store_true", help="missing label file is an error (final labels)"
+        "--strict",
+        action="store_true",
+        help="final labels: missing label file and any border overflow are errors",
     )
     parser.add_argument(
         "--names",

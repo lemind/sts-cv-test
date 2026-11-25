@@ -10,13 +10,18 @@ from src.validate_labels import ERROR, WARNING, main, validate_dataset
 CLASSES = ["bicycle", "car", "pedestrian"]
 
 
-def make_dataset(root: Path, images: dict[str, str], labels: dict[str, bytes | str]) -> Path:
+def make_dataset(
+    root: Path,
+    images: dict[str, str],
+    labels: dict[str, bytes | str],
+    size: tuple[int, int] = (100, 50),
+) -> Path:
     """images: file name -> PIL mode; labels: file name -> content."""
     (root / "images").mkdir(parents=True)
     (root / "labels").mkdir()
     (root / "classes.txt").write_text("\n".join(CLASSES) + "\n", encoding="utf-8")
     for name, mode in images.items():
-        Image.new(mode, (100, 50)).save(root / "images" / name)
+        Image.new(mode, size).save(root / "images" / name)
     for name, content in labels.items():
         data = content.encode("utf-8") if isinstance(content, str) else content
         (root / "labels" / name).write_bytes(data)
@@ -77,15 +82,28 @@ def test_out_of_bounds_uses_corners_not_center(tmp_path):
 
 
 def test_small_overflow_is_warning_and_rounding_is_ignored(tmp_path):
+    # Image is 2000x1000.
     labels = {
-        "a.txt": "1 0.5 0.9525 0.2 0.1\n",  # bottom at 1.0025: small overflow
-        "b.txt": "1 0.5 0.95 0.2 0.100001\n",  # bottom at 1.0000005: rounding
+        "a.txt": "1 0.5 0.9525 0.2 0.1\n",  # bottom at 1.0025: 2.5 px, under 1% -> warning
+        "b.txt": "1 0.5 0.95 0.2 0.100001\n",  # bottom at 1.0000005: rounding -> ignored
+        "c.txt": "1 0.5 0.95 0.2 0.1008\n",  # bottom at 1.0004: 0.4 px -> ignored
     }
-    root = make_dataset(tmp_path, {"a.jpg": "RGB", "b.jpg": "RGB"}, labels)
+    images = {"a.jpg": "RGB", "b.jpg": "RGB", "c.jpg": "RGB"}
+    root = make_dataset(tmp_path, images, labels, size=(2000, 1000))
     _, issues = run(root)
     assert [(issue.image, issue.code, issue.severity) for issue in issues] == [
         ("a.jpg", "box_out_of_bounds", WARNING)
     ]
+
+
+def test_strict_makes_any_real_overflow_an_error(tmp_path):
+    root = make_dataset(
+        tmp_path, {"a.jpg": "RGB"}, {"a.txt": "1 0.5 0.9525 0.2 0.1\n"}, size=(2000, 1000)
+    )
+    _, issues, _ = validate_dataset(
+        root / "images", root / "labels", root / "classes.txt", strict=True
+    )
+    assert [(issue.code, issue.severity) for issue in issues] == [("box_out_of_bounds", ERROR)]
 
 
 def test_missing_label_is_reported_not_treated_as_background(tmp_path):
