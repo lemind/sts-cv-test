@@ -6,7 +6,13 @@ from PIL import Image
 from tensorboard.backend.event_processing.event_accumulator import EventAccumulator
 
 from src.prepare_dataset import write_manifest
-from src.run_experiment import load_config, main, train_arguments, verify_manifest
+from src.run_experiment import (
+    alias_pretrained_class_names,
+    load_config,
+    main,
+    train_arguments,
+    verify_manifest,
+)
 from src.tensorboard_logger import TensorBoardLogger
 
 BASE_CONFIG = {
@@ -26,6 +32,8 @@ BASE_CONFIG = {
     "lr0": 0.001,
     "warmup_epochs": 1,
     "close_mosaic": 1,
+    "freeze": 0,
+    "class_aliases": {"person": "pedestrian"},
     "conf": 0.001,
     "iou": 0.7,
     "prediction_examples": 2,
@@ -71,6 +79,26 @@ def test_nominal_batch_follows_batch_override(tmp_path):
     assert arguments["close_mosaic"] == 1 and arguments["warmup_bias_lr"] == 0.0
 
 
+class FakeYOLO:
+    def __init__(self, names):
+        self.model = type("Net", (), {"names": dict(names)})()
+
+
+def test_class_aliases_rename_pretrained_classes_and_reject_unknown():
+    model = FakeYOLO({0: "person", 1: "bicycle"})
+    assert alias_pretrained_class_names(model, {"person": "pedestrian"}) == ["person -> pedestrian"]
+    assert model.model.names == {0: "pedestrian", 1: "bicycle"}
+    with pytest.raises(ValueError, match="not classes of the pretrained model"):
+        alias_pretrained_class_names(FakeYOLO({0: "car"}), {"person": "pedestrian"})
+
+
+def test_dry_run_rejects_alias_to_unknown_dataset_class(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    make_processed_dataset(tmp_path)
+    write_config(tmp_path / "c.yaml", class_aliases={"person": "walker"})
+    assert main(["--config", "c.yaml", "--dry-run"]) == 1
+
+
 def make_processed_dataset(root):
     """data/processed with one image per split and its manifest, relative to `root`."""
     data = root / "data" / "processed"
@@ -80,7 +108,7 @@ def make_processed_dataset(root):
         Image.new("RGB", (32, 32)).save(data / "images" / split / f"{split}.png")
         (data / "labels" / split / f"{split}.txt").write_text("1 0.5 0.5 0.2 0.2\n")
     spec = {"train": "images/train", "val": "images/val", "test": "images/test"}
-    spec["names"] = {0: "bicycle", 1: "car"}
+    spec["names"] = {0: "bicycle", 1: "car", 2: "pedestrian"}
     (data / "dataset.yaml").write_text(yaml.safe_dump(spec))
     (root / "reports").mkdir()
     write_manifest(Path("data/processed"), Path("reports/manifest.sha256"))
