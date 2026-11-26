@@ -1,1 +1,41 @@
-image,group
+image,group,pin_split,note
+0 - 2025-04-16 16-59-56-449_00009570.jpg,highway_cam_2025_04_16,train,same video; frames 9570 and 26790; pinned to train: holds 1 of the 2 lorry boxes
+0 - 2025-04-16 16-59-56-449_00026790.jpg,highway_cam_2025_04_16,train,same video; frames 9570 and 26790; pinned to train: holds 1 of the 2 lorry boxes
+000000012993.jpg,coco_000000012993,train,"COCO train2017 image: seen by COCO-pretrained weights, kept out of val/test"
+000000137491.jpg,coco_000000137491,train,"COCO train2017 image: seen by COCO-pretrained weights, kept out of val/test"
+000000403134.jpg,coco_000000403134,train,"COCO train2017 image: seen by COCO-pretrained weights, kept out of val/test"
+000000566364.jpg,coco_000000566364,train,"COCO train2017 image: seen by COCO-pretrained weights, kept out of val/test"
+01-04-2023 183852.png,pobedy_intersection_cam,,same camera (overlay Победы / ИНТЕРСВЯЗЬ); 01.04 and 05.04
+05-04-2023 220421.png,pobedy_intersection_cam,,same camera; frames 2 min apart
+05-04-2023 220626.png,pobedy_intersection_cam,,same camera; frames 2 min apart
+05-04-2023 220818.png,pobedy_intersection_cam,,same camera; frames 2 min apart
+05-04-2023 220839.png,pobedy_intersection_cam,,same camera; 21 s after 220818
+102_9aug202317009.png,avenue_cam_9aug2023,,same camera and video
+10_9aug202317009.png,avenue_cam_9aug2023,,same camera and video
+11_170709082023.png,crossroad_cam_170709082023,,same camera and video
+12_170709082023.png,crossroad_cam_170709082023,,same camera and video
+1_170709082023.png,crossroad_cam_170709082023,,same camera and video
+2_170709082023.png,crossroad_cam_170709082023,,same camera and video
+15-08-2021_Погоня_Усть-Кут38.jpg,ust_kut_chase_2021,,independent frame
+1649839828.0003297.jpg,crossroad_1649839828,,independent frame
+2ca2bd9s-1920.jpg,trailer_photo_2ca2bd9s,,independent photo
+3f481679a0862dadddb7d97b7351cf67.jpeg,trailer_photo_3f481679,,independent photo
+4d3c2d6s-1920.jpg,trailer_photo_4d3c2d6s,,independent photo
+Licoil_wide_1213.png,lukoil_highway_cam,,independent frame
+Screenshot from 2023-06-05 14-31-50.png,video_screenshot_trailer_2023_06_05,,independent frame
+Screenshot_112.jpg,crossroad_screenshot_112,,independent frame
+screenshot_1529.png,street_cam_screenshot_1529,,independent frame
+screenshot_1760.png,street_cam_screenshot_1760,,independent frame
+vlcsnap-2022-09-01-11h49m01s294.png,dump_truck_cam_2022_09_01,,independent frame
+Снимок экрана от 2023-06-05 14-24-28.png,accident_2023_06_05_1424,,independent scene
+Снимок экрана от 2023-06-05 14-29-47.png,accident_2023_06_05_1429,,independent scene
+Снимок экрана от 2023-06-05 16-05-35.png,accident_2023_06_05_1605,,independent scene
+Снимок экрана от 2023-06-06 10-13-51.png,accident_2023_06_06_1013,,independent scene
+Снимок экрана от 2023-06-07 14-29-35.png,police_crossroad_2023_06_07_1429,,independent scene
+Снимок экрана от 2023-06-07 14-47-51.png,crossroad_cam_2023_06_07_1447,,same camera; 40 s apart
+Снимок экрана от 2023-06-07 14-48-31.png,crossroad_cam_2023_06_07_1447,,same camera; 40 s apart
+Снимок экрана от 2023-06-07 14-51-32.png,night_police_2023_06_07_1451,,independent scene
+Снимок экрана от 2023-06-07 16-42-06.png,accident_2023_06_07_1642,,independent scene
+Снимок экрана от 2023-06-08 11-35-27.png,incident_2023_06_08_1135,,"same incident as 11-38-xx, different camera; grouped for conservative evaluation"
+Снимок экрана от 2023-06-08 11-38-38.png,incident_2023_06_08_1135,,"same camera, 14 s apart; same incident as 11-35-27"
+Снимок экрана от 2023-06-08 11-38-52.png,incident_2023_06_08_1135,,"same camera, 14 s apart; same incident as 11-35-27"

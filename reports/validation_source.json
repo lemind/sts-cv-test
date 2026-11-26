@@ -1,0 +1,6304 @@
+{
+  "summary": {
+    "images": 40,
+    "images_with_labels": 30,
+    "boxes": 707,
+    "classes": [
+      {
+        "id": 0,
+        "name": "bicycle",
+        "boxes": 0,
+        "images": 0
+      },
+      {
+        "id": 1,
+        "name": "car",
+        "boxes": 433,
+        "images": 29
+      },
+      {
+        "id": 2,
+        "name": "motorcycle",
+        "boxes": 10,
+        "images": 2
+      },
+      {
+        "id": 3,
+        "name": "bus",
+        "boxes": 18,
+        "images": 10
+      },
+      {
+        "id": 4,
+        "name": "truck",
+        "boxes": 25,
+        "images": 13
+      },
+      {
+        "id": 5,
+        "name": "lorry",
+        "boxes": 2,
+        "images": 2
+      },
+      {
+        "id": 6,
+        "name": "trailer",
+        "boxes": 8,
+        "images": 8
+      },
+      {
+        "id": 7,
+        "name": "police",
+        "boxes": 11,
+        "images": 8
+      },
+      {
+        "id": 8,
+        "name": "ambulance",
+        "boxes": 11,
+        "images": 8
+      },
+      {
+        "id": 9,
+        "name": "fire_truck",
+        "boxes": 8,
+        "images": 7
+      },
+      {
+        "id": 10,
+        "name": "pedestrian",
+        "boxes": 181,
+        "images": 23
+      }
+    ],
+    "errors": 6,
+    "warnings": 24,
+    "issues_by_code": {
+      "box_out_of_bounds": 4,
+      "crlf_line_endings": 1,
+      "image_mode": 13,
+      "label_missing": 10,
+      "unknown_class": 2
+    }
+  },
+  "issues": [
+    {
+      "severity": "warning",
+      "code": "label_missing",
+      "image": "0 - 2025-04-16 16-59-56-449_00009570.jpg",
+      "message": "no label file: needs annotation, not treated as background",
+      "line": null
+    },
+    {
+      "severity": "warning",
+      "code": "label_missing",
+      "image": "000000012993.jpg",
+      "message": "no label file: needs annotation, not treated as background",
+      "line": null
+    },
+    {
+      "severity": "warning",
+      "code": "label_missing",
+      "image": "000000137491.jpg",
+      "message": "no label file: needs annotation, not treated as background",
+      "line": null
+    },
+    {
+      "severity": "warning",
+      "code": "label_missing",
+      "image": "000000403134.jpg",
+      "message": "no label file: needs annotation, not treated as background",
+      "line": null
+    },
+    {
+      "severity": "warning",
+      "code": "label_missing",
+      "image": "000000566364.jpg",
+      "message": "no label file: needs annotation, not treated as background",
+      "line": null
+    },
+    {
+      "severity": "warning",
+      "code": "crlf_line_endings",
+      "image": "05-04-2023 220421.png",
+      "message": "CRLF line endings",
+      "line": null
+    },
+    {
+      "severity": "warning",
+      "code": "label_missing",
+      "image": "102_9aug202317009.png",
+      "message": "no label file: needs annotation, not treated as background",
+      "line": null
+    },
+    {
+      "severity": "warning",
+      "code": "label_missing",
+      "image": "1649839828.0003297.jpg",
+      "message": "no label file: needs annotation, not treated as background",
+      "line": null
+    },
+    {
+      "severity": "warning",
+      "code": "label_missing",
+      "image": "Licoil_wide_1213.png",
+      "message": "no label file: needs annotation, not treated as background",
+      "line": null
+    },
+    {
+      "severity": "warning",
+      "code": "image_mode",
+      "image": "Screenshot from 2023-06-05 14-31-50.png",
+      "message": "mode RGBA, convert to RGB",
+      "line": null
+    },
+    {
+      "severity": "warning",
+      "code": "label_missing",
+      "image": "Screenshot_112.jpg",
+      "message": "no label file: needs annotation, not treated as background",
+      "line": null
+    },
+    {
+      "severity": "warning",
+      "code": "label_missing",
+      "image": "screenshot_1760.png",
+      "message": "no label file: needs annotation, not treated as background",
+      "line": null
+    },
+    {
+      "severity": "warning",
+      "code": "image_mode",
+      "image": "Снимок экрана от 2023-06-05 14-24-28.png",
+      "message": "mode RGBA, convert to RGB",
+      "line": null
+    },
+    {
+      "severity": "warning",
+      "code": "image_mode",
+      "image": "Снимок экрана от 2023-06-05 14-29-47.png",
+      "message": "mode RGBA, convert to RGB",
+      "line": null
+    },
+    {
+      "severity": "warning",
+      "code": "image_mode",
+      "image": "Снимок экрана от 2023-06-05 16-05-35.png",
+      "message": "mode RGBA, convert to RGB",
+      "line": null
+    },
+    {
+      "severity": "error",
+      "code": "box_out_of_bounds",
+      "image": "Снимок экрана от 2023-06-05 16-05-35.png",
+      "message": "corners x1=0.8156 y1=0.9318 x2=0.9051 y2=1.0509, overflow 0.0509",
+      "line": 17
+    },
+    {
+      "severity": "error",
+      "code": "box_out_of_bounds",
+      "image": "Снимок экрана от 2023-06-05 16-05-35.png",
+      "message": "corners x1=0.5989 y1=0.9632 x2=0.6149 y2=1.0295, overflow 0.0295",
+      "line": 37
+    },
+    {
+      "severity": "warning",
+      "code": "image_mode",
+      "image": "Снимок экрана от 2023-06-06 10-13-51.png",
+      "message": "mode RGBA, convert to RGB",
+      "line": null
+    },
+    {
+      "severity": "warning",
+      "code": "image_mode",
+      "image": "Снимок экрана от 2023-06-07 14-29-35.png",
+      "message": "mode RGBA, convert to RGB",
+      "line": null
+    },
+    {
+      "severity": "warning",
+      "code": "image_mode",
+      "image": "Снимок экрана от 2023-06-07 14-47-51.png",
+      "message": "mode RGBA, convert to RGB",
+      "line": null
+    },
+    {
+      "severity": "warning",
+      "code": "image_mode",
+      "image": "Снимок экрана от 2023-06-07 14-48-31.png",
+      "message": "mode RGBA, convert to RGB",
+      "line": null
+    },
+    {
+      "severity": "warning",
+      "code": "image_mode",
+      "image": "Снимок экрана от 2023-06-07 14-51-32.png",
+      "message": "mode RGBA, convert to RGB",
+      "line": null
+    },
+    {
+      "severity": "warning",
+      "code": "image_mode",
+      "image": "Снимок экрана от 2023-06-07 16-42-06.png",
+      "message": "mode RGBA, convert to RGB",
+      "line": null
+    },
+    {
+      "severity": "error",
+      "code": "unknown_class",
+      "image": "Снимок экрана от 2023-06-07 16-42-06.png",
+      "message": "class 11, valid 0..10",
+      "line": 34
+    },
+    {
+      "severity": "error",
+      "code": "unknown_class",
+      "image": "Снимок экрана от 2023-06-07 16-42-06.png",
+      "message": "class 11, valid 0..10",
+      "line": 41
+    },
+    {
+      "severity": "warning",
+      "code": "image_mode",
+      "image": "Снимок экрана от 2023-06-08 11-35-27.png",
+      "message": "mode RGBA, convert to RGB",
+      "line": null
+    },
+    {
+      "severity": "warning",
+      "code": "image_mode",
+      "image": "Снимок экрана от 2023-06-08 11-38-38.png",
+      "message": "mode RGBA, convert to RGB",
+      "line": null
+    },
+    {
+      "severity": "warning",
+      "code": "image_mode",
+      "image": "Снимок экрана от 2023-06-08 11-38-52.png",
+      "message": "mode RGBA, convert to RGB",
+      "line": null
+    },
+    {
+      "severity": "error",
+      "code": "box_out_of_bounds",
+      "image": "Снимок экрана от 2023-06-08 11-38-52.png",
+      "message": "corners x1=0.4974 y1=0.2094 x2=0.6983 y2=1.0901, overflow 0.0901",
+      "line": 1
+    },
+    {
+      "severity": "error",
+      "code": "box_out_of_bounds",
+      "image": "Снимок экрана от 2023-06-08 11-38-52.png",
+      "message": "corners x1=0.2610 y1=-0.0239 x2=0.3166 y2=0.0622, overflow 0.0239",
+      "line": 2
+    }
+  ],
+  "images": [
+    {
+      "image": "0 - 2025-04-16 16-59-56-449_00009570.jpg",
+      "width": 640,
+      "height": 640,
+      "mode": "RGB",
+      "label_file": null,
+      "boxes": []
+    },
+    {
+      "image": "0 - 2025-04-16 16-59-56-449_00026790.jpg",
+      "width": 640,
+      "height": 640,
+      "mode": "RGB",
+      "label_file": "0 - 2025-04-16 16-59-56-449_00026790.txt",
+      "boxes": [
+        {
+          "class_id": 5,
+          "x_center": 0.105469,
+          "y_center": 0.267289,
+          "width": 0.038563,
+          "height": 0.068734,
+          "line": 1
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.207227,
+          "y_center": 0.257898,
+          "width": 0.019703,
+          "height": 0.016797,
+          "line": 2
+        }
+      ]
+    },
+    {
+      "image": "000000012993.jpg",
+      "width": 500,
+      "height": 333,
+      "mode": "RGB",
+      "label_file": null,
+      "boxes": []
+    },
+    {
+      "image": "000000137491.jpg",
+      "width": 640,
+      "height": 427,
+      "mode": "RGB",
+      "label_file": null,
+      "boxes": []
+    },
+    {
+      "image": "000000403134.jpg",
+      "width": 640,
+      "height": 426,
+      "mode": "RGB",
+      "label_file": null,
+      "boxes": []
+    },
+    {
+      "image": "000000566364.jpg",
+      "width": 640,
+      "height": 480,
+      "mode": "RGB",
+      "label_file": null,
+      "boxes": []
+    },
+    {
+      "image": "01-04-2023 183852.png",
+      "width": 1919,
+      "height": 1079,
+      "mode": "RGB",
+      "label_file": "01-04-2023 183852.txt",
+      "boxes": [
+        {
+          "class_id": 9,
+          "x_center": 0.489578,
+          "y_center": 0.394347,
+          "width": 0.112038,
+          "height": 0.101019,
+          "line": 1
+        },
+        {
+          "class_id": 4,
+          "x_center": 0.860865,
+          "y_center": 0.604727,
+          "width": 0.091714,
+          "height": 0.117702,
+          "line": 2
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.917926,
+          "y_center": 0.727062,
+          "width": 0.078687,
+          "height": 0.097312,
+          "line": 3
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.337676,
+          "y_center": 0.258573,
+          "width": 0.030224,
+          "height": 0.035218,
+          "line": 4
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.770714,
+          "y_center": 0.227989,
+          "width": 0.021886,
+          "height": 0.024096,
+          "line": 5
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.743616,
+          "y_center": 0.23911,
+          "width": 0.025013,
+          "height": 0.024096,
+          "line": 6
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.714174,
+          "y_center": 0.249305,
+          "width": 0.030745,
+          "height": 0.027804,
+          "line": 7
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.108911,
+          "y_center": 0.326691,
+          "width": 0.015633,
+          "height": 0.032437,
+          "line": 8
+        },
+        {
+          "class_id": 3,
+          "x_center": 0.101876,
+          "y_center": 0.294254,
+          "width": 0.022408,
+          "height": 0.04912,
+          "line": 9
+        },
+        {
+          "class_id": 3,
+          "x_center": 0.304065,
+          "y_center": 0.187674,
+          "width": 0.046378,
+          "height": 0.04912,
+          "line": 10
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.276707,
+          "y_center": 0.214551,
+          "width": 0.019802,
+          "height": 0.021316,
+          "line": 11
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.199062,
+          "y_center": 0.193698,
+          "width": 0.014591,
+          "height": 0.014829,
+          "line": 12
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.781918,
+          "y_center": 0.354958,
+          "width": 0.006774,
+          "height": 0.033364,
+          "line": 13
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.814487,
+          "y_center": 0.378128,
+          "width": 0.010422,
+          "height": 0.031511,
+          "line": 14
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.649557,
+          "y_center": 0.252085,
+          "width": 0.006774,
+          "height": 0.033364,
+          "line": 15
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.667535,
+          "y_center": 0.243744,
+          "width": 0.007295,
+          "height": 0.027804,
+          "line": 16
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.215998,
+          "y_center": 0.284986,
+          "width": 0.007817,
+          "height": 0.034291,
+          "line": 17
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.223033,
+          "y_center": 0.305375,
+          "width": 0.00938,
+          "height": 0.032437,
+          "line": 18
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.247785,
+          "y_center": 0.293791,
+          "width": 0.008859,
+          "height": 0.035218,
+          "line": 19
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.397082,
+          "y_center": 0.224282,
+          "width": 0.010422,
+          "height": 0.029657,
+          "line": 20
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.444502,
+          "y_center": 0.245134,
+          "width": 0.007295,
+          "height": 0.030584,
+          "line": 21
+        }
+      ]
+    },
+    {
+      "image": "05-04-2023 220421.png",
+      "width": 1919,
+      "height": 1079,
+      "mode": "RGB",
+      "label_file": "05-04-2023 220421.txt",
+      "boxes": [
+        {
+          "class_id": 1,
+          "x_center": 0.16962,
+          "y_center": 0.297961,
+          "width": 0.022408,
+          "height": 0.036145,
+          "line": 1
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.238927,
+          "y_center": 0.456441,
+          "width": 0.040125,
+          "height": 0.060241,
+          "line": 2
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.246222,
+          "y_center": 0.376274,
+          "width": 0.033872,
+          "height": 0.048193,
+          "line": 3
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.435644,
+          "y_center": 0.572289,
+          "width": 0.075039,
+          "height": 0.089898,
+          "line": 4
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.529964,
+          "y_center": 0.415199,
+          "width": 0.058364,
+          "height": 0.055607,
+          "line": 5
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.628452,
+          "y_center": 0.435125,
+          "width": 0.05211,
+          "height": 0.056534,
+          "line": 6
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.862949,
+          "y_center": 0.663577,
+          "width": 0.075039,
+          "height": 0.085264,
+          "line": 7
+        }
+      ]
+    },
+    {
+      "image": "05-04-2023 220626.png",
+      "width": 1919,
+      "height": 1079,
+      "mode": "RGB",
+      "label_file": "05-04-2023 220626.txt",
+      "boxes": [
+        {
+          "class_id": 7,
+          "x_center": 0.515633,
+          "y_center": 0.339203,
+          "width": 0.050547,
+          "height": 0.055607,
+          "line": 1
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.378843,
+          "y_center": 0.31279,
+          "width": 0.035435,
+          "height": 0.034291,
+          "line": 2
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.248306,
+          "y_center": 0.365616,
+          "width": 0.035956,
+          "height": 0.039852,
+          "line": 3
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.224596,
+          "y_center": 0.430955,
+          "width": 0.03752,
+          "height": 0.053753,
+          "line": 4
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.294164,
+          "y_center": 0.446247,
+          "width": 0.043252,
+          "height": 0.056534,
+          "line": 5
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.257947,
+          "y_center": 0.506024,
+          "width": 0.046899,
+          "height": 0.074143,
+          "line": 6
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.643043,
+          "y_center": 0.507878,
+          "width": 0.068786,
+          "height": 0.066728,
+          "line": 7
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.842626,
+          "y_center": 0.584801,
+          "width": 0.077124,
+          "height": 0.087118,
+          "line": 8
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.527879,
+          "y_center": 0.691381,
+          "width": 0.076081,
+          "height": 0.109361,
+          "line": 9
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.552371,
+          "y_center": 0.913346,
+          "width": 0.12715,
+          "height": 0.169601,
+          "line": 10
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.747785,
+          "y_center": 0.250232,
+          "width": 0.031266,
+          "height": 0.033364,
+          "line": 11
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.109693,
+          "y_center": 0.333179,
+          "width": 0.020323,
+          "height": 0.041705,
+          "line": 12
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.16493,
+          "y_center": 0.284986,
+          "width": 0.020323,
+          "height": 0.030584,
+          "line": 13
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.259771,
+          "y_center": 0.196942,
+          "width": 0.021365,
+          "height": 0.02317,
+          "line": 14
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.206357,
+          "y_center": 0.193234,
+          "width": 0.015633,
+          "height": 0.017609,
+          "line": 15
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.307712,
+          "y_center": 0.186747,
+          "width": 0.006774,
+          "height": 0.026877,
+          "line": 16
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.1037,
+          "y_center": 0.31418,
+          "width": 0.014591,
+          "height": 0.033364,
+          "line": 17
+        }
+      ]
+    },
+    {
+      "image": "05-04-2023 220818.png",
+      "width": 1919,
+      "height": 1079,
+      "mode": "RGB",
+      "label_file": "05-04-2023 220818.txt",
+      "boxes": [
+        {
+          "class_id": 1,
+          "x_center": 0.481761,
+          "y_center": 0.911492,
+          "width": 0.130797,
+          "height": 0.110287,
+          "line": 1
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.390047,
+          "y_center": 0.244208,
+          "width": 0.030745,
+          "height": 0.036145,
+          "line": 2
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.730068,
+          "y_center": 0.260426,
+          "width": 0.034393,
+          "height": 0.027804,
+          "line": 3
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.168056,
+          "y_center": 0.290083,
+          "width": 0.019281,
+          "height": 0.031511,
+          "line": 4
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.139396,
+          "y_center": 0.308619,
+          "width": 0.019281,
+          "height": 0.035218,
+          "line": 5
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.109171,
+          "y_center": 0.336423,
+          "width": 0.019281,
+          "height": 0.035218,
+          "line": 6
+        },
+        {
+          "class_id": 4,
+          "x_center": 0.739187,
+          "y_center": 0.220575,
+          "width": 0.052632,
+          "height": 0.066728,
+          "line": 7
+        },
+        {
+          "class_id": 4,
+          "x_center": 0.099531,
+          "y_center": 0.299815,
+          "width": 0.022929,
+          "height": 0.052827,
+          "line": 8
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.126107,
+          "y_center": 0.284059,
+          "width": 0.013549,
+          "height": 0.026877,
+          "line": 9
+        }
+      ]
+    },
+    {
+      "image": "05-04-2023 220839.png",
+      "width": 1919,
+      "height": 1079,
+      "mode": "RGB",
+      "label_file": "05-04-2023 220839.txt",
+      "boxes": [
+        {
+          "class_id": 1,
+          "x_center": 0.812142,
+          "y_center": 0.570899,
+          "width": 0.069307,
+          "height": 0.072289,
+          "line": 1
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.214956,
+          "y_center": 0.34013,
+          "width": 0.031787,
+          "height": 0.038925,
+          "line": 2
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.163627,
+          "y_center": 0.346154,
+          "width": 0.022929,
+          "height": 0.034291,
+          "line": 3
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.140959,
+          "y_center": 0.310936,
+          "width": 0.021365,
+          "height": 0.032437,
+          "line": 4
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.220167,
+          "y_center": 0.438369,
+          "width": 0.036998,
+          "height": 0.063021,
+          "line": 5
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.369724,
+          "y_center": 0.494903,
+          "width": 0.062011,
+          "height": 0.075996,
+          "line": 6
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.455967,
+          "y_center": 0.372104,
+          "width": 0.045857,
+          "height": 0.04912,
+          "line": 7
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.70271,
+          "y_center": 0.248378,
+          "width": 0.034914,
+          "height": 0.038925,
+          "line": 8
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.626889,
+          "y_center": 0.485635,
+          "width": 0.088588,
+          "height": 0.083411,
+          "line": 9
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.659979,
+          "y_center": 0.454124,
+          "width": 0.060969,
+          "height": 0.064875,
+          "line": 10
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.10865,
+          "y_center": 0.337349,
+          "width": 0.018239,
+          "height": 0.035218,
+          "line": 11
+        },
+        {
+          "class_id": 4,
+          "x_center": 0.100834,
+          "y_center": 0.308156,
+          "width": 0.024492,
+          "height": 0.063948,
+          "line": 12
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.125326,
+          "y_center": 0.284986,
+          "width": 0.017196,
+          "height": 0.026877,
+          "line": 13
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.390568,
+          "y_center": 0.247451,
+          "width": 0.031787,
+          "height": 0.031511,
+          "line": 14
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.731892,
+          "y_center": 0.258573,
+          "width": 0.029703,
+          "height": 0.031511,
+          "line": 15
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.420271,
+          "y_center": 0.242354,
+          "width": 0.007817,
+          "height": 0.02873,
+          "line": 16
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.983325,
+          "y_center": 0.714087,
+          "width": 0.033351,
+          "height": 0.073216,
+          "line": 17
+        }
+      ]
+    },
+    {
+      "image": "102_9aug202317009.png",
+      "width": 1280,
+      "height": 720,
+      "mode": "RGB",
+      "label_file": null,
+      "boxes": []
+    },
+    {
+      "image": "10_9aug202317009.png",
+      "width": 1280,
+      "height": 720,
+      "mode": "RGB",
+      "label_file": "10_9aug202317009.txt",
+      "boxes": [
+        {
+          "class_id": 1,
+          "x_center": 0.828516,
+          "y_center": 0.658333,
+          "width": 0.036719,
+          "height": 0.055556,
+          "line": 1
+        },
+        {
+          "class_id": 4,
+          "x_center": 0.690625,
+          "y_center": 0.347222,
+          "width": 0.020313,
+          "height": 0.027778,
+          "line": 2
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.737891,
+          "y_center": 0.354861,
+          "width": 0.014844,
+          "height": 0.015278,
+          "line": 3
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.995703,
+          "y_center": 0.711111,
+          "width": 0.008594,
+          "height": 0.044444,
+          "line": 4
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.656641,
+          "y_center": 0.373611,
+          "width": 0.021094,
+          "height": 0.025,
+          "line": 5
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.661719,
+          "y_center": 0.353472,
+          "width": 0.020313,
+          "height": 0.023611,
+          "line": 6
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.708984,
+          "y_center": 0.365972,
+          "width": 0.016406,
+          "height": 0.018056,
+          "line": 7
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.691797,
+          "y_center": 0.372222,
+          "width": 0.021094,
+          "height": 0.022222,
+          "line": 8
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.547266,
+          "y_center": 0.395139,
+          "width": 0.025781,
+          "height": 0.023611,
+          "line": 9
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.671484,
+          "y_center": 0.38125,
+          "width": 0.021094,
+          "height": 0.023611,
+          "line": 10
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.538672,
+          "y_center": 0.638194,
+          "width": 0.041406,
+          "height": 0.054167,
+          "line": 11
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.606641,
+          "y_center": 0.384722,
+          "width": 0.021094,
+          "height": 0.025,
+          "line": 12
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.800781,
+          "y_center": 0.384028,
+          "width": 0.014063,
+          "height": 0.023611,
+          "line": 13
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.495312,
+          "y_center": 0.422917,
+          "width": 0.032813,
+          "height": 0.029167,
+          "line": 14
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.475391,
+          "y_center": 0.415972,
+          "width": 0.030469,
+          "height": 0.029167,
+          "line": 15
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.621484,
+          "y_center": 0.36875,
+          "width": 0.017969,
+          "height": 0.020833,
+          "line": 16
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.558984,
+          "y_center": 0.401389,
+          "width": 0.028906,
+          "height": 0.027778,
+          "line": 17
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.523438,
+          "y_center": 0.617361,
+          "width": 0.045312,
+          "height": 0.045833,
+          "line": 18
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.966797,
+          "y_center": 0.782639,
+          "width": 0.035156,
+          "height": 0.051389,
+          "line": 19
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.508594,
+          "y_center": 0.440278,
+          "width": 0.029687,
+          "height": 0.027778,
+          "line": 20
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.771484,
+          "y_center": 0.423611,
+          "width": 0.017969,
+          "height": 0.025,
+          "line": 21
+        },
+        {
+          "class_id": 4,
+          "x_center": 0.375391,
+          "y_center": 0.436111,
+          "width": 0.072656,
+          "height": 0.069444,
+          "line": 22
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.976953,
+          "y_center": 0.757639,
+          "width": 0.032031,
+          "height": 0.048611,
+          "line": 23
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.602734,
+          "y_center": 0.421528,
+          "width": 0.024219,
+          "height": 0.026389,
+          "line": 24
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.716797,
+          "y_center": 0.454167,
+          "width": 0.019531,
+          "height": 0.027778,
+          "line": 25
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.370312,
+          "y_center": 0.472917,
+          "width": 0.035937,
+          "height": 0.034722,
+          "line": 26
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.585938,
+          "y_center": 0.404861,
+          "width": 0.025,
+          "height": 0.026389,
+          "line": 27
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.689063,
+          "y_center": 0.493056,
+          "width": 0.029687,
+          "height": 0.038889,
+          "line": 28
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.692578,
+          "y_center": 0.524306,
+          "width": 0.028906,
+          "height": 0.034722,
+          "line": 29
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.016016,
+          "y_center": 0.64375,
+          "width": 0.030469,
+          "height": 0.045833,
+          "line": 30
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.623828,
+          "y_center": 0.578472,
+          "width": 0.038281,
+          "height": 0.045833,
+          "line": 31
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.637891,
+          "y_center": 0.509028,
+          "width": 0.032031,
+          "height": 0.0375,
+          "line": 32
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.143359,
+          "y_center": 0.583333,
+          "width": 0.041406,
+          "height": 0.044444,
+          "line": 33
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.183203,
+          "y_center": 0.5875,
+          "width": 0.046094,
+          "height": 0.047222,
+          "line": 34
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.546875,
+          "y_center": 0.565278,
+          "width": 0.039062,
+          "height": 0.041667,
+          "line": 35
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.058203,
+          "y_center": 0.9125,
+          "width": 0.050781,
+          "height": 0.058333,
+          "line": 36
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.221484,
+          "y_center": 0.529167,
+          "width": 0.042969,
+          "height": 0.041667,
+          "line": 37
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.383984,
+          "y_center": 0.615278,
+          "width": 0.044531,
+          "height": 0.044444,
+          "line": 38
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.407813,
+          "y_center": 0.636806,
+          "width": 0.048438,
+          "height": 0.048611,
+          "line": 39
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.067187,
+          "y_center": 0.811806,
+          "width": 0.048438,
+          "height": 0.051389,
+          "line": 40
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.259766,
+          "y_center": 0.756944,
+          "width": 0.053906,
+          "height": 0.052778,
+          "line": 41
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.262891,
+          "y_center": 0.810417,
+          "width": 0.058594,
+          "height": 0.059722,
+          "line": 42
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.269141,
+          "y_center": 0.706944,
+          "width": 0.052344,
+          "height": 0.047222,
+          "line": 43
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.426563,
+          "y_center": 0.7125,
+          "width": 0.05,
+          "height": 0.061111,
+          "line": 44
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.110937,
+          "y_center": 0.8375,
+          "width": 0.057813,
+          "height": 0.061111,
+          "line": 45
+        },
+        {
+          "class_id": 4,
+          "x_center": 0.191016,
+          "y_center": 0.510417,
+          "width": 0.094531,
+          "height": 0.076389,
+          "line": 46
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.722266,
+          "y_center": 0.359722,
+          "width": 0.014844,
+          "height": 0.016667,
+          "line": 47
+        },
+        {
+          "class_id": 6,
+          "x_center": 0.702344,
+          "y_center": 0.463889,
+          "width": 0.0125,
+          "height": 0.019444,
+          "line": 48
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.816406,
+          "y_center": 0.36875,
+          "width": 0.010937,
+          "height": 0.020833,
+          "line": 49
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.828125,
+          "y_center": 0.372222,
+          "width": 0.010937,
+          "height": 0.022222,
+          "line": 50
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.823438,
+          "y_center": 0.395833,
+          "width": 0.0125,
+          "height": 0.019444,
+          "line": 51
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.705469,
+          "y_center": 0.352778,
+          "width": 0.015625,
+          "height": 0.019444,
+          "line": 52
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.843359,
+          "y_center": 0.377083,
+          "width": 0.011719,
+          "height": 0.018056,
+          "line": 53
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.922266,
+          "y_center": 0.819444,
+          "width": 0.008594,
+          "height": 0.027778,
+          "line": 54
+        }
+      ]
+    },
+    {
+      "image": "11_170709082023.png",
+      "width": 1280,
+      "height": 720,
+      "mode": "RGB",
+      "label_file": "11_170709082023.txt",
+      "boxes": [
+        {
+          "class_id": 6,
+          "x_center": 0.226562,
+          "y_center": 0.570833,
+          "width": 0.05,
+          "height": 0.080556,
+          "line": 1
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.962891,
+          "y_center": 0.361111,
+          "width": 0.024219,
+          "height": 0.033333,
+          "line": 2
+        },
+        {
+          "class_id": 4,
+          "x_center": 0.923047,
+          "y_center": 0.301389,
+          "width": 0.022656,
+          "height": 0.061111,
+          "line": 3
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.762109,
+          "y_center": 0.288889,
+          "width": 0.036719,
+          "height": 0.036111,
+          "line": 4
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.328516,
+          "y_center": 0.223611,
+          "width": 0.019531,
+          "height": 0.025,
+          "line": 5
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.348047,
+          "y_center": 0.238194,
+          "width": 0.024219,
+          "height": 0.0375,
+          "line": 6
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.791016,
+          "y_center": 0.300694,
+          "width": 0.039844,
+          "height": 0.0375,
+          "line": 7
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.357422,
+          "y_center": 0.307639,
+          "width": 0.035156,
+          "height": 0.045833,
+          "line": 8
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.366797,
+          "y_center": 0.260417,
+          "width": 0.024219,
+          "height": 0.040278,
+          "line": 9
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.959375,
+          "y_center": 0.461806,
+          "width": 0.034375,
+          "height": 0.056944,
+          "line": 10
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.152344,
+          "y_center": 0.601389,
+          "width": 0.0875,
+          "height": 0.105556,
+          "line": 11
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.046875,
+          "y_center": 0.865278,
+          "width": 0.092188,
+          "height": 0.097222,
+          "line": 12
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.228906,
+          "y_center": 0.813194,
+          "width": 0.146875,
+          "height": 0.129167,
+          "line": 13
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.394141,
+          "y_center": 0.288889,
+          "width": 0.036719,
+          "height": 0.047222,
+          "line": 14
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.821875,
+          "y_center": 0.294444,
+          "width": 0.035937,
+          "height": 0.033333,
+          "line": 15
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.591797,
+          "y_center": 0.423611,
+          "width": 0.077344,
+          "height": 0.083333,
+          "line": 16
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.203125,
+          "y_center": 0.331944,
+          "width": 0.040625,
+          "height": 0.055556,
+          "line": 17
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.816797,
+          "y_center": 0.375,
+          "width": 0.044531,
+          "height": 0.052778,
+          "line": 18
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.746094,
+          "y_center": 0.491667,
+          "width": 0.06875,
+          "height": 0.102778,
+          "line": 19
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.069531,
+          "y_center": 0.7125,
+          "width": 0.090625,
+          "height": 0.108333,
+          "line": 20
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.860938,
+          "y_center": 0.502083,
+          "width": 0.053125,
+          "height": 0.073611,
+          "line": 21
+        },
+        {
+          "class_id": 8,
+          "x_center": 0.501563,
+          "y_center": 0.486111,
+          "width": 0.125,
+          "height": 0.163889,
+          "line": 22
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.655859,
+          "y_center": 0.480556,
+          "width": 0.086719,
+          "height": 0.091667,
+          "line": 23
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.830469,
+          "y_center": 0.611806,
+          "width": 0.070312,
+          "height": 0.098611,
+          "line": 24
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.607031,
+          "y_center": 0.613194,
+          "width": 0.11875,
+          "height": 0.115278,
+          "line": 25
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.408984,
+          "y_center": 0.734722,
+          "width": 0.144531,
+          "height": 0.133333,
+          "line": 26
+        },
+        {
+          "class_id": 4,
+          "x_center": 0.44375,
+          "y_center": 0.909722,
+          "width": 0.260937,
+          "height": 0.180556,
+          "line": 27
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.331641,
+          "y_center": 0.272222,
+          "width": 0.028906,
+          "height": 0.041667,
+          "line": 28
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.316406,
+          "y_center": 0.250694,
+          "width": 0.023438,
+          "height": 0.034722,
+          "line": 29
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.294141,
+          "y_center": 0.461111,
+          "width": 0.013281,
+          "height": 0.052778,
+          "line": 30
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.6125,
+          "y_center": 0.297222,
+          "width": 0.009375,
+          "height": 0.038889,
+          "line": 31
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.578516,
+          "y_center": 0.292361,
+          "width": 0.010156,
+          "height": 0.040278,
+          "line": 32
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.101953,
+          "y_center": 0.364583,
+          "width": 0.024219,
+          "height": 0.031944,
+          "line": 33
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.078516,
+          "y_center": 0.380556,
+          "width": 0.022656,
+          "height": 0.036111,
+          "line": 34
+        }
+      ]
+    },
+    {
+      "image": "12_170709082023.png",
+      "width": 1280,
+      "height": 720,
+      "mode": "RGB",
+      "label_file": "12_170709082023.txt",
+      "boxes": [
+        {
+          "class_id": 1,
+          "x_center": 0.35625,
+          "y_center": 0.305556,
+          "width": 0.034375,
+          "height": 0.047222,
+          "line": 1
+        },
+        {
+          "class_id": 4,
+          "x_center": 0.508203,
+          "y_center": 0.8875,
+          "width": 0.244531,
+          "height": 0.225,
+          "line": 2
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.966016,
+          "y_center": 0.359722,
+          "width": 0.021094,
+          "height": 0.027778,
+          "line": 3
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.367969,
+          "y_center": 0.267361,
+          "width": 0.025,
+          "height": 0.0375,
+          "line": 4
+        },
+        {
+          "class_id": 4,
+          "x_center": 0.919922,
+          "y_center": 0.304167,
+          "width": 0.027344,
+          "height": 0.063889,
+          "line": 5
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.960547,
+          "y_center": 0.451389,
+          "width": 0.036719,
+          "height": 0.05,
+          "line": 6
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.328516,
+          "y_center": 0.223611,
+          "width": 0.019531,
+          "height": 0.025,
+          "line": 7
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.112109,
+          "y_center": 0.616667,
+          "width": 0.083594,
+          "height": 0.113889,
+          "line": 8
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.347266,
+          "y_center": 0.234722,
+          "width": 0.022656,
+          "height": 0.030556,
+          "line": 9
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.762891,
+          "y_center": 0.288889,
+          "width": 0.036719,
+          "height": 0.036111,
+          "line": 10
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.791016,
+          "y_center": 0.300694,
+          "width": 0.039844,
+          "height": 0.0375,
+          "line": 11
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.046484,
+          "y_center": 0.957639,
+          "width": 0.091406,
+          "height": 0.084722,
+          "line": 12
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.394141,
+          "y_center": 0.288889,
+          "width": 0.036719,
+          "height": 0.047222,
+          "line": 13
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.821875,
+          "y_center": 0.29375,
+          "width": 0.035937,
+          "height": 0.034722,
+          "line": 14
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.232422,
+          "y_center": 0.807639,
+          "width": 0.146094,
+          "height": 0.123611,
+          "line": 15
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.553516,
+          "y_center": 0.438889,
+          "width": 0.083594,
+          "height": 0.088889,
+          "line": 16
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.203906,
+          "y_center": 0.33125,
+          "width": 0.040625,
+          "height": 0.054167,
+          "line": 17
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.046875,
+          "y_center": 0.863194,
+          "width": 0.092188,
+          "height": 0.095833,
+          "line": 18
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.032813,
+          "y_center": 0.726389,
+          "width": 0.064062,
+          "height": 0.097222,
+          "line": 19
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.803516,
+          "y_center": 0.382639,
+          "width": 0.049219,
+          "height": 0.056944,
+          "line": 20
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.746094,
+          "y_center": 0.491667,
+          "width": 0.06875,
+          "height": 0.1,
+          "line": 21
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.848828,
+          "y_center": 0.59375,
+          "width": 0.063281,
+          "height": 0.090278,
+          "line": 22
+        },
+        {
+          "class_id": 8,
+          "x_center": 0.465234,
+          "y_center": 0.502083,
+          "width": 0.133594,
+          "height": 0.165278,
+          "line": 23
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.875781,
+          "y_center": 0.489583,
+          "width": 0.048438,
+          "height": 0.065278,
+          "line": 24
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.622656,
+          "y_center": 0.502778,
+          "width": 0.098437,
+          "height": 0.102778,
+          "line": 25
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.608203,
+          "y_center": 0.611806,
+          "width": 0.119531,
+          "height": 0.118056,
+          "line": 26
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.408984,
+          "y_center": 0.736111,
+          "width": 0.146094,
+          "height": 0.133333,
+          "line": 27
+        },
+        {
+          "class_id": 6,
+          "x_center": 0.186719,
+          "y_center": 0.590278,
+          "width": 0.046875,
+          "height": 0.075,
+          "line": 28
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.331641,
+          "y_center": 0.272917,
+          "width": 0.032031,
+          "height": 0.043056,
+          "line": 29
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.315625,
+          "y_center": 0.251389,
+          "width": 0.01875,
+          "height": 0.038889,
+          "line": 30
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.29375,
+          "y_center": 0.461111,
+          "width": 0.0125,
+          "height": 0.052778,
+          "line": 31
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.615234,
+          "y_center": 0.295139,
+          "width": 0.010156,
+          "height": 0.0375,
+          "line": 32
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.575781,
+          "y_center": 0.289583,
+          "width": 0.007812,
+          "height": 0.0375,
+          "line": 33
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.102344,
+          "y_center": 0.365972,
+          "width": 0.025,
+          "height": 0.034722,
+          "line": 34
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.078906,
+          "y_center": 0.379861,
+          "width": 0.021875,
+          "height": 0.0375,
+          "line": 35
+        }
+      ]
+    },
+    {
+      "image": "15-08-2021_Погоня_Усть-Кут38.jpg",
+      "width": 1280,
+      "height": 720,
+      "mode": "RGB",
+      "label_file": "15-08-2021_Погоня_Усть-Кут38.txt",
+      "boxes": [
+        {
+          "class_id": 1,
+          "x_center": 0.513984,
+          "y_center": 0.106944,
+          "width": 0.020469,
+          "height": 0.019444,
+          "line": 1
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.484375,
+          "y_center": 0.980556,
+          "width": 0.023438,
+          "height": 0.038889,
+          "line": 2
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.742969,
+          "y_center": 0.80625,
+          "width": 0.120313,
+          "height": 0.326389,
+          "line": 3
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.988281,
+          "y_center": 0.238194,
+          "width": 0.023438,
+          "height": 0.051389,
+          "line": 4
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.873828,
+          "y_center": 0.278472,
+          "width": 0.064844,
+          "height": 0.040278,
+          "line": 5
+        },
+        {
+          "class_id": 7,
+          "x_center": 0.393359,
+          "y_center": 0.45,
+          "width": 0.119531,
+          "height": 0.141667,
+          "line": 6
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.992578,
+          "y_center": 0.325694,
+          "width": 0.014844,
+          "height": 0.0625,
+          "line": 7
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.899219,
+          "y_center": 0.34375,
+          "width": 0.070312,
+          "height": 0.068056,
+          "line": 8
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.953125,
+          "y_center": 0.433333,
+          "width": 0.09375,
+          "height": 0.094444,
+          "line": 9
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.607422,
+          "y_center": 0.281944,
+          "width": 0.055469,
+          "height": 0.058333,
+          "line": 10
+        },
+        {
+          "class_id": 3,
+          "x_center": 0.033984,
+          "y_center": 0.625,
+          "width": 0.066406,
+          "height": 0.222222,
+          "line": 11
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.522656,
+          "y_center": 0.104167,
+          "width": 0.020313,
+          "height": 0.019444,
+          "line": 12
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.871875,
+          "y_center": 0.142361,
+          "width": 0.020313,
+          "height": 0.015278,
+          "line": 13
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.88125,
+          "y_center": 0.315972,
+          "width": 0.073438,
+          "height": 0.056944,
+          "line": 14
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.869531,
+          "y_center": 0.297917,
+          "width": 0.057813,
+          "height": 0.048611,
+          "line": 15
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.977344,
+          "y_center": 0.527778,
+          "width": 0.045312,
+          "height": 0.111111,
+          "line": 16
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.411328,
+          "y_center": 0.98125,
+          "width": 0.025781,
+          "height": 0.0375,
+          "line": 17
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.100781,
+          "y_center": 0.600694,
+          "width": 0.023438,
+          "height": 0.098611,
+          "line": 18
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.95625,
+          "y_center": 0.344444,
+          "width": 0.009375,
+          "height": 0.055556,
+          "line": 19
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.219141,
+          "y_center": 0.250694,
+          "width": 0.010156,
+          "height": 0.034722,
+          "line": 20
+        }
+      ]
+    },
+    {
+      "image": "1649839828.0003297.jpg",
+      "width": 1920,
+      "height": 730,
+      "mode": "RGB",
+      "label_file": null,
+      "boxes": []
+    },
+    {
+      "image": "1_170709082023.png",
+      "width": 1280,
+      "height": 720,
+      "mode": "RGB",
+      "label_file": "1_170709082023.txt",
+      "boxes": [
+        {
+          "class_id": 1,
+          "x_center": 0.912891,
+          "y_center": 0.314583,
+          "width": 0.032031,
+          "height": 0.040278,
+          "line": 1
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.894531,
+          "y_center": 0.274306,
+          "width": 0.042188,
+          "height": 0.0375,
+          "line": 2
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.333203,
+          "y_center": 0.266667,
+          "width": 0.025781,
+          "height": 0.041667,
+          "line": 3
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.167187,
+          "y_center": 0.943056,
+          "width": 0.157812,
+          "height": 0.113889,
+          "line": 4
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.202734,
+          "y_center": 0.820139,
+          "width": 0.108594,
+          "height": 0.118056,
+          "line": 5
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.867188,
+          "y_center": 0.334028,
+          "width": 0.040625,
+          "height": 0.054167,
+          "line": 6
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.223047,
+          "y_center": 0.355556,
+          "width": 0.035156,
+          "height": 0.047222,
+          "line": 7
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.892188,
+          "y_center": 0.327778,
+          "width": 0.032813,
+          "height": 0.036111,
+          "line": 8
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.327734,
+          "y_center": 0.255556,
+          "width": 0.030469,
+          "height": 0.041667,
+          "line": 9
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.261719,
+          "y_center": 0.266667,
+          "width": 0.023438,
+          "height": 0.05,
+          "line": 10
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.919922,
+          "y_center": 0.345139,
+          "width": 0.021094,
+          "height": 0.029167,
+          "line": 11
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.874609,
+          "y_center": 0.311806,
+          "width": 0.033594,
+          "height": 0.0375,
+          "line": 12
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.910547,
+          "y_center": 0.271528,
+          "width": 0.027344,
+          "height": 0.040278,
+          "line": 13
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.823047,
+          "y_center": 0.293056,
+          "width": 0.036719,
+          "height": 0.036111,
+          "line": 14
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.31875,
+          "y_center": 0.218056,
+          "width": 0.01875,
+          "height": 0.022222,
+          "line": 15
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.191016,
+          "y_center": 0.347222,
+          "width": 0.044531,
+          "height": 0.066667,
+          "line": 16
+        },
+        {
+          "class_id": 4,
+          "x_center": 0.23125,
+          "y_center": 0.288889,
+          "width": 0.046875,
+          "height": 0.080556,
+          "line": 17
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.878125,
+          "y_center": 0.277778,
+          "width": 0.026562,
+          "height": 0.038889,
+          "line": 18
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.05625,
+          "y_center": 0.859722,
+          "width": 0.104688,
+          "height": 0.116667,
+          "line": 19
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.861719,
+          "y_center": 0.347917,
+          "width": 0.034375,
+          "height": 0.0375,
+          "line": 20
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.828906,
+          "y_center": 0.329167,
+          "width": 0.0375,
+          "height": 0.038889,
+          "line": 21
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.891016,
+          "y_center": 0.363889,
+          "width": 0.033594,
+          "height": 0.041667,
+          "line": 22
+        },
+        {
+          "class_id": 3,
+          "x_center": 0.367578,
+          "y_center": 0.251389,
+          "width": 0.042969,
+          "height": 0.066667,
+          "line": 23
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.359375,
+          "y_center": 0.309028,
+          "width": 0.039062,
+          "height": 0.059722,
+          "line": 24
+        },
+        {
+          "class_id": 6,
+          "x_center": 0.955469,
+          "y_center": 0.766667,
+          "width": 0.089063,
+          "height": 0.147222,
+          "line": 25
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.395313,
+          "y_center": 0.294444,
+          "width": 0.040625,
+          "height": 0.058333,
+          "line": 26
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.737109,
+          "y_center": 0.319444,
+          "width": 0.047656,
+          "height": 0.044444,
+          "line": 27
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.533594,
+          "y_center": 0.426389,
+          "width": 0.053125,
+          "height": 0.077778,
+          "line": 28
+        },
+        {
+          "class_id": 3,
+          "x_center": 0.839453,
+          "y_center": 0.675694,
+          "width": 0.125781,
+          "height": 0.148611,
+          "line": 29
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.473828,
+          "y_center": 0.334722,
+          "width": 0.049219,
+          "height": 0.058333,
+          "line": 30
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.903516,
+          "y_center": 0.904167,
+          "width": 0.114844,
+          "height": 0.183333,
+          "line": 31
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.630859,
+          "y_center": 0.340972,
+          "width": 0.069531,
+          "height": 0.054167,
+          "line": 32
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.482422,
+          "y_center": 0.273611,
+          "width": 0.060156,
+          "height": 0.055556,
+          "line": 33
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.314063,
+          "y_center": 0.393056,
+          "width": 0.010937,
+          "height": 0.061111,
+          "line": 34
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.567578,
+          "y_center": 0.297222,
+          "width": 0.008594,
+          "height": 0.041667,
+          "line": 35
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.819141,
+          "y_center": 0.446528,
+          "width": 0.011719,
+          "height": 0.048611,
+          "line": 36
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.078125,
+          "y_center": 0.384028,
+          "width": 0.023438,
+          "height": 0.043056,
+          "line": 37
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.104297,
+          "y_center": 0.38125,
+          "width": 0.035156,
+          "height": 0.048611,
+          "line": 38
+        }
+      ]
+    },
+    {
+      "image": "2_170709082023.png",
+      "width": 1280,
+      "height": 720,
+      "mode": "RGB",
+      "label_file": "2_170709082023.txt",
+      "boxes": [
+        {
+          "class_id": 1,
+          "x_center": 0.025781,
+          "y_center": 0.6625,
+          "width": 0.05,
+          "height": 0.080556,
+          "line": 1
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.024219,
+          "y_center": 0.619444,
+          "width": 0.046875,
+          "height": 0.063889,
+          "line": 2
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.926172,
+          "y_center": 0.293056,
+          "width": 0.016406,
+          "height": 0.027778,
+          "line": 3
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.110547,
+          "y_center": 0.859028,
+          "width": 0.121094,
+          "height": 0.1125,
+          "line": 4
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.349609,
+          "y_center": 0.300694,
+          "width": 0.039844,
+          "height": 0.054167,
+          "line": 5
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.767188,
+          "y_center": 0.35,
+          "width": 0.046875,
+          "height": 0.047222,
+          "line": 6
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.908984,
+          "y_center": 0.358333,
+          "width": 0.033594,
+          "height": 0.044444,
+          "line": 7
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.245312,
+          "y_center": 0.292361,
+          "width": 0.0375,
+          "height": 0.048611,
+          "line": 8
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.385937,
+          "y_center": 0.279861,
+          "width": 0.040625,
+          "height": 0.054167,
+          "line": 9
+        },
+        {
+          "class_id": 3,
+          "x_center": 0.448828,
+          "y_center": 0.683333,
+          "width": 0.191406,
+          "height": 0.194444,
+          "line": 10
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.903125,
+          "y_center": 0.3,
+          "width": 0.025,
+          "height": 0.030556,
+          "line": 11
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.200781,
+          "y_center": 0.339583,
+          "width": 0.04375,
+          "height": 0.054167,
+          "line": 12
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.864453,
+          "y_center": 0.341667,
+          "width": 0.033594,
+          "height": 0.044444,
+          "line": 13
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.501172,
+          "y_center": 0.563889,
+          "width": 0.105469,
+          "height": 0.097222,
+          "line": 14
+        },
+        {
+          "class_id": 7,
+          "x_center": 0.039844,
+          "y_center": 0.784028,
+          "width": 0.078125,
+          "height": 0.104167,
+          "line": 15
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.753125,
+          "y_center": 0.399306,
+          "width": 0.064062,
+          "height": 0.068056,
+          "line": 16
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.751563,
+          "y_center": 0.584722,
+          "width": 0.08125,
+          "height": 0.094444,
+          "line": 17
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.530859,
+          "y_center": 0.44375,
+          "width": 0.078906,
+          "height": 0.081944,
+          "line": 18
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.418359,
+          "y_center": 0.847917,
+          "width": 0.150781,
+          "height": 0.140278,
+          "line": 19
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.844141,
+          "y_center": 0.617361,
+          "width": 0.067969,
+          "height": 0.090278,
+          "line": 20
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.326953,
+          "y_center": 0.592361,
+          "width": 0.110156,
+          "height": 0.106944,
+          "line": 21
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.613281,
+          "y_center": 0.592361,
+          "width": 0.114062,
+          "height": 0.118056,
+          "line": 22
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.728906,
+          "y_center": 0.755556,
+          "width": 0.121875,
+          "height": 0.147222,
+          "line": 23
+        },
+        {
+          "class_id": 6,
+          "x_center": 0.083203,
+          "y_center": 0.642361,
+          "width": 0.057031,
+          "height": 0.081944,
+          "line": 24
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.076563,
+          "y_center": 0.96875,
+          "width": 0.117188,
+          "height": 0.0625,
+          "line": 25
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.367578,
+          "y_center": 0.964583,
+          "width": 0.175781,
+          "height": 0.070833,
+          "line": 26
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.560937,
+          "y_center": 0.302083,
+          "width": 0.010937,
+          "height": 0.040278,
+          "line": 27
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.465625,
+          "y_center": 0.261111,
+          "width": 0.00625,
+          "height": 0.033333,
+          "line": 28
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.313672,
+          "y_center": 0.388889,
+          "width": 0.008594,
+          "height": 0.044444,
+          "line": 29
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.078906,
+          "y_center": 0.379167,
+          "width": 0.021875,
+          "height": 0.041667,
+          "line": 30
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.103516,
+          "y_center": 0.370833,
+          "width": 0.025781,
+          "height": 0.036111,
+          "line": 31
+        }
+      ]
+    },
+    {
+      "image": "2ca2bd9s-1920.jpg",
+      "width": 1325,
+      "height": 745,
+      "mode": "RGB",
+      "label_file": "2ca2bd9s-1920.txt",
+      "boxes": [
+        {
+          "class_id": 2,
+          "x_center": 0.283019,
+          "y_center": 0.393289,
+          "width": 0.350189,
+          "height": 0.273826,
+          "line": 1
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.7,
+          "y_center": 0.485235,
+          "width": 0.355472,
+          "height": 0.302013,
+          "line": 2
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.92,
+          "y_center": 0.439597,
+          "width": 0.156981,
+          "height": 0.237584,
+          "line": 3
+        },
+        {
+          "class_id": 6,
+          "x_center": 0.287925,
+          "y_center": 0.441611,
+          "width": 0.482264,
+          "height": 0.738255,
+          "line": 4
+        }
+      ]
+    },
+    {
+      "image": "3f481679a0862dadddb7d97b7351cf67.jpeg",
+      "width": 640,
+      "height": 478,
+      "mode": "RGB",
+      "label_file": "3f481679a0862dadddb7d97b7351cf67.txt",
+      "boxes": [
+        {
+          "class_id": 6,
+          "x_center": 0.346094,
+          "y_center": 0.5,
+          "width": 0.395313,
+          "height": 0.355649,
+          "line": 1
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.816406,
+          "y_center": 0.563808,
+          "width": 0.367188,
+          "height": 0.412134,
+          "line": 2
+        }
+      ]
+    },
+    {
+      "image": "4d3c2d6s-1920.jpg",
+      "width": 1920,
+      "height": 1080,
+      "mode": "RGB",
+      "label_file": "4d3c2d6s-1920.txt",
+      "boxes": [
+        {
+          "class_id": 3,
+          "x_center": 0.497135,
+          "y_center": 0.257407,
+          "width": 0.973437,
+          "height": 0.512963,
+          "line": 1
+        },
+        {
+          "class_id": 7,
+          "x_center": 0.821354,
+          "y_center": 0.493981,
+          "width": 0.357292,
+          "height": 0.691667,
+          "line": 2
+        }
+      ]
+    },
+    {
+      "image": "Licoil_wide_1213.png",
+      "width": 1920,
+      "height": 1080,
+      "mode": "RGB",
+      "label_file": null,
+      "boxes": []
+    },
+    {
+      "image": "Screenshot from 2023-06-05 14-31-50.png",
+      "width": 1920,
+      "height": 1080,
+      "mode": "RGBA",
+      "label_file": "Screenshot from 2023-06-05 14-31-50.txt",
+      "boxes": [
+        {
+          "class_id": 1,
+          "x_center": 0.947135,
+          "y_center": 0.468056,
+          "width": 0.057813,
+          "height": 0.115741,
+          "line": 1
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.76901,
+          "y_center": 0.478704,
+          "width": 0.133854,
+          "height": 0.446296,
+          "line": 2
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.175781,
+          "y_center": 0.463889,
+          "width": 0.072396,
+          "height": 0.077778,
+          "line": 3
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.901042,
+          "y_center": 0.494444,
+          "width": 0.071875,
+          "height": 0.153704,
+          "line": 4
+        },
+        {
+          "class_id": 6,
+          "x_center": 0.5375,
+          "y_center": 0.430093,
+          "width": 0.369792,
+          "height": 0.710185,
+          "line": 5
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.251563,
+          "y_center": 0.461574,
+          "width": 0.078125,
+          "height": 0.071296,
+          "line": 6
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.861198,
+          "y_center": 0.508333,
+          "width": 0.071354,
+          "height": 0.190741,
+          "line": 7
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.30625,
+          "y_center": 0.455093,
+          "width": 0.007292,
+          "height": 0.060185,
+          "line": 8
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.316406,
+          "y_center": 0.454167,
+          "width": 0.011979,
+          "height": 0.062037,
+          "line": 9
+        }
+      ]
+    },
+    {
+      "image": "Screenshot_112.jpg",
+      "width": 1231,
+      "height": 677,
+      "mode": "RGB",
+      "label_file": null,
+      "boxes": []
+    },
+    {
+      "image": "screenshot_1529.png",
+      "width": 1366,
+      "height": 768,
+      "mode": "RGB",
+      "label_file": "screenshot_1529.txt",
+      "boxes": [
+        {
+          "class_id": 10,
+          "x_center": 0.548316,
+          "y_center": 0.895182,
+          "width": 0.139092,
+          "height": 0.209635,
+          "line": 1
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.533309,
+          "y_center": 0.434245,
+          "width": 0.112006,
+          "height": 0.16276,
+          "line": 2
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.54978,
+          "y_center": 0.348958,
+          "width": 0.074671,
+          "height": 0.067708,
+          "line": 3
+        },
+        {
+          "class_id": 2,
+          "x_center": 0.670205,
+          "y_center": 0.828125,
+          "width": 0.079795,
+          "height": 0.315104,
+          "line": 4
+        },
+        {
+          "class_id": 2,
+          "x_center": 0.960469,
+          "y_center": 0.809896,
+          "width": 0.061493,
+          "height": 0.333333,
+          "line": 5
+        },
+        {
+          "class_id": 2,
+          "x_center": 0.82284,
+          "y_center": 0.830078,
+          "width": 0.096633,
+          "height": 0.321615,
+          "line": 6
+        },
+        {
+          "class_id": 2,
+          "x_center": 0.903734,
+          "y_center": 0.832031,
+          "width": 0.053441,
+          "height": 0.315104,
+          "line": 7
+        },
+        {
+          "class_id": 2,
+          "x_center": 0.539165,
+          "y_center": 0.914062,
+          "width": 0.210102,
+          "height": 0.171875,
+          "line": 8
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.513909,
+          "y_center": 0.452474,
+          "width": 0.032211,
+          "height": 0.14974,
+          "line": 9
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.393485,
+          "y_center": 0.380859,
+          "width": 0.02123,
+          "height": 0.061198,
+          "line": 10
+        },
+        {
+          "class_id": 4,
+          "x_center": 0.609444,
+          "y_center": 0.266927,
+          "width": 0.034407,
+          "height": 0.059896,
+          "line": 11
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.644949,
+          "y_center": 0.270182,
+          "width": 0.020498,
+          "height": 0.042969,
+          "line": 12
+        },
+        {
+          "class_id": 2,
+          "x_center": 0.592972,
+          "y_center": 0.330078,
+          "width": 0.019034,
+          "height": 0.042969,
+          "line": 13
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.59224,
+          "y_center": 0.313802,
+          "width": 0.016105,
+          "height": 0.054688,
+          "line": 14
+        },
+        {
+          "class_id": 2,
+          "x_center": 0.562592,
+          "y_center": 0.309896,
+          "width": 0.032943,
+          "height": 0.039062,
+          "line": 15
+        },
+        {
+          "class_id": 2,
+          "x_center": 0.569546,
+          "y_center": 0.300781,
+          "width": 0.023426,
+          "height": 0.033854,
+          "line": 16
+        },
+        {
+          "class_id": 2,
+          "x_center": 0.577233,
+          "y_center": 0.29362,
+          "width": 0.019766,
+          "height": 0.029948,
+          "line": 17
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.553075,
+          "y_center": 0.281901,
+          "width": 0.008053,
+          "height": 0.042969,
+          "line": 18
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.68082,
+          "y_center": 0.267578,
+          "width": 0.008785,
+          "height": 0.042969,
+          "line": 19
+        }
+      ]
+    },
+    {
+      "image": "screenshot_1760.png",
+      "width": 1366,
+      "height": 768,
+      "mode": "RGB",
+      "label_file": null,
+      "boxes": []
+    },
+    {
+      "image": "vlcsnap-2022-09-01-11h49m01s294.png",
+      "width": 1920,
+      "height": 1080,
+      "mode": "RGB",
+      "label_file": "vlcsnap-2022-09-01-11h49m01s294.txt",
+      "boxes": [
+        {
+          "class_id": 1,
+          "x_center": 0.842969,
+          "y_center": 0.190278,
+          "width": 0.035937,
+          "height": 0.049074,
+          "line": 1
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.730729,
+          "y_center": 0.126389,
+          "width": 0.03125,
+          "height": 0.030556,
+          "line": 2
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.686719,
+          "y_center": 0.138889,
+          "width": 0.039062,
+          "height": 0.040741,
+          "line": 3
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.770312,
+          "y_center": 0.112037,
+          "width": 0.021875,
+          "height": 0.025926,
+          "line": 4
+        },
+        {
+          "class_id": 4,
+          "x_center": 0.234635,
+          "y_center": 0.346759,
+          "width": 0.353646,
+          "height": 0.358333,
+          "line": 5
+        },
+        {
+          "class_id": 4,
+          "x_center": 0.573698,
+          "y_center": 0.147685,
+          "width": 0.122396,
+          "height": 0.121296,
+          "line": 6
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.723437,
+          "y_center": 0.1,
+          "width": 0.041667,
+          "height": 0.02963,
+          "line": 7
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.420573,
+          "y_center": 0.438889,
+          "width": 0.024479,
+          "height": 0.12963,
+          "line": 8
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.825521,
+          "y_center": 0.269907,
+          "width": 0.017708,
+          "height": 0.071296,
+          "line": 9
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.757812,
+          "y_center": 0.393981,
+          "width": 0.025,
+          "height": 0.123148,
+          "line": 10
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.792188,
+          "y_center": 0.403704,
+          "width": 0.025,
+          "height": 0.101852,
+          "line": 11
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.411979,
+          "y_center": 0.421296,
+          "width": 0.013542,
+          "height": 0.124074,
+          "line": 12
+        }
+      ]
+    },
+    {
+      "image": "Снимок экрана от 2023-06-05 14-24-28.png",
+      "width": 1776,
+      "height": 875,
+      "mode": "RGBA",
+      "label_file": "Снимок экрана от 2023-06-05 14-24-28.txt",
+      "boxes": [
+        {
+          "class_id": 1,
+          "x_center": 0.005631,
+          "y_center": 0.872571,
+          "width": 0.010135,
+          "height": 0.076571,
+          "line": 1
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.17455,
+          "y_center": 0.063429,
+          "width": 0.024775,
+          "height": 0.042286,
+          "line": 2
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.194257,
+          "y_center": 0.093143,
+          "width": 0.028153,
+          "height": 0.044571,
+          "line": 3
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.76098,
+          "y_center": 0.011429,
+          "width": 0.032095,
+          "height": 0.020571,
+          "line": 4
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.576014,
+          "y_center": 0.150857,
+          "width": 0.054054,
+          "height": 0.061714,
+          "line": 5
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.586149,
+          "y_center": 0.184,
+          "width": 0.048423,
+          "height": 0.066286,
+          "line": 6
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.71875,
+          "y_center": 0.034286,
+          "width": 0.035473,
+          "height": 0.048,
+          "line": 7
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.230856,
+          "y_center": 0.084571,
+          "width": 0.031532,
+          "height": 0.048,
+          "line": 8
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.252252,
+          "y_center": 0.505714,
+          "width": 0.065315,
+          "height": 0.088,
+          "line": 9
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.658221,
+          "y_center": 0.077714,
+          "width": 0.043919,
+          "height": 0.061714,
+          "line": 10
+        },
+        {
+          "class_id": 9,
+          "x_center": 0.550957,
+          "y_center": 0.417143,
+          "width": 0.087275,
+          "height": 0.182857,
+          "line": 11
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.525338,
+          "y_center": 0.239429,
+          "width": 0.047297,
+          "height": 0.072,
+          "line": 12
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.491554,
+          "y_center": 0.204,
+          "width": 0.058559,
+          "height": 0.081143,
+          "line": 13
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.727477,
+          "y_center": 0.644571,
+          "width": 0.077703,
+          "height": 0.107429,
+          "line": 14
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.865991,
+          "y_center": 0.845143,
+          "width": 0.084459,
+          "height": 0.126857,
+          "line": 15
+        },
+        {
+          "class_id": 9,
+          "x_center": 0.369651,
+          "y_center": 0.182286,
+          "width": 0.080518,
+          "height": 0.133714,
+          "line": 16
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.337275,
+          "y_center": 0.418857,
+          "width": 0.066441,
+          "height": 0.078857,
+          "line": 17
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.055462,
+          "y_center": 0.810857,
+          "width": 0.069257,
+          "height": 0.104,
+          "line": 18
+        },
+        {
+          "class_id": 3,
+          "x_center": 0.435529,
+          "y_center": 0.379429,
+          "width": 0.080518,
+          "height": 0.189714,
+          "line": 19
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.04223,
+          "y_center": 0.717714,
+          "width": 0.076577,
+          "height": 0.098286,
+          "line": 20
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.455518,
+          "y_center": 0.904,
+          "width": 0.010135,
+          "height": 0.061714,
+          "line": 21
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.332207,
+          "y_center": 0.780571,
+          "width": 0.015766,
+          "height": 0.061714,
+          "line": 22
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.48339,
+          "y_center": 0.946857,
+          "width": 0.01295,
+          "height": 0.056,
+          "line": 23
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.492117,
+          "y_center": 0.939429,
+          "width": 0.010135,
+          "height": 0.045714,
+          "line": 24
+        }
+      ]
+    },
+    {
+      "image": "Снимок экрана от 2023-06-05 14-29-47.png",
+      "width": 1918,
+      "height": 971,
+      "mode": "RGBA",
+      "label_file": "Снимок экрана от 2023-06-05 14-29-47.txt",
+      "boxes": [
+        {
+          "class_id": 10,
+          "x_center": 0.669447,
+          "y_center": 0.940268,
+          "width": 0.015641,
+          "height": 0.057673,
+          "line": 1
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.41293,
+          "y_center": 0.405252,
+          "width": 0.012513,
+          "height": 0.040165,
+          "line": 2
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.660063,
+          "y_center": 0.963955,
+          "width": 0.020855,
+          "height": 0.072091,
+          "line": 3
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.17805,
+          "y_center": 0.578785,
+          "width": 0.007821,
+          "height": 0.039135,
+          "line": 4
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.780761,
+          "y_center": 0.477343,
+          "width": 0.010949,
+          "height": 0.050463,
+          "line": 5
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.203858,
+          "y_center": 0.570031,
+          "width": 0.010428,
+          "height": 0.054583,
+          "line": 6
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.909541,
+          "y_center": 0.543769,
+          "width": 0.009906,
+          "height": 0.043254,
+          "line": 7
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.513556,
+          "y_center": 0.918641,
+          "width": 0.014599,
+          "height": 0.059732,
+          "line": 8
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.566475,
+          "y_center": 0.38105,
+          "width": 0.009906,
+          "height": 0.039135,
+          "line": 9
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.557351,
+          "y_center": 0.800721,
+          "width": 0.016684,
+          "height": 0.066941,
+          "line": 10
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.501043,
+          "y_center": 0.838826,
+          "width": 0.015641,
+          "height": 0.050463,
+          "line": 11
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.732795,
+          "y_center": 0.966529,
+          "width": 0.014077,
+          "height": 0.062822,
+          "line": 12
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.740876,
+          "y_center": 0.955201,
+          "width": 0.012513,
+          "height": 0.050463,
+          "line": 13
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.722106,
+          "y_center": 0.980947,
+          "width": 0.013556,
+          "height": 0.038105,
+          "line": 14
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.502086,
+          "y_center": 0.885685,
+          "width": 0.019812,
+          "height": 0.072091,
+          "line": 15
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.559958,
+          "y_center": 0.763131,
+          "width": 0.013556,
+          "height": 0.041195,
+          "line": 16
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.550574,
+          "y_center": 0.755922,
+          "width": 0.014599,
+          "height": 0.051493,
+          "line": 17
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.387904,
+          "y_center": 0.740989,
+          "width": 0.015641,
+          "height": 0.048404,
+          "line": 18
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.212461,
+          "y_center": 0.563852,
+          "width": 0.008863,
+          "height": 0.050463,
+          "line": 19
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.21976,
+          "y_center": 0.554068,
+          "width": 0.009906,
+          "height": 0.041195,
+          "line": 20
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.239833,
+          "y_center": 0.520082,
+          "width": 0.012513,
+          "height": 0.043254,
+          "line": 21
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.263816,
+          "y_center": 0.519053,
+          "width": 0.009385,
+          "height": 0.049434,
+          "line": 22
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.273201,
+          "y_center": 0.527291,
+          "width": 0.007299,
+          "height": 0.051493,
+          "line": 23
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.283889,
+          "y_center": 0.518023,
+          "width": 0.008863,
+          "height": 0.047374,
+          "line": 24
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.236705,
+          "y_center": 0.318744,
+          "width": 0.006257,
+          "height": 0.025747,
+          "line": 25
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.25391,
+          "y_center": 0.323378,
+          "width": 0.006257,
+          "height": 0.030896,
+          "line": 26
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.258863,
+          "y_center": 0.322863,
+          "width": 0.004692,
+          "height": 0.027806,
+          "line": 27
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.263034,
+          "y_center": 0.312564,
+          "width": 0.006778,
+          "height": 0.031926,
+          "line": 28
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.339937,
+          "y_center": 0.337281,
+          "width": 0.008342,
+          "height": 0.027806,
+          "line": 29
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.334724,
+          "y_center": 0.340371,
+          "width": 0.006257,
+          "height": 0.021627,
+          "line": 30
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.345933,
+          "y_center": 0.332647,
+          "width": 0.006778,
+          "height": 0.035015,
+          "line": 31
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.356882,
+          "y_center": 0.34758,
+          "width": 0.006778,
+          "height": 0.031926,
+          "line": 32
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.386861,
+          "y_center": 0.396498,
+          "width": 0.005214,
+          "height": 0.032956,
+          "line": 33
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.396767,
+          "y_center": 0.399588,
+          "width": 0.008342,
+          "height": 0.032956,
+          "line": 34
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.436392,
+          "y_center": 0.408342,
+          "width": 0.008342,
+          "height": 0.036045,
+          "line": 35
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.424922,
+          "y_center": 0.387745,
+          "width": 0.007299,
+          "height": 0.038105,
+          "line": 36
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.475495,
+          "y_center": 0.395469,
+          "width": 0.007299,
+          "height": 0.035015,
+          "line": 37
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.514599,
+          "y_center": 0.397528,
+          "width": 0.008342,
+          "height": 0.028836,
+          "line": 38
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.536236,
+          "y_center": 0.390319,
+          "width": 0.006778,
+          "height": 0.035015,
+          "line": 39
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.548749,
+          "y_center": 0.384655,
+          "width": 0.007821,
+          "height": 0.036045,
+          "line": 40
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.601929,
+          "y_center": 0.302266,
+          "width": 0.006778,
+          "height": 0.029866,
+          "line": 41
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.608707,
+          "y_center": 0.3069,
+          "width": 0.005735,
+          "height": 0.024717,
+          "line": 42
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.61366,
+          "y_center": 0.30793,
+          "width": 0.006257,
+          "height": 0.026777,
+          "line": 43
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.622002,
+          "y_center": 0.292482,
+          "width": 0.005214,
+          "height": 0.026777,
+          "line": 44
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.083681,
+          "y_center": 0.937693,
+          "width": 0.077685,
+          "height": 0.106076,
+          "line": 45
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.625652,
+          "y_center": 0.296087,
+          "width": 0.004171,
+          "height": 0.025747,
+          "line": 46
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.737487,
+          "y_center": 0.514933,
+          "width": 0.007821,
+          "height": 0.043254,
+          "line": 47
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.743483,
+          "y_center": 0.460865,
+          "width": 0.007299,
+          "height": 0.038105,
+          "line": 48
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.749739,
+          "y_center": 0.449537,
+          "width": 0.008342,
+          "height": 0.033986,
+          "line": 49
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.76147,
+          "y_center": 0.46344,
+          "width": 0.006778,
+          "height": 0.041195,
+          "line": 50
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.121481,
+          "y_center": 0.967044,
+          "width": 0.067779,
+          "height": 0.063852,
+          "line": 51
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.894421,
+          "y_center": 0.148301,
+          "width": 0.007821,
+          "height": 0.016478,
+          "line": 52
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.851929,
+          "y_center": 0.181256,
+          "width": 0.008342,
+          "height": 0.016478,
+          "line": 53
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.861575,
+          "y_center": 0.262616,
+          "width": 0.011992,
+          "height": 0.018538,
+          "line": 54
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.866788,
+          "y_center": 0.196704,
+          "width": 0.009906,
+          "height": 0.018538,
+          "line": 55
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.857664,
+          "y_center": 0.276004,
+          "width": 0.013556,
+          "height": 0.020597,
+          "line": 56
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.846715,
+          "y_center": 0.182801,
+          "width": 0.008342,
+          "height": 0.015448,
+          "line": 57
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.839937,
+          "y_center": 0.187951,
+          "width": 0.008342,
+          "height": 0.015448,
+          "line": 58
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.83707,
+          "y_center": 0.192585,
+          "width": 0.007821,
+          "height": 0.014418,
+          "line": 59
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.832377,
+          "y_center": 0.195675,
+          "width": 0.007821,
+          "height": 0.016478,
+          "line": 60
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.828206,
+          "y_center": 0.198764,
+          "width": 0.008863,
+          "height": 0.016478,
+          "line": 61
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.809437,
+          "y_center": 0.197219,
+          "width": 0.011992,
+          "height": 0.015448,
+          "line": 62
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.821689,
+          "y_center": 0.203913,
+          "width": 0.01147,
+          "height": 0.018538,
+          "line": 63
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.806309,
+          "y_center": 0.218847,
+          "width": 0.014077,
+          "height": 0.019567,
+          "line": 64
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.832377,
+          "y_center": 0.216272,
+          "width": 0.009906,
+          "height": 0.018538,
+          "line": 65
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.823514,
+          "y_center": 0.222451,
+          "width": 0.009906,
+          "height": 0.024717,
+          "line": 66
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.814651,
+          "y_center": 0.231205,
+          "width": 0.011992,
+          "height": 0.029866,
+          "line": 67
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.808394,
+          "y_center": 0.242533,
+          "width": 0.010949,
+          "height": 0.023687,
+          "line": 68
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.796663,
+          "y_center": 0.249743,
+          "width": 0.014599,
+          "height": 0.025747,
+          "line": 69
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.784411,
+          "y_center": 0.238414,
+          "width": 0.014077,
+          "height": 0.023687,
+          "line": 70
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.771637,
+          "y_center": 0.2276,
+          "width": 0.014599,
+          "height": 0.020597,
+          "line": 71
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.770594,
+          "y_center": 0.249743,
+          "width": 0.015641,
+          "height": 0.021627,
+          "line": 72
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.775808,
+          "y_center": 0.275489,
+          "width": 0.016684,
+          "height": 0.027806,
+          "line": 73
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.759385,
+          "y_center": 0.261586,
+          "width": 0.01512,
+          "height": 0.024717,
+          "line": 74
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.74609,
+          "y_center": 0.272915,
+          "width": 0.016684,
+          "height": 0.028836,
+          "line": 75
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.889208,
+          "y_center": 0.728115,
+          "width": 0.065172,
+          "height": 0.08033,
+          "line": 76
+        },
+        {
+          "class_id": 9,
+          "x_center": 0.599844,
+          "y_center": 0.454171,
+          "width": 0.093326,
+          "height": 0.127703,
+          "line": 77
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.939781,
+          "y_center": 0.798146,
+          "width": 0.05683,
+          "height": 0.084449,
+          "line": 78
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.257299,
+          "y_center": 0.411432,
+          "width": 0.042231,
+          "height": 0.050463,
+          "line": 79
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.192649,
+          "y_center": 0.404222,
+          "width": 0.028676,
+          "height": 0.042225,
+          "line": 80
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.705162,
+          "y_center": 0.34758,
+          "width": 0.027633,
+          "height": 0.038105,
+          "line": 81
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.669708,
+          "y_center": 0.368692,
+          "width": 0.030761,
+          "height": 0.049434,
+          "line": 82
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.210115,
+          "y_center": 0.380021,
+          "width": 0.032325,
+          "height": 0.041195,
+          "line": 83
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.728624,
+          "y_center": 0.320803,
+          "width": 0.025547,
+          "height": 0.038105,
+          "line": 84
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.684567,
+          "y_center": 0.324923,
+          "width": 0.029197,
+          "height": 0.040165,
+          "line": 85
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.633994,
+          "y_center": 0.361483,
+          "width": 0.034411,
+          "height": 0.047374,
+          "line": 86
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.227581,
+          "y_center": 0.435633,
+          "width": 0.034932,
+          "height": 0.043254,
+          "line": 87
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.708811,
+          "y_center": 0.300206,
+          "width": 0.024505,
+          "height": 0.040165,
+          "line": 88
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.85245,
+          "y_center": 0.292997,
+          "width": 0.016684,
+          "height": 0.029866,
+          "line": 89
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.661627,
+          "y_center": 0.341916,
+          "width": 0.028154,
+          "height": 0.041195,
+          "line": 90
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.866006,
+          "y_center": 0.166323,
+          "width": 0.009385,
+          "height": 0.015448,
+          "line": 91
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.160845,
+          "y_center": 0.377961,
+          "width": 0.028676,
+          "height": 0.053553,
+          "line": 92
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.141554,
+          "y_center": 0.357878,
+          "width": 0.018248,
+          "height": 0.038105,
+          "line": 93
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.223149,
+          "y_center": 0.904737,
+          "width": 0.089677,
+          "height": 0.114315,
+          "line": 94
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.728102,
+          "y_center": 0.285788,
+          "width": 0.018248,
+          "height": 0.033986,
+          "line": 95
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.876173,
+          "y_center": 0.207518,
+          "width": 0.013034,
+          "height": 0.019567,
+          "line": 96
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.982534,
+          "y_center": 0.766735,
+          "width": 0.033889,
+          "height": 0.069001,
+          "line": 97
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.742961,
+          "y_center": 0.304325,
+          "width": 0.019812,
+          "height": 0.033986,
+          "line": 98
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.760428,
+          "y_center": 0.290937,
+          "width": 0.019291,
+          "height": 0.029866,
+          "line": 99
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.215328,
+          "y_center": 0.824408,
+          "width": 0.076121,
+          "height": 0.095778,
+          "line": 100
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.786496,
+          "y_center": 0.263646,
+          "width": 0.01512,
+          "height": 0.028836,
+          "line": 101
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.885558,
+          "y_center": 0.146756,
+          "width": 0.007821,
+          "height": 0.011329,
+          "line": 102
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.914494,
+          "y_center": 0.54171,
+          "width": 0.004171,
+          "height": 0.039135,
+          "line": 103
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.860271,
+          "y_center": 0.54068,
+          "width": 0.009385,
+          "height": 0.053553,
+          "line": 104
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.797445,
+          "y_center": 0.2276,
+          "width": 0.014077,
+          "height": 0.020597,
+          "line": 105
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.430657,
+          "y_center": 0.391349,
+          "width": 0.007299,
+          "height": 0.043254,
+          "line": 106
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.753128,
+          "y_center": 0.487642,
+          "width": 0.009906,
+          "height": 0.044284,
+          "line": 107
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.44682,
+          "y_center": 0.38414,
+          "width": 0.008342,
+          "height": 0.045314,
+          "line": 108
+        }
+      ]
+    },
+    {
+      "image": "Снимок экрана от 2023-06-05 16-05-35.png",
+      "width": 1314,
+      "height": 739,
+      "mode": "RGBA",
+      "label_file": "Снимок экрана от 2023-06-05 16-05-35.txt",
+      "boxes": [
+        {
+          "class_id": 4,
+          "x_center": 0.39003,
+          "y_center": 0.341001,
+          "width": 0.035969,
+          "height": 0.062246,
+          "line": 1
+        },
+        {
+          "class_id": 8,
+          "x_center": 0.510294,
+          "y_center": 0.556159,
+          "width": 0.089519,
+          "height": 0.099429,
+          "line": 2
+        },
+        {
+          "class_id": 8,
+          "x_center": 0.593059,
+          "y_center": 0.591919,
+          "width": 0.045662,
+          "height": 0.098982,
+          "line": 3
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.633181,
+          "y_center": 0.235453,
+          "width": 0.03653,
+          "height": 0.039889,
+          "line": 4
+        },
+        {
+          "class_id": 4,
+          "x_center": 0.643455,
+          "y_center": 0.513532,
+          "width": 0.096865,
+          "height": 0.123139,
+          "line": 5
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.664964,
+          "y_center": 0.228689,
+          "width": 0.028158,
+          "height": 0.029064,
+          "line": 6
+        },
+        {
+          "class_id": 4,
+          "x_center": 0.496956,
+          "y_center": 0.512855,
+          "width": 0.099148,
+          "height": 0.090365,
+          "line": 7
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.280061,
+          "y_center": 0.189445,
+          "width": 0.010654,
+          "height": 0.018945,
+          "line": 8
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.396912,
+          "y_center": 0.392124,
+          "width": 0.030441,
+          "height": 0.043302,
+          "line": 9
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.433029,
+          "y_center": 0.382293,
+          "width": 0.028919,
+          "height": 0.033829,
+          "line": 10
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.496988,
+          "y_center": 0.414093,
+          "width": 0.034249,
+          "height": 0.043302,
+          "line": 11
+        },
+        {
+          "class_id": 3,
+          "x_center": 0.464231,
+          "y_center": 0.458928,
+          "width": 0.049184,
+          "height": 0.083899,
+          "line": 12
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.519406,
+          "y_center": 0.426252,
+          "width": 0.034249,
+          "height": 0.040595,
+          "line": 13
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.60999,
+          "y_center": 0.416999,
+          "width": 0.041859,
+          "height": 0.040595,
+          "line": 14
+        },
+        {
+          "class_id": 9,
+          "x_center": 0.501903,
+          "y_center": 0.606225,
+          "width": 0.09382,
+          "height": 0.05954,
+          "line": 15
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.548906,
+          "y_center": 0.492936,
+          "width": 0.042618,
+          "height": 0.052994,
+          "line": 16
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.86035,
+          "y_center": 0.991313,
+          "width": 0.089519,
+          "height": 0.11908,
+          "line": 17
+        },
+        {
+          "class_id": 4,
+          "x_center": 0.423516,
+          "y_center": 0.334235,
+          "width": 0.035969,
+          "height": 0.054129,
+          "line": 18
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.44825,
+          "y_center": 0.364005,
+          "width": 0.028919,
+          "height": 0.032496,
+          "line": 19
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.258391,
+          "y_center": 0.193209,
+          "width": 0.011416,
+          "height": 0.016238,
+          "line": 20
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.296423,
+          "y_center": 0.186939,
+          "width": 0.012938,
+          "height": 0.013532,
+          "line": 21
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.320015,
+          "y_center": 0.219862,
+          "width": 0.019504,
+          "height": 0.029064,
+          "line": 22
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.22032,
+          "y_center": 0.301959,
+          "width": 0.02209,
+          "height": 0.029064,
+          "line": 23
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.645358,
+          "y_center": 0.449226,
+          "width": 0.039594,
+          "height": 0.044655,
+          "line": 24
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.662861,
+          "y_center": 0.161028,
+          "width": 0.025895,
+          "height": 0.018945,
+          "line": 25
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.808219,
+          "y_center": 0.19456,
+          "width": 0.028919,
+          "height": 0.02999,
+          "line": 26
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.69825,
+          "y_center": 0.141409,
+          "width": 0.026636,
+          "height": 0.023004,
+          "line": 27
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.933259,
+          "y_center": 0.15088,
+          "width": 0.02209,
+          "height": 0.020298,
+          "line": 28
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.918998,
+          "y_center": 0.150203,
+          "width": 0.020548,
+          "height": 0.024359,
+          "line": 29
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.601598,
+          "y_center": 0.595998,
+          "width": 0.009893,
+          "height": 0.044655,
+          "line": 30
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.33105,
+          "y_center": 0.592395,
+          "width": 0.010654,
+          "height": 0.043302,
+          "line": 31
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.309941,
+          "y_center": 0.621986,
+          "width": 0.012199,
+          "height": 0.052994,
+          "line": 32
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.616438,
+          "y_center": 0.930041,
+          "width": 0.012199,
+          "height": 0.05548,
+          "line": 33
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.326104,
+          "y_center": 0.620433,
+          "width": 0.011416,
+          "height": 0.049361,
+          "line": 34
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.464992,
+          "y_center": 0.963194,
+          "width": 0.015221,
+          "height": 0.064953,
+          "line": 35
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.66192,
+          "y_center": 0.959104,
+          "width": 0.01446,
+          "height": 0.063599,
+          "line": 36
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.606925,
+          "y_center": 0.996346,
+          "width": 0.015982,
+          "height": 0.066306,
+          "line": 37
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.234399,
+          "y_center": 0.449932,
+          "width": 0.00961,
+          "height": 0.033829,
+          "line": 38
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.261416,
+          "y_center": 0.443166,
+          "width": 0.008391,
+          "height": 0.033829,
+          "line": 39
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.290548,
+          "y_center": 0.445196,
+          "width": 0.006849,
+          "height": 0.032496,
+          "line": 40
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.24239,
+          "y_center": 0.491204,
+          "width": 0.009893,
+          "height": 0.02999,
+          "line": 41
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.261416,
+          "y_center": 0.483085,
+          "width": 0.011416,
+          "height": 0.029064,
+          "line": 42
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.32382,
+          "y_center": 0.530449,
+          "width": 0.006849,
+          "height": 0.02999,
+          "line": 43
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.296804,
+          "y_center": 0.496996,
+          "width": 0.00961,
+          "height": 0.02591,
+          "line": 44
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.286149,
+          "y_center": 0.483962,
+          "width": 0.010654,
+          "height": 0.02591,
+          "line": 45
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.295662,
+          "y_center": 0.543302,
+          "width": 0.009893,
+          "height": 0.039242,
+          "line": 46
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.313929,
+          "y_center": 0.520994,
+          "width": 0.008391,
+          "height": 0.039889,
+          "line": 47
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.304033,
+          "y_center": 0.506089,
+          "width": 0.009893,
+          "height": 0.02999,
+          "line": 48
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.29209,
+          "y_center": 0.485115,
+          "width": 0.008391,
+          "height": 0.031123,
+          "line": 49
+        }
+      ]
+    },
+    {
+      "image": "Снимок экрана от 2023-06-06 10-13-51.png",
+      "width": 914,
+      "height": 647,
+      "mode": "RGBA",
+      "label_file": "Снимок экрана от 2023-06-06 10-13-51.txt",
+      "boxes": [
+        {
+          "class_id": 8,
+          "x_center": 0.414661,
+          "y_center": 0.431221,
+          "width": 0.105033,
+          "height": 0.117465,
+          "line": 1
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.795405,
+          "y_center": 0.064915,
+          "width": 0.056893,
+          "height": 0.061824,
+          "line": 2
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.559628,
+          "y_center": 0.166924,
+          "width": 0.06674,
+          "height": 0.058733,
+          "line": 3
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.251094,
+          "y_center": 0.550232,
+          "width": 0.086433,
+          "height": 0.102009,
+          "line": 4
+        },
+        {
+          "class_id": 9,
+          "x_center": 0.738512,
+          "y_center": 0.14374,
+          "width": 0.118162,
+          "height": 0.123648,
+          "line": 5
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.044858,
+          "y_center": 0.410355,
+          "width": 0.083151,
+          "height": 0.112828,
+          "line": 6
+        },
+        {
+          "class_id": 7,
+          "x_center": 0.551969,
+          "y_center": 0.2983,
+          "width": 0.075492,
+          "height": 0.068006,
+          "line": 7
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.708425,
+          "y_center": 0.927357,
+          "width": 0.121444,
+          "height": 0.136012,
+          "line": 8
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.152079,
+          "y_center": 0.297527,
+          "width": 0.080963,
+          "height": 0.072643,
+          "line": 9
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.192013,
+          "y_center": 0.636012,
+          "width": 0.11488,
+          "height": 0.088099,
+          "line": 10
+        },
+        {
+          "class_id": 8,
+          "x_center": 0.359409,
+          "y_center": 0.568779,
+          "width": 0.060175,
+          "height": 0.163833,
+          "line": 11
+        },
+        {
+          "class_id": 3,
+          "x_center": 0.506565,
+          "y_center": 0.507728,
+          "width": 0.157549,
+          "height": 0.134467,
+          "line": 12
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.503282,
+          "y_center": 0.27898,
+          "width": 0.07221,
+          "height": 0.066461,
+          "line": 13
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.607221,
+          "y_center": 0.557187,
+          "width": 0.010941,
+          "height": 0.035549,
+          "line": 14
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.59081,
+          "y_center": 0.445131,
+          "width": 0.010941,
+          "height": 0.040185,
+          "line": 15
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.149344,
+          "y_center": 0.570325,
+          "width": 0.012035,
+          "height": 0.02473,
+          "line": 16
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.156455,
+          "y_center": 0.588099,
+          "width": 0.017505,
+          "height": 0.026275,
+          "line": 17
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.124726,
+          "y_center": 0.628284,
+          "width": 0.013129,
+          "height": 0.041731,
+          "line": 18
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.398796,
+          "y_center": 0.526275,
+          "width": 0.014223,
+          "height": 0.03864,
+          "line": 19
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.404814,
+          "y_center": 0.503091,
+          "width": 0.010941,
+          "height": 0.026275,
+          "line": 20
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.417396,
+          "y_center": 0.527048,
+          "width": 0.012035,
+          "height": 0.040185,
+          "line": 21
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.340263,
+          "y_center": 0.479134,
+          "width": 0.013129,
+          "height": 0.037094,
+          "line": 22
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.60558,
+          "y_center": 0.706337,
+          "width": 0.016411,
+          "height": 0.037094,
+          "line": 23
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.689278,
+          "y_center": 0.651468,
+          "width": 0.013129,
+          "height": 0.032457,
+          "line": 24
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.699672,
+          "y_center": 0.634467,
+          "width": 0.014223,
+          "height": 0.035549,
+          "line": 25
+        }
+      ]
+    },
+    {
+      "image": "Снимок экрана от 2023-06-07 14-29-35.png",
+      "width": 1890,
+      "height": 920,
+      "mode": "RGBA",
+      "label_file": "Снимок экрана от 2023-06-07 14-29-35.txt",
+      "boxes": [
+        {
+          "class_id": 1,
+          "x_center": 0.185185,
+          "y_center": 0.955435,
+          "width": 0.217989,
+          "height": 0.08913,
+          "line": 1
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.779101,
+          "y_center": 0.115217,
+          "width": 0.054497,
+          "height": 0.036957,
+          "line": 2
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.743122,
+          "y_center": 0.055435,
+          "width": 0.015344,
+          "height": 0.023913,
+          "line": 3
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.954497,
+          "y_center": 0.21087,
+          "width": 0.044444,
+          "height": 0.056522,
+          "line": 4
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.926984,
+          "y_center": 0.222283,
+          "width": 0.058201,
+          "height": 0.061957,
+          "line": 5
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.778307,
+          "y_center": 0.152174,
+          "width": 0.059259,
+          "height": 0.06087,
+          "line": 6
+        },
+        {
+          "class_id": 4,
+          "x_center": 0.703968,
+          "y_center": 0.079891,
+          "width": 0.028042,
+          "height": 0.072826,
+          "line": 7
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.423016,
+          "y_center": 0.161957,
+          "width": 0.061905,
+          "height": 0.069565,
+          "line": 8
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.855556,
+          "y_center": 0.159239,
+          "width": 0.051852,
+          "height": 0.051087,
+          "line": 9
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.665608,
+          "y_center": 0.190761,
+          "width": 0.070899,
+          "height": 0.077174,
+          "line": 10
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.337037,
+          "y_center": 0.247283,
+          "width": 0.081481,
+          "height": 0.133696,
+          "line": 11
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.745503,
+          "y_center": 0.207065,
+          "width": 0.051852,
+          "height": 0.081522,
+          "line": 12
+        },
+        {
+          "class_id": 7,
+          "x_center": 0.556878,
+          "y_center": 0.455978,
+          "width": 0.171958,
+          "height": 0.23587,
+          "line": 13
+        },
+        {
+          "class_id": 5,
+          "x_center": 0.558995,
+          "y_center": 0.125,
+          "width": 0.233333,
+          "height": 0.136957,
+          "line": 14
+        },
+        {
+          "class_id": 3,
+          "x_center": 0.606349,
+          "y_center": 0.068478,
+          "width": 0.038095,
+          "height": 0.056522,
+          "line": 15
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.665608,
+          "y_center": 0.065761,
+          "width": 0.015873,
+          "height": 0.025,
+          "line": 16
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.678571,
+          "y_center": 0.06413,
+          "width": 0.015344,
+          "height": 0.023913,
+          "line": 17
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.689947,
+          "y_center": 0.059783,
+          "width": 0.012698,
+          "height": 0.026087,
+          "line": 18
+        },
+        {
+          "class_id": 4,
+          "x_center": 0.707937,
+          "y_center": 0.040761,
+          "width": 0.019048,
+          "height": 0.031522,
+          "line": 19
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.727249,
+          "y_center": 0.048913,
+          "width": 0.012169,
+          "height": 0.017391,
+          "line": 20
+        },
+        {
+          "class_id": 4,
+          "x_center": 0.757143,
+          "y_center": 0.041304,
+          "width": 0.016931,
+          "height": 0.032609,
+          "line": 21
+        },
+        {
+          "class_id": 3,
+          "x_center": 0.768254,
+          "y_center": 0.056522,
+          "width": 0.012698,
+          "height": 0.034783,
+          "line": 22
+        },
+        {
+          "class_id": 4,
+          "x_center": 0.784921,
+          "y_center": 0.045109,
+          "width": 0.014286,
+          "height": 0.029348,
+          "line": 23
+        }
+      ]
+    },
+    {
+      "image": "Снимок экрана от 2023-06-07 14-47-51.png",
+      "width": 1872,
+      "height": 951,
+      "mode": "RGBA",
+      "label_file": "Снимок экрана от 2023-06-07 14-47-51.txt",
+      "boxes": [
+        {
+          "class_id": 1,
+          "x_center": 0.59188,
+          "y_center": 0.028917,
+          "width": 0.011752,
+          "height": 0.017876,
+          "line": 1
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.355502,
+          "y_center": 0.14143,
+          "width": 0.058226,
+          "height": 0.045216,
+          "line": 2
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.283921,
+          "y_center": 0.14511,
+          "width": 0.038996,
+          "height": 0.039958,
+          "line": 3
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.582799,
+          "y_center": 0.067823,
+          "width": 0.019231,
+          "height": 0.030494,
+          "line": 4
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.513889,
+          "y_center": 0.131966,
+          "width": 0.068376,
+          "height": 0.049422,
+          "line": 5
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.607639,
+          "y_center": 0.066246,
+          "width": 0.019765,
+          "height": 0.031546,
+          "line": 6
+        },
+        {
+          "class_id": 8,
+          "x_center": 0.940171,
+          "y_center": 0.178759,
+          "width": 0.063034,
+          "height": 0.079916,
+          "line": 7
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.502137,
+          "y_center": 0.208728,
+          "width": 0.064103,
+          "height": 0.08938,
+          "line": 8
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.554754,
+          "y_center": 0.162986,
+          "width": 0.065705,
+          "height": 0.082019,
+          "line": 9
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.306891,
+          "y_center": 0.365931,
+          "width": 0.105235,
+          "height": 0.155626,
+          "line": 10
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.324252,
+          "y_center": 0.133018,
+          "width": 0.03953,
+          "height": 0.041009,
+          "line": 11
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.519765,
+          "y_center": 0.109884,
+          "width": 0.040598,
+          "height": 0.0347,
+          "line": 12
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.508547,
+          "y_center": 0.104627,
+          "width": 0.037393,
+          "height": 0.032597,
+          "line": 13
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.579861,
+          "y_center": 0.046267,
+          "width": 0.014423,
+          "height": 0.023134,
+          "line": 14
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.573985,
+          "y_center": 0.017876,
+          "width": 0.01015,
+          "height": 0.02103,
+          "line": 15
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.579327,
+          "y_center": 0.004206,
+          "width": 0.005876,
+          "height": 0.006309,
+          "line": 16
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.609776,
+          "y_center": 0.014196,
+          "width": 0.008013,
+          "height": 0.017876,
+          "line": 17
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.634348,
+          "y_center": 0.022082,
+          "width": 0.01656,
+          "height": 0.016824,
+          "line": 18
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.13969,
+          "y_center": 0.266562,
+          "width": 0.011218,
+          "height": 0.057834,
+          "line": 19
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.251335,
+          "y_center": 0.276025,
+          "width": 0.014423,
+          "height": 0.078864,
+          "line": 20
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.473558,
+          "y_center": 0.124606,
+          "width": 0.006944,
+          "height": 0.051525,
+          "line": 21
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.449252,
+          "y_center": 0.100946,
+          "width": 0.008547,
+          "height": 0.039958,
+          "line": 22
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.48531,
+          "y_center": 0.116719,
+          "width": 0.01015,
+          "height": 0.029443,
+          "line": 23
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.456197,
+          "y_center": 0.098843,
+          "width": 0.00641,
+          "height": 0.025237,
+          "line": 24
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.522169,
+          "y_center": 0.053102,
+          "width": 0.004808,
+          "height": 0.028391,
+          "line": 25
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.53312,
+          "y_center": 0.053102,
+          "width": 0.004274,
+          "height": 0.024185,
+          "line": 26
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.759615,
+          "y_center": 0.093586,
+          "width": 0.007479,
+          "height": 0.033649,
+          "line": 27
+        }
+      ]
+    },
+    {
+      "image": "Снимок экрана от 2023-06-07 14-48-31.png",
+      "width": 1873,
+      "height": 958,
+      "mode": "RGBA",
+      "label_file": "Снимок экрана от 2023-06-07 14-48-31.txt",
+      "boxes": [
+        {
+          "class_id": 1,
+          "x_center": 0.578751,
+          "y_center": 0.02453,
+          "width": 0.010678,
+          "height": 0.019833,
+          "line": 1
+        },
+        {
+          "class_id": 8,
+          "x_center": 0.759744,
+          "y_center": 0.114301,
+          "width": 0.072611,
+          "height": 0.072025,
+          "line": 2
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.28724,
+          "y_center": 0.144572,
+          "width": 0.037373,
+          "height": 0.038622,
+          "line": 3
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.602242,
+          "y_center": 0.042797,
+          "width": 0.013881,
+          "height": 0.022965,
+          "line": 4
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.586492,
+          "y_center": 0.071503,
+          "width": 0.018687,
+          "height": 0.032359,
+          "line": 5
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.611586,
+          "y_center": 0.069937,
+          "width": 0.018687,
+          "height": 0.031315,
+          "line": 6
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.51842,
+          "y_center": 0.132568,
+          "width": 0.067272,
+          "height": 0.052192,
+          "line": 7
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.558462,
+          "y_center": 0.165449,
+          "width": 0.065136,
+          "height": 0.082463,
+          "line": 8
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.504805,
+          "y_center": 0.210856,
+          "width": 0.06567,
+          "height": 0.096033,
+          "line": 9
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.327549,
+          "y_center": 0.135177,
+          "width": 0.037907,
+          "height": 0.044885,
+          "line": 10
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.493593,
+          "y_center": 0.112735,
+          "width": 0.006941,
+          "height": 0.025052,
+          "line": 11
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.525093,
+          "y_center": 0.049582,
+          "width": 0.004805,
+          "height": 0.024008,
+          "line": 12
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.537907,
+          "y_center": 0.055846,
+          "width": 0.003737,
+          "height": 0.024008,
+          "line": 13
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.529899,
+          "y_center": 0.051148,
+          "width": 0.004805,
+          "height": 0.022965,
+          "line": 14
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.893486,
+          "y_center": 0.149269,
+          "width": 0.004805,
+          "height": 0.035491,
+          "line": 15
+        }
+      ]
+    },
+    {
+      "image": "Снимок экрана от 2023-06-07 14-51-32.png",
+      "width": 1434,
+      "height": 873,
+      "mode": "RGBA",
+      "label_file": "Снимок экрана от 2023-06-07 14-51-32.txt",
+      "boxes": [
+        {
+          "class_id": 1,
+          "x_center": 0.208856,
+          "y_center": 0.119702,
+          "width": 0.028591,
+          "height": 0.03551,
+          "line": 1
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.932357,
+          "y_center": 0.180985,
+          "width": 0.052999,
+          "height": 0.064147,
+          "line": 2
+        },
+        {
+          "class_id": 7,
+          "x_center": 0.873431,
+          "y_center": 0.219931,
+          "width": 0.08159,
+          "height": 0.114548,
+          "line": 3
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.749651,
+          "y_center": 0.239404,
+          "width": 0.100418,
+          "height": 0.089347,
+          "line": 4
+        },
+        {
+          "class_id": 7,
+          "x_center": 0.646444,
+          "y_center": 0.271478,
+          "width": 0.149233,
+          "height": 0.132875,
+          "line": 5
+        },
+        {
+          "class_id": 7,
+          "x_center": 0.702929,
+          "y_center": 0.431844,
+          "width": 0.220363,
+          "height": 0.231386,
+          "line": 6
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.540446,
+          "y_center": 0.248568,
+          "width": 0.018131,
+          "height": 0.093929,
+          "line": 7
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.54742,
+          "y_center": 0.183849,
+          "width": 0.022315,
+          "height": 0.044674,
+          "line": 8
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.509763,
+          "y_center": 0.252577,
+          "width": 0.018131,
+          "height": 0.106529,
+          "line": 9
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.703975,
+          "y_center": 0.486254,
+          "width": 0.029986,
+          "height": 0.13173,
+          "line": 10
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.567294,
+          "y_center": 0.256586,
+          "width": 0.020223,
+          "height": 0.098511,
+          "line": 11
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.553347,
+          "y_center": 0.283505,
+          "width": 0.024407,
+          "height": 0.10882,
+          "line": 12
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.523361,
+          "y_center": 0.258877,
+          "width": 0.021618,
+          "height": 0.107675,
+          "line": 13
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.857741,
+          "y_center": 0.239977,
+          "width": 0.016736,
+          "height": 0.081329,
+          "line": 14
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.588912,
+          "y_center": 0.21764,
+          "width": 0.021618,
+          "height": 0.057274,
+          "line": 15
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.670851,
+          "y_center": 0.494845,
+          "width": 0.041841,
+          "height": 0.183276,
+          "line": 16
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.585774,
+          "y_center": 0.184422,
+          "width": 0.019526,
+          "height": 0.041237,
+          "line": 17
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.512901,
+          "y_center": 0.186712,
+          "width": 0.014644,
+          "height": 0.041237,
+          "line": 18
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.525105,
+          "y_center": 0.199313,
+          "width": 0.015342,
+          "height": 0.034364,
+          "line": 19
+        }
+      ]
+    },
+    {
+      "image": "Снимок экрана от 2023-06-07 16-42-06.png",
+      "width": 1831,
+      "height": 928,
+      "mode": "RGBA",
+      "label_file": "Снимок экрана от 2023-06-07 16-42-06.txt",
+      "boxes": [
+        {
+          "class_id": 1,
+          "x_center": 0.948116,
+          "y_center": 0.184267,
+          "width": 0.026215,
+          "height": 0.038793,
+          "line": 1
+        },
+        {
+          "class_id": 3,
+          "x_center": 0.649918,
+          "y_center": 0.022629,
+          "width": 0.020754,
+          "height": 0.038793,
+          "line": 2
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.125341,
+          "y_center": 0.204741,
+          "width": 0.022392,
+          "height": 0.028017,
+          "line": 3
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.077826,
+          "y_center": 0.237608,
+          "width": 0.018023,
+          "height": 0.02694,
+          "line": 4
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.59503,
+          "y_center": 0.021013,
+          "width": 0.012561,
+          "height": 0.018319,
+          "line": 5
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.104588,
+          "y_center": 0.218211,
+          "width": 0.020208,
+          "height": 0.02694,
+          "line": 6
+        },
+        {
+          "class_id": 4,
+          "x_center": 0.978154,
+          "y_center": 0.185884,
+          "width": 0.043692,
+          "height": 0.09375,
+          "line": 7
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.296013,
+          "y_center": 0.14278,
+          "width": 0.041507,
+          "height": 0.037716,
+          "line": 8
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.663026,
+          "y_center": 0.070043,
+          "width": 0.024031,
+          "height": 0.036638,
+          "line": 9
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.086565,
+          "y_center": 0.383082,
+          "width": 0.055161,
+          "height": 0.082974,
+          "line": 10
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.543419,
+          "y_center": 0.107759,
+          "width": 0.039323,
+          "height": 0.056034,
+          "line": 11
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.496996,
+          "y_center": 0.229526,
+          "width": 0.060076,
+          "height": 0.096983,
+          "line": 12
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.035227,
+          "y_center": 0.440194,
+          "width": 0.057346,
+          "height": 0.100216,
+          "line": 13
+        },
+        {
+          "class_id": 7,
+          "x_center": 0.399235,
+          "y_center": 0.338362,
+          "width": 0.093938,
+          "height": 0.12931,
+          "line": 14
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.046423,
+          "y_center": 0.921875,
+          "width": 0.091753,
+          "height": 0.15625,
+          "line": 15
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.634353,
+          "y_center": 0.130388,
+          "width": 0.028946,
+          "height": 0.053879,
+          "line": 16
+        },
+        {
+          "class_id": 3,
+          "x_center": 0.569088,
+          "y_center": 0.165948,
+          "width": 0.075369,
+          "height": 0.161638,
+          "line": 17
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.367286,
+          "y_center": 0.272629,
+          "width": 0.085745,
+          "height": 0.114224,
+          "line": 18
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.629437,
+          "y_center": 0.310884,
+          "width": 0.090115,
+          "height": 0.154095,
+          "line": 19
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.683506,
+          "y_center": 0.869612,
+          "width": 0.30639,
+          "height": 0.25431,
+          "line": 20
+        },
+        {
+          "class_id": 7,
+          "x_center": 0.489077,
+          "y_center": 0.341595,
+          "width": 0.106499,
+          "height": 0.144397,
+          "line": 21
+        },
+        {
+          "class_id": 3,
+          "x_center": 0.036046,
+          "y_center": 0.258621,
+          "width": 0.012015,
+          "height": 0.017241,
+          "line": 22
+        },
+        {
+          "class_id": 3,
+          "x_center": 0.003277,
+          "y_center": 0.286638,
+          "width": 0.005461,
+          "height": 0.015086,
+          "line": 23
+        },
+        {
+          "class_id": 3,
+          "x_center": 0.149372,
+          "y_center": 0.192349,
+          "width": 0.024577,
+          "height": 0.033405,
+          "line": 24
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.181868,
+          "y_center": 0.175647,
+          "width": 0.029492,
+          "height": 0.034483,
+          "line": 25
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.218733,
+          "y_center": 0.163793,
+          "width": 0.031131,
+          "height": 0.032328,
+          "line": 26
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.602949,
+          "y_center": 0.113685,
+          "width": 0.019661,
+          "height": 0.057112,
+          "line": 27
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.608684,
+          "y_center": 0.008082,
+          "width": 0.008192,
+          "height": 0.011853,
+          "line": 28
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.590934,
+          "y_center": 0.004849,
+          "width": 0.006554,
+          "height": 0.007543,
+          "line": 29
+        },
+        {
+          "class_id": 3,
+          "x_center": 0.678591,
+          "y_center": 0.043642,
+          "width": 0.038777,
+          "height": 0.063578,
+          "line": 30
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.637084,
+          "y_center": 0.012931,
+          "width": 0.0071,
+          "height": 0.012931,
+          "line": 31
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.409066,
+          "y_center": 0.157328,
+          "width": 0.012015,
+          "height": 0.0625,
+          "line": 32
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.037138,
+          "y_center": 0.306034,
+          "width": 0.006554,
+          "height": 0.028017,
+          "line": 33
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.398962,
+          "y_center": 0.164332,
+          "width": 0.011469,
+          "height": 0.050647,
+          "line": 35
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.470781,
+          "y_center": 0.211207,
+          "width": 0.010923,
+          "height": 0.064655,
+          "line": 36
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.451939,
+          "y_center": 0.239224,
+          "width": 0.014746,
+          "height": 0.092672,
+          "line": 37
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.045057,
+          "y_center": 0.285022,
+          "width": 0.004915,
+          "height": 0.029095,
+          "line": 38
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.437466,
+          "y_center": 0.132543,
+          "width": 0.007646,
+          "height": 0.056034,
+          "line": 39
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.444566,
+          "y_center": 0.122845,
+          "width": 0.008738,
+          "height": 0.045259,
+          "line": 40
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.41917,
+          "y_center": 0.136853,
+          "width": 0.008192,
+          "height": 0.040948,
+          "line": 42
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.397051,
+          "y_center": 0.152478,
+          "width": 0.009831,
+          "height": 0.052802,
+          "line": 43
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.453304,
+          "y_center": 0.199353,
+          "width": 0.010923,
+          "height": 0.032328,
+          "line": 44
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.759421,
+          "y_center": 0.100754,
+          "width": 0.006008,
+          "height": 0.042026,
+          "line": 45
+        }
+      ]
+    },
+    {
+      "image": "Снимок экрана от 2023-06-08 11-35-27.png",
+      "width": 1837,
+      "height": 957,
+      "mode": "RGBA",
+      "label_file": "Снимок экрана от 2023-06-08 11-35-27.txt",
+      "boxes": [
+        {
+          "class_id": 1,
+          "x_center": 0.303212,
+          "y_center": 0.64629,
+          "width": 0.193794,
+          "height": 0.197492,
+          "line": 1
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.984758,
+          "y_center": 0.180773,
+          "width": 0.030484,
+          "height": 0.129572,
+          "line": 2
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.452912,
+          "y_center": 0.479101,
+          "width": 0.173108,
+          "height": 0.145246,
+          "line": 3
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.471965,
+          "y_center": 0.589342,
+          "width": 0.178552,
+          "height": 0.15883,
+          "line": 4
+        },
+        {
+          "class_id": 8,
+          "x_center": 0.670386,
+          "y_center": 0.578892,
+          "width": 0.194339,
+          "height": 0.340648,
+          "line": 5
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.170114,
+          "y_center": 0.677638,
+          "width": 0.118127,
+          "height": 0.247649,
+          "line": 6
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.892216,
+          "y_center": 0.324451,
+          "width": 0.093631,
+          "height": 0.155695,
+          "line": 7
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.811922,
+          "y_center": 0.714734,
+          "width": 0.134458,
+          "height": 0.221526,
+          "line": 8
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.033206,
+          "y_center": 0.019331,
+          "width": 0.015242,
+          "height": 0.036573,
+          "line": 9
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.492651,
+          "y_center": 0.34953,
+          "width": 0.028307,
+          "height": 0.126437,
+          "line": 10
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.294502,
+          "y_center": 0.69906,
+          "width": 0.027218,
+          "height": 0.14629,
+          "line": 11
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.790691,
+          "y_center": 0.328631,
+          "width": 0.026674,
+          "height": 0.118077,
+          "line": 12
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.158955,
+          "y_center": 0.761233,
+          "width": 0.032662,
+          "height": 0.130617,
+          "line": 13
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.597169,
+          "y_center": 0.388715,
+          "width": 0.032662,
+          "height": 0.087774,
+          "line": 14
+        }
+      ]
+    },
+    {
+      "image": "Снимок экрана от 2023-06-08 11-38-38.png",
+      "width": 1789,
+      "height": 886,
+      "mode": "RGBA",
+      "label_file": "Снимок экрана от 2023-06-08 11-38-38.txt",
+      "boxes": [
+        {
+          "class_id": 9,
+          "x_center": 0.690609,
+          "y_center": 0.583521,
+          "width": 0.16825,
+          "height": 0.306998,
+          "line": 1
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.462269,
+          "y_center": 0.019187,
+          "width": 0.025713,
+          "height": 0.036117,
+          "line": 2
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.430129,
+          "y_center": 0.01298,
+          "width": 0.029625,
+          "height": 0.023702,
+          "line": 3
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.392398,
+          "y_center": 0.041761,
+          "width": 0.03242,
+          "height": 0.063205,
+          "line": 4
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.65204,
+          "y_center": 0.424944,
+          "width": 0.111235,
+          "height": 0.107223,
+          "line": 5
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.024036,
+          "y_center": 0.266366,
+          "width": 0.046954,
+          "height": 0.079007,
+          "line": 6
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.024036,
+          "y_center": 0.224041,
+          "width": 0.046954,
+          "height": 0.044018,
+          "line": 7
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.02739,
+          "y_center": 0.209368,
+          "width": 0.053661,
+          "height": 0.053047,
+          "line": 8
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.589435,
+          "y_center": 0.429458,
+          "width": 0.012856,
+          "height": 0.073363,
+          "line": 9
+        }
+      ]
+    },
+    {
+      "image": "Снимок экрана от 2023-06-08 11-38-52.png",
+      "width": 1797,
+      "height": 888,
+      "mode": "RGBA",
+      "label_file": "Снимок экрана от 2023-06-08 11-38-52.txt",
+      "boxes": [
+        {
+          "class_id": 9,
+          "x_center": 0.597885,
+          "y_center": 0.649775,
+          "width": 0.20089,
+          "height": 0.880681,
+          "line": 1
+        },
+        {
+          "class_id": 8,
+          "x_center": 0.288781,
+          "y_center": 0.019144,
+          "width": 0.055648,
+          "height": 0.086086,
+          "line": 2
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.176962,
+          "y_center": 0.117117,
+          "width": 0.072848,
+          "height": 0.108604,
+          "line": 3
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.814418,
+          "y_center": 0.140766,
+          "width": 0.04118,
+          "height": 0.117117,
+          "line": 4
+        },
+        {
+          "class_id": 8,
+          "x_center": 0.462716,
+          "y_center": 0.760698,
+          "width": 0.124096,
+          "height": 0.298919,
+          "line": 5
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.882499,
+          "y_center": 0.089414,
+          "width": 0.08951,
+          "height": 0.076577,
+          "line": 6
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.284085,
+          "y_center": 0.868806,
+          "width": 0.062888,
+          "height": 0.158784,
+          "line": 7
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.55064,
+          "y_center": 0.447685,
+          "width": 0.189677,
+          "height": 0.125,
+          "line": 8
+        },
+        {
+          "class_id": 4,
+          "x_center": 0.740122,
+          "y_center": 0.225225,
+          "width": 0.189121,
+          "height": 0.222978,
+          "line": 9
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.579855,
+          "y_center": 0.197685,
+          "width": 0.066778,
+          "height": 0.125,
+          "line": 10
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.795214,
+          "y_center": 0.685698,
+          "width": 0.094602,
+          "height": 0.172297,
+          "line": 11
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.250974,
+          "y_center": 0.595721,
+          "width": 0.065665,
+          "height": 0.195946,
+          "line": 12
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.819148,
+          "y_center": 0.251126,
+          "width": 0.048414,
+          "height": 0.108108,
+          "line": 13
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.886116,
+          "y_center": 0.90259,
+          "width": 0.085698,
+          "height": 0.19482,
+          "line": 14
+        },
+        {
+          "class_id": 1,
+          "x_center": 0.028651,
+          "y_center": 0.249487,
+          "width": 0.046188,
+          "height": 0.088964,
+          "line": 15
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.082276,
+          "y_center": 0.128811,
+          "width": 0.015582,
+          "height": 0.078198,
+          "line": 16
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.447184,
+          "y_center": 0.448761,
+          "width": 0.022816,
+          "height": 0.10478,
+          "line": 17
+        },
+        {
+          "class_id": 10,
+          "x_center": 0.478019,
+          "y_center": 0.525888,
+          "width": 0.01892,
+          "height": 0.118248,
+          "line": 18
+        }
+      ]
+    }
+  ]
+}
