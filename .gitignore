@@ -28,8 +28,9 @@ data/processed/*
 # CVAT round-trip files (imports, exports, pre-labels)
 cvat/
 
-# Generated sample images (rebuilt by prepare_dataset)
+# Generated sample images (rebuilt by prepare_dataset); only the curated top-level JPEGs are committed
 reports/samples/*
+!reports/samples/*.jpg
 !reports/samples/.gitkeep
 
 # Experiment runs, weights, logs

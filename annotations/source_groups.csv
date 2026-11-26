@@ -1,6 +1,6 @@
 image,group,pin_split,note
-0 - 2025-04-16 16-59-56-449_00009570.jpg,highway_cam_2025_04_16,,same video; frames 9570 and 26790
-0 - 2025-04-16 16-59-56-449_00026790.jpg,highway_cam_2025_04_16,,same video; frames 9570 and 26790
+0 - 2025-04-16 16-59-56-449_00009570.jpg,highway_cam_2025_04_16,train,same video; frames 9570 and 26790; pinned to train: holds 1 of the 2 lorry boxes
+0 - 2025-04-16 16-59-56-449_00026790.jpg,highway_cam_2025_04_16,train,same video; frames 9570 and 26790; pinned to train: holds 1 of the 2 lorry boxes
 000000012993.jpg,coco_000000012993,train,"COCO train2017 image: seen by COCO-pretrained weights, kept out of val/test"
 000000137491.jpg,coco_000000137491,train,"COCO train2017 image: seen by COCO-pretrained weights, kept out of val/test"
 000000403134.jpg,coco_000000403134,train,"COCO train2017 image: seen by COCO-pretrained weights, kept out of val/test"

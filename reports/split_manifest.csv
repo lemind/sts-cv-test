@@ -1,0 +1,41 @@
+image,file,group,split,pinned
+0 - 2025-04-16 16-59-56-449_00009570.jpg,0 - 2025-04-16 16-59-56-449_00009570.jpg,highway_cam_2025_04_16,train,True
+0 - 2025-04-16 16-59-56-449_00026790.jpg,0 - 2025-04-16 16-59-56-449_00026790.jpg,highway_cam_2025_04_16,train,True
+000000012993.jpg,000000012993.jpg,coco_000000012993,train,True
+000000137491.jpg,000000137491.jpg,coco_000000137491,train,True
+000000403134.jpg,000000403134.jpg,coco_000000403134,train,True
+000000566364.jpg,000000566364.jpg,coco_000000566364,train,True
+01-04-2023 183852.png,01-04-2023 183852.png,pobedy_intersection_cam,train,False
+05-04-2023 220421.png,05-04-2023 220421.png,pobedy_intersection_cam,train,False
+05-04-2023 220626.png,05-04-2023 220626.png,pobedy_intersection_cam,train,False
+05-04-2023 220818.png,05-04-2023 220818.png,pobedy_intersection_cam,train,False
+05-04-2023 220839.png,05-04-2023 220839.png,pobedy_intersection_cam,train,False
+102_9aug202317009.png,102_9aug202317009.png,avenue_cam_9aug2023,test,False
+10_9aug202317009.png,10_9aug202317009.png,avenue_cam_9aug2023,test,False
+11_170709082023.png,11_170709082023.png,crossroad_cam_170709082023,train,False
+12_170709082023.png,12_170709082023.png,crossroad_cam_170709082023,train,False
+15-08-2021_Погоня_Усть-Кут38.jpg,15-08-2021_Погоня_Усть-Кут38.jpg,ust_kut_chase_2021,train,False
+1649839828.0003297.jpg,1649839828.0003297.jpg,crossroad_1649839828,val,False
+1_170709082023.png,1_170709082023.png,crossroad_cam_170709082023,train,False
+2_170709082023.png,2_170709082023.png,crossroad_cam_170709082023,train,False
+2ca2bd9s-1920.jpg,2ca2bd9s-1920.jpg,trailer_photo_2ca2bd9s,train,False
+3f481679a0862dadddb7d97b7351cf67.jpeg,3f481679a0862dadddb7d97b7351cf67.jpeg,trailer_photo_3f481679,val,False
+4d3c2d6s-1920.jpg,4d3c2d6s-1920.jpg,trailer_photo_4d3c2d6s,train,False
+Licoil_wide_1213.png,Licoil_wide_1213.png,lukoil_highway_cam,test,False
+Screenshot from 2023-06-05 14-31-50.png,Screenshot from 2023-06-05 14-31-50.png,video_screenshot_trailer_2023_06_05,val,False
+Screenshot_112.jpg,Screenshot_112.jpg,crossroad_screenshot_112,val,False
+screenshot_1529.png,screenshot_1529.png,street_cam_screenshot_1529,test,False
+screenshot_1760.png,screenshot_1760.png,street_cam_screenshot_1760,test,False
+vlcsnap-2022-09-01-11h49m01s294.png,vlcsnap-2022-09-01-11h49m01s294.png,dump_truck_cam_2022_09_01,train,False
+Снимок экрана от 2023-06-05 14-24-28.png,Снимок экрана от 2023-06-05 14-24-28.png,accident_2023_06_05_1424,train,False
+Снимок экрана от 2023-06-05 14-29-47.png,Снимок экрана от 2023-06-05 14-29-47.png,accident_2023_06_05_1429,val,False
+Снимок экрана от 2023-06-05 16-05-35.png,Снимок экрана от 2023-06-05 16-05-35.png,accident_2023_06_05_1605,test,False
+Снимок экрана от 2023-06-06 10-13-51.png,Снимок экрана от 2023-06-06 10-13-51.png,accident_2023_06_06_1013,train,False
+Снимок экрана от 2023-06-07 14-29-35.png,Снимок экрана от 2023-06-07 14-29-35.png,police_crossroad_2023_06_07_1429,test,False
+Снимок экрана от 2023-06-07 14-47-51.png,Снимок экрана от 2023-06-07 14-47-51.png,crossroad_cam_2023_06_07_1447,train,False
+Снимок экрана от 2023-06-07 14-48-31.png,Снимок экрана от 2023-06-07 14-48-31.png,crossroad_cam_2023_06_07_1447,train,False
+Снимок экрана от 2023-06-07 14-51-32.png,Снимок экрана от 2023-06-07 14-51-32.png,night_police_2023_06_07_1451,test,False
+Снимок экрана от 2023-06-07 16-42-06.png,Снимок экрана от 2023-06-07 16-42-06.png,accident_2023_06_07_1642,train,False
+Снимок экрана от 2023-06-08 11-35-27.png,Снимок экрана от 2023-06-08 11-35-27.png,incident_2023_06_08_1135,val,False
+Снимок экрана от 2023-06-08 11-38-38.png,Снимок экрана от 2023-06-08 11-38-38.png,incident_2023_06_08_1135,val,False
+Снимок экрана от 2023-06-08 11-38-52.png,Снимок экрана от 2023-06-08 11-38-52.png,incident_2023_06_08_1135,val,False
