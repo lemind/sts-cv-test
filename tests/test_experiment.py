@@ -8,6 +8,7 @@ from tensorboard.backend.event_processing.event_accumulator import EventAccumula
 from src.prepare_dataset import write_manifest
 from src.run_experiment import (
     alias_pretrained_class_names,
+    disable_nms_time_limit,
     load_config,
     main,
     train_arguments,
@@ -77,6 +78,23 @@ def test_nominal_batch_follows_batch_override(tmp_path):
     assert arguments["batch"] == arguments["nbs"] == 2
     assert arguments["optimizer"] == "AdamW" and arguments["lr0"] == 0.001
     assert arguments["close_mosaic"] == 1 and arguments["warmup_bias_lr"] == 0.0
+    assert arguments["freeze"] is None  # 0 in the config: no layer frozen
+    frozen = load_config(write_config(tmp_path / "f.yaml", freeze=10), {}, smoke_test=False)
+    assert train_arguments(frozen, Path("d.yaml"), tmp_path / "r")["freeze"] == 10
+
+
+def test_nms_time_limit_is_disabled_where_ultralytics_validation_calls_it(monkeypatch):
+    from ultralytics.models.yolo.detect import val as detect_val
+    from ultralytics.utils import nms
+
+    monkeypatch.setattr(nms, "non_max_suppression", nms.non_max_suppression)  # restored after
+    disable_nms_time_limit()
+    disable_nms_time_limit()  # idempotent: no partial of a partial
+    patched = nms.non_max_suppression
+    assert patched.keywords == {"max_time_img": float("inf")}
+    assert not hasattr(patched.func, "keywords")
+    # The detection validator looks the function up on this module at call time.
+    assert detect_val.nms is nms
 
 
 class FakeYOLO:

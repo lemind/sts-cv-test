@@ -37,7 +37,7 @@ pip install -r requirements.txt  # pulls CPU torch from download.pytorch.org (in
 All commands below are run from the repo root. With uv, prefix them with `uv run`
 (or activate `.venv`). Paths are relative: nothing depends on where the repo is cloned.
 
-Tests (93, ~5 s):
+Tests (96, ~5 s):
 
 ```bash
 uv run pytest
@@ -94,7 +94,7 @@ dataset. What was done and how to redo it:
 
 What the review found (details in `reports/dataset_report.md`): 14 boxes shifted off their
 objects in 2 images, 160 missing boxes (10 images without labels, others incomplete), 5 class
-corrections (2 of them unknown class ids), 5 loose and 3 false boxes, 13 RGBA images, 1 label file with CRLF.
+corrections (4 before CVAT from `class_fixes.csv`, 2 of them unknown class ids, and 1 in CVAT), 5 loose and 3 false boxes, 13 RGBA images, 1 label file with CRLF.
 Out-of-image boxes were all shifted boxes and were moved back by hand, never clipped.
 
 ### 3. Prepare the dataset
@@ -166,8 +166,13 @@ Training settings that differ from Ultralytics defaults, and why:
 | `warmup_bias_lr` | 0.0 | 0.1 | 0.1 is meant for SGD; with AdamW it is 300× `lr0` |
 | `class_aliases` | `person: pedestrian` | — | Ultralytics copies classifier weights only between classes with the same name. Without this, `pedestrian` would start from scratch instead of from COCO `person` |
 
-**Tuning.** A first 5-epoch run scored test mAP50 0.038, below the COCO model without fine-tuning.
-Then 4 candidates of 50 epochs were trained and one was chosen on val only (mAP50-95 of `best.pt`):
+**Why 50 epochs.** The short run the task asks for is `--smoke-test` (1 epoch). The 50-epoch run is
+an extra check that the pipeline really trains the model; it is not an attempt to get high
+accuracy on 40 images.
+
+**Tuning.** A first 5-epoch run with AdamW lr 0.001 scored test mAP50 0.038: fine-tuning clearly
+did not work. Then 4 candidates of 50 epochs were trained and one was chosen on val only
+(mAP50-95 of `best.pt`):
 
 | Candidate | `lr0` | `freeze` | val mAP50 | val mAP50-95 |
 |---|---|---|---:|---:|
@@ -176,8 +181,10 @@ Then 4 candidates of 50 epochs were trained and one was chosen on val only (mAP5
 | **C** | **0.0003** | **0** | **0.473** | **0.336** |
 | D | 0.0003 | 10 | 0.390 | 0.271 |
 
-The settings of C are in the config. With 8 val images the choice is noisy; test was not used
-for it.
+The settings of C are in the config. Val has 8 images and was used both to pick the epoch and to
+pick the settings, so its metrics are optimistic. One seed was compared; part of the difference
+between candidates may be noise. The script also computed test metrics for the candidates (it
+evaluates test in every run), but they were not used for the choice.
 
 Ultralytics NMS has a wall-clock limit (2 s + 0.05 s per image). On CPU with conf 0.001 the val
 batch of 8 images hit it, and the images left over got no detections. The val metrics then
@@ -185,7 +192,7 @@ depended on machine load. The limit is switched off for the process (`disable_nm
 
 How the run works:
 1. Training: the val split picks `best.pt`.
-2. `best.pt` is evaluated once on the test split.
+2. `best.pt` is evaluated on the test split (in every run, including the smoke test).
 3. Our callbacks write the TensorBoard log, and example predictions of `best.pt` are drawn
    for val and test.
 
@@ -250,6 +257,7 @@ Download and unpack it in the repo root:
 ```bash
 curl -LO https://github.com/lemind/sts-cv-test/releases/download/run-2026-11-26T171458_yolo11n/2026-11-26T171458_yolo11n.tar.gz
 tar -xzf 2026-11-26T171458_yolo11n.tar.gz   # -> runs/2026-11-26T171458_yolo11n/
+sha256sum -c runs/2026-11-26T171458_yolo11n/SHA256SUMS   # integrity of the archived files
 uv run tensorboard --logdir runs
 ```
 
@@ -295,9 +303,12 @@ What these numbers do and do not show:
 - **Not a usable detector.** With 24 training images, classes with 1–5 boxes are not learned. The
   frequent classes (car, pedestrian) and police are learned noticeably.
 - **Test is much lower than val.** Each split has 8 images from different cameras, and val was also
-  used to pick `best.pt` and the settings. The test estimate is honest but noisy.
+  used to pick `best.pt` and the settings, so val is optimistic. Test is a diagnostic estimate, also
+  noisy.
 - **Val drops after epoch 37.** That is overfitting; `best.pt` is taken at the peak.
-- **No tuning on test.** Choices were made on val only, and test was evaluated once.
+- **Test is not untouched.** Settings were chosen on val only, but test metrics were also computed
+  in diagnostic runs during development (for example 0.038 for the first 5-epoch run). So test here
+  is a diagnostic estimate, not a fully independent holdout.
 
 ## Repository layout
 
@@ -334,7 +345,10 @@ tests/                     pytest
 - **Dense crowds.** People who can be told apart get a box. People merged into one blob do not,
   because YOLO has no ignore regions.
 - **Tuned on val.** `lr0` and backbone freezing were chosen among 4 candidates on val (see
-  [Train](#6-train)); everything else is Ultralytics defaults or fixes. Nothing was tuned on test.
+  [Train](#6-train)); everything else is Ultralytics defaults or fixes. Nothing was chosen on test,
+  but test metrics are visible in diagnostic runs, so test is not a fully independent holdout. There
+  is no baseline without fine-tuning (the same evaluation of the untrained COCO model), so no
+  comparison with one is made.
 - **Classifier head.** COCO classifier weights are transferred to 6 of 11 classes: bicycle, car,
   motorcycle, bus, truck by name, and pedestrian through `class_aliases`. COCO has no police,
   ambulance, fire_truck, lorry or trailer; those are learned from scratch.
