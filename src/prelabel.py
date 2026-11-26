@@ -1,7 +1,8 @@
 """Pre-label images with a COCO-pretrained YOLO and build a CVAT import.
 
 Output (gitignored, under --output):
-    import/data.yaml, import/labels/train/<stem>.txt   -> zipped to cvat_import.zip
+    import/data.yaml, import/labels/train/<stem>.txt, empty import/images/train/
+                                                       -> zipped to cvat_import.zip
         original labels with confirmed class fixes applied (--class-fixes),
         predictions only for images without a label file
     review/<stem>.jpg          original boxes + predictions coloured by category (legend on image)
@@ -206,6 +207,8 @@ def main(argv: list[str] | None = None) -> int:
     labels_out = args.output / "import" / "labels" / "train"
     review_out = args.output / "review"
     labels_out.mkdir(parents=True)
+    # CVAT's importer requires images/train to exist; left empty, it matches labels to task frames by name.
+    (args.output / "import" / "images" / "train").mkdir(parents=True)
     review_out.mkdir(parents=True)
 
     Path(args.model).parent.mkdir(parents=True, exist_ok=True)
