@@ -42,6 +42,9 @@ runs/*
 *.engine
 events.out.tfevents.*
 
+# Submission archive of a run (handed in separately)
+dist/
+
 # OS / editors
 .DS_Store
 .idea/
