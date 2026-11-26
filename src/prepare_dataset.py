@@ -265,7 +265,12 @@ def write_manifest(output: Path, manifest: Path) -> str:
     the working directory. Returns the dataset hash (sha256 of the manifest text)."""
     files = [output / "dataset.yaml"]
     for subdir in ("images", "labels"):
-        files += [path for path in (output / subdir).rglob("*") if path.is_file()]
+        # labels/<split>.cache is Ultralytics' rebuildable label cache, not dataset content.
+        files += [
+            path
+            for path in (output / subdir).rglob("*")
+            if path.is_file() and path.suffix != ".cache"
+        ]
     relative_paths = sorted((relative_to_cwd(path).as_posix(), path) for path in files)
     text = "".join(f"{file_sha256(path)}  {relative}\n" for relative, path in relative_paths)
     manifest.write_text(text, encoding="utf-8", newline="\n")

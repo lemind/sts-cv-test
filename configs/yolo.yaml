@@ -1,0 +1,26 @@
+# Experiment config for `python -m src.run_experiment --config configs/yolo.yaml`.
+# Paths are relative to the repo root. Any key can be overridden from the CLI (see --help).
+
+name: yolo11n                       # run directory: runs/<timestamp>_<name>
+model: weights/yolo11n.pt           # COCO-pretrained; Ultralytics downloads it on the first real run
+data: data/processed/dataset.yaml   # built by `python -m src.prepare_dataset`
+manifest: reports/manifest.sha256   # the dataset must match it; its sha256 is the dataset version
+
+epochs: 5                           # short CPU run: shows the pipeline, not a tuned model
+imgsz: 640
+batch: 4
+device: cpu
+workers: 0                          # no dataloader worker processes: deterministic order
+seed: 42
+deterministic: true
+patience: 100                       # no early stopping in a 5-epoch run
+
+# Validation thresholds (Ultralytics defaults, written down so they are part of the run record)
+conf: 0.001
+iou: 0.7
+
+prediction_examples: 4              # per split (val, test), drawn by best.pt and logged to TensorBoard
+
+smoke_test:                         # overrides for --smoke-test: one fast epoch, full logging
+  epochs: 1
+  imgsz: 320
