@@ -224,7 +224,7 @@ uv run python -m src.run_experiment --config configs/yolo.yaml
 | `test_metrics.json` | P/R/mAP на test, лучшие метрики на val; по каждому классу — число объектов в test, оценивался ли класс, AP |
 | `predictions/{val,test}/` | примеры предсказаний `best.pt` |
 | `test/` | графики Ultralytics по оценке на test: матрицы ошибок, PR-кривые |
-| `args.yaml`, `results.csv`, `*.png` | пишет Ultralytics. В `args.yaml` стоят абсолютные `project` и `save_dir` машины, где шёл прогон; наши файлы используют относительные пути |
+| `args.yaml`, `results.csv`, `*.png` | пишет Ultralytics. Он сохраняет абсолютные `project` и `save_dir` в `args.yaml` и в чекпоинты; в сдаваемом архиве они заменены на относительные |
 
 **Воспроизводимость.** На CPU заданы `seed: 42`, `deterministic: true`, `workers: 0` и NMS без
 лимита времени. Два прогона одного коммита дают одинаковые `results.csv` (отличается только колонка

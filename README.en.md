@@ -188,7 +188,7 @@ Each run gets its own folder `runs/<timestamp>_<name>/`:
 | `test_metrics.json` | test P/R/mAP, best val metrics, per class: test objects, evaluated or not, AP |
 | `predictions/{val,test}/` | example predictions of `best.pt` |
 | `test/` | Ultralytics plots of the test evaluation (confusion matrices, PR curves) |
-| `args.yaml`, `results.csv`, `*.png` | written by Ultralytics (`args.yaml` holds the absolute `project`/`save_dir` of the machine that ran it; our files use relative paths) |
+| `args.yaml`, `results.csv`, `*.png` | written by Ultralytics. It stores the absolute `project`/`save_dir` in `args.yaml` and the checkpoints; in the submitted archive they are replaced with relative ones |
 
 Reproducibility: `seed: 42`, `deterministic: true`, `workers: 0`, and no NMS time limit, on CPU.
 Two runs of the same commit give the same `results.csv` (only the time column differs) and the
