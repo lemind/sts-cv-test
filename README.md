@@ -1,248 +1,286 @@
 # sts-cv-test
 
-Validation, correction and splitting of a small traffic detection set (`test_data/traffic_v5_mini`,
-40 images, 11 classes), and a reproducible Ultralytics YOLO experiment logged to TensorBoard with
-our own `SummaryWriter`.
+[English version](README.en.md)
 
-The focus is the data and the reproducibility of the pipeline, not mAP: 24 training images and a
-5-epoch CPU run are enough to show the pipeline, not to train a useful detector.
+В репозитории две части:
+- проверка, исправление и разбиение небольшой выборки для детекции транспорта
+  (`test_data/traffic_v5_mini`, 40 изображений, 11 классов);
+- воспроизводимый эксперимент Ultralytics YOLO, который пишет логи в TensorBoard через собственный
+  `SummaryWriter`.
 
-## Contents
+Главное здесь — данные и воспроизводимость пайплайна, а не mAP. 24 обучающих изображений и
+5 эпох на CPU хватает, чтобы показать работу пайплайна, но не чтобы обучить полезный детектор.
 
-- [Install](#install)
-- [Pipeline](#pipeline): validate → annotations → prepare → dry-run → smoke test → train → TensorBoard
-- [TensorBoard logs](#tensorboard-logs)
-- [Submitted run](#submitted-run)
-- [Repository layout](#repository-layout)
-- [Assumptions and limitations](#assumptions-and-limitations)
+## Содержание
 
-## Install
+- [Установка](#установка)
+- [Пайплайн](#пайплайн): проверка → разметка → подготовка → dry-run → smoke-test → обучение → TensorBoard
+- [Логи TensorBoard](#логи-tensorboard)
+- [Сдаваемый прогон](#сдаваемый-прогон)
+- [Структура репозитория](#структура-репозитория)
+- [Допущения и ограничения](#допущения-и-ограничения)
 
-Python 3.12, CPU-only PyTorch. All versions are pinned (`pyproject.toml` + `uv.lock`).
+## Установка
+
+Python 3.12, PyTorch для CPU. Все версии зафиксированы в `pyproject.toml` и `uv.lock`.
 
 ```bash
-git clone <repo-url> sts-cv-test && cd sts-cv-test
-uv sync --frozen                 # creates .venv from uv.lock, dev tools (pytest, ruff) included
+git clone https://github.com/lemind/sts-cv-test.git && cd sts-cv-test
+uv sync --frozen                 # создаёт .venv по uv.lock, вместе с dev-инструментами (pytest, ruff)
 ```
 
-Without uv, `requirements.txt` is an export of the same lock file (runtime and dev packages):
+Без uv: `requirements.txt` — экспорт того же lock-файла (runtime- и dev-пакеты):
 
 ```bash
 python3.12 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt  # pulls CPU torch from download.pytorch.org (index in the file)
+pip install -r requirements.txt  # CPU-сборку torch берёт с download.pytorch.org (индекс указан в файле)
 ```
 
-All commands below are run from the repo root. With uv, prefix them with `uv run`
-(or activate `.venv`). Paths are relative: nothing depends on where the repo is cloned.
+Все команды ниже запускаются из корня репозитория. С uv к ним добавляется `uv run`
+(или сначала активируйте `.venv`). Пути везде относительные, поэтому неважно, куда склонирован
+репозиторий.
 
-Tests (90, ~5 s):
+Тесты (93, около 5 с):
 
 ```bash
 uv run pytest
 uv run ruff check . && uv run ruff format --check .
 ```
 
-## Pipeline
+## Пайплайн
 
-### 1. Validate the source set
+### 1. Проверка исходной выборки
 
 ```bash
 uv run python -m src.validate_labels --input test_data/traffic_v5_mini
 ```
 
-Checks every image (readable, format, mode, EXIF rotation, truncated JPEG) and every label line
-(class id against `classes.txt`, coordinate range, boxes past the border, degenerate and duplicate
-boxes, CRLF), and lists images without a label file. It reports and never fixes. Exit code 1 means
-errors were found; on the source set that is expected: 6 errors / 24 warnings
-(`reports/validation_source.json` is the committed result, written with `--json`).
+Что проверяется:
+- **каждое изображение:** читается ли, формат, цветовой режим, EXIF-поворот, обрезанный JPEG;
+- **каждая строка разметки:** class id по `classes.txt`, диапазон координат, выход бокса за
+  границу, вырожденные и дублирующиеся боксы, окончания строк CRLF;
+- **изображения без файла разметки:** выводятся отдельным списком.
 
-### 2. Annotations: the CVAT round-trip (already done)
+Скрипт только сообщает о проблемах и ничего не исправляет. Код выхода 1 означает, что найдены
+ошибки. Для исходной выборки это ожидаемо: 6 ошибок и 24 предупреждения. Закоммиченный результат
+лежит в `reports/validation_source.json`, он записан с флагом `--json`.
 
-The fixes are committed in `annotations/`, so this step does not need to be repeated to rebuild the
-dataset. What was done and how to redo it:
+### 2. Разметка: проход через CVAT (уже сделан)
 
-| File | |
+Исправления закоммичены в `annotations/`, поэтому для пересборки датасета этот шаг повторять не
+нужно. Что было сделано и как это повторить:
+
+| Файл | |
 |---|---|
-| `annotations/README.md` | class rules and box rules used for every decision |
-| `annotations/class_fixes.csv` | class ids corrected after looking at the image (incl. the 2 unknown ids) |
-| `annotations/final/` | final labels for all 40 images, exported from CVAT |
-| `annotations/changes.csv` | every box changed from the source labels to `final/`, with the reason |
-| `annotations/source_groups.csv` | image → source group (camera/video/incident), the split unit |
+| `annotations/README.md` | правила классов и боксов, по которым принималось каждое решение |
+| `annotations/class_fixes.csv` | class id, исправленные после просмотра изображения (включая 2 неизвестных id) |
+| `annotations/final/` | итоговая разметка всех 40 изображений, экспорт из CVAT |
+| `annotations/changes.csv` | каждый бокс, изменённый относительно исходной разметки, с причиной |
+| `annotations/source_groups.csv` | изображение → группа источника (камера, видео, происшествие) — единица разбиения |
 
-1. Pre-label: source labels with the class fixes applied, plus COCO-pretrained YOLO predictions
-   for the 10 images without labels. Builds the CVAT import zip (Ultralytics YOLO Detection 1.0)
-   and review images. Downloads `yolo11x.pt` (~110 MB) on the first run.
+1. **Предразметка.** Исходная разметка с исправлениями классов, а для 10 изображений без разметки —
+   предсказания YOLO, предобученной на COCO. Скрипт собирает zip для импорта в CVAT (формат
+   Ultralytics YOLO Detection 1.0) и картинки для просмотра. При первом запуске скачивает
+   `yolo11x.pt` (около 110 МБ).
    ```bash
    uv run python -m src.prelabel --input test_data/traffic_v5_mini --output cvat
    ```
-2. In CVAT: create a task with the 40 images and the 11 labels in `classes.txt` order, import
-   `cvat/cvat_import.zip`, review every frame, export as Ultralytics YOLO Detection 1.0 into
-   `cvat/export/`.
-3. Re-validate the export and compare the class ids/names with `classes.txt`:
+2. **В CVAT:**
+   - создать задачу с 40 изображениями и 11 метками в порядке `classes.txt`;
+   - импортировать `cvat/cvat_import.zip`;
+   - просмотреть каждый кадр;
+   - экспортировать в формате Ultralytics YOLO Detection 1.0 в `cvat/export/`.
+3. **Проверка экспорта.** Ещё раз проверить разметку и сверить class id и имена с `classes.txt`:
    ```bash
    uv run python -m src.validate_labels --input test_data/traffic_v5_mini \
        --labels cvat/export/labels/train --names cvat/export/data.yaml --strict
    ```
-4. Copy `cvat/export/labels/train/*.txt` into `annotations/final/`, validate again
-   (`--labels annotations/final --strict`, 0 errors) and rebuild the audit trail:
+4. **Перенос и журнал изменений.**
+   - скопировать `cvat/export/labels/train/*.txt` в `annotations/final/`;
+   - проверить ещё раз (`--labels annotations/final --strict`), ожидается 0 ошибок;
+   - пересобрать журнал изменений:
    ```bash
    uv run python -m src.annotation_changes --input test_data/traffic_v5_mini \
        --final annotations/final --output annotations/changes.csv
    ```
 
-What the review found (details in `reports/dataset_report.md`): 14 boxes shifted off their
-objects in 2 images, 160 missing boxes (10 images without labels, others incomplete), 5 class
-corrections (2 of them unknown class ids), 5 loose and 3 false boxes, 13 RGBA images, 1 label file with CRLF.
-Out-of-image boxes were all shifted boxes and were moved back by hand, never clipped.
+Что нашлось при просмотре (подробности в `reports/dataset_report.md`):
 
-### 3. Prepare the dataset
+| Проблема | Сколько |
+|---|---|
+| Боксы, смещённые со своих объектов | 14 в 2 изображениях |
+| Недостающие боксы | 160 (10 изображений без разметки, остальные — неполная разметка) |
+| Исправления класса | 5, из них 2 неизвестных class id |
+| Неплотные боксы | 5 |
+| Ложные боксы | 3 |
+| RGBA-изображения | 13 |
+| Файлы разметки с CRLF | 1 |
+
+Все боксы за границей изображения оказались смещёнными. Их вернули на место вручную, а не
+обрезали автоматически.
+
+### 3. Подготовка датасета
 
 ```bash
 uv run python -m src.prepare_dataset --input test_data/traffic_v5_mini --output data/processed --seed 42
 ```
 
-| Output | |
+| Результат | |
 |---|---|
-| `data/processed/{images,labels}/{train,val,test}/`, `dataset.yaml` | the YOLO dataset (gitignored) |
-| `reports/dataset_report.md` | statistics, split, every problem found and what was done |
-| `reports/split_manifest.csv` | image → group → split |
-| `reports/samples/*.jpg` | 6 images with their final boxes (committed); all 40 in `samples/all/` (gitignored) |
-| `reports/manifest.sha256` | sha256 of every dataset file; its own sha256 is the dataset version |
+| `data/processed/{images,labels}/{train,val,test}/`, `dataset.yaml` | YOLO-датасет (в .gitignore) |
+| `reports/dataset_report.md` | статистика, разбиение, все найденные проблемы и что с ними сделано |
+| `reports/split_manifest.csv` | изображение → группа → сплит |
+| `reports/samples/*.jpg` | 6 изображений с итоговыми боксами (в git); все 40 — в `samples/all/` (в .gitignore) |
+| `reports/manifest.sha256` | sha256 каждого файла датасета; sha256 самого манифеста — версия датасета |
 
-- **Split by source group:** frames of one camera, video or incident stay in one split.
-  Groups are balanced by image count (about 20% val, 20% test), deterministic for `--seed`:
-  train 24 images / 444 boxes, val 8 / 204, test 8 / 218.
-- **Pinned groups:** the 4 COCO train2017 images go to train, because the pretrained weights have
-  seen them. One highway camera also goes to train: it holds one of the only 2 `lorry` boxes.
-- **What makes it stop:** a class with no train boxes, a group in two splits, or a val/test
-  split with fewer than 3 groups or 4 images, or with more than half of its images from one group.
-- **Images:** copied byte for byte. RGBA PNGs (alpha checked fully opaque) are converted to RGB
-  PNG.
-- **Labels:** written with LF line endings.
-- **Order of work:** everything is read and checked before the first file is written. Stale
-  outputs are removed.
+- **Разбиение по группам источника.** Кадры одной камеры, видео или происшествия попадают в один
+  сплит. Группы балансируются по числу изображений, примерно 20% в val и 20% в test. Результат
+  детерминирован для заданного `--seed`:
+  - train — 24 изображения, 444 бокса;
+  - val — 8 изображений, 204 бокса;
+  - test — 8 изображений, 218 боксов.
+- **Закреплённые группы.**
+  - 4 изображения из COCO train2017 идут в train: предобученные веса их уже видели.
+  - Одна камера с трассы тоже идёт в train: на ней один из всего 2 боксов `lorry`.
+- **Когда разбиение останавливается с ошибкой:**
+  - у какого-то класса нет боксов в train;
+  - группа попала в два сплита;
+  - в val или test меньше 3 групп или меньше 4 изображений;
+  - в val или test больше половины изображений из одной группы.
+- **Изображения** копируются байт в байт. RGBA PNG конвертируются в RGB PNG; перед этим
+  проверяется, что альфа-канал полностью непрозрачный.
+- **Разметка** записывается с окончаниями строк LF.
+- **Порядок работы.** Всё читается и проверяется до записи первого файла. Устаревшие результаты
+  удаляются.
 
-Use `--plan-only` to print the split tables without writing anything. Rebuilding and checking
-against the manifest: [`data/README.md`](data/README.md).
+`--plan-only` выводит таблицы разбиения и ничего не записывает. Как пересобрать датасет и сверить
+его с манифестом — в [`data/README.md`](data/README.md).
 
-### 4. Dry run
+### 4. Dry-run
 
 ```bash
 uv run python -m src.run_experiment --config configs/yolo.yaml --data data/processed/dataset.yaml --dry-run
 ```
 
-Checks the config (types, unknown keys, absolute paths), the dataset against
-`reports/manifest.sha256`, image/label pairs and class ids, the device. Prints the resolved plan.
-Writes nothing, builds no model and downloads nothing.
+Что проверяет:
+- конфиг: типы, диапазоны значений, неизвестные ключи, абсолютные пути;
+- датасет по `reports/manifest.sha256`;
+- пары изображение/разметка и class id;
+- устройство.
 
-### 5. Smoke test
+Выводит итоговый план. Ничего не записывает, модель не создаёт, ничего не скачивает.
+
+### 5. Smoke-test
 
 ```bash
 uv run python -m src.run_experiment --config configs/yolo.yaml --smoke-test
 ```
 
-The full pipeline with the config's `smoke_test` overrides (1 epoch, imgsz 320, ~1 min on CPU),
-in `runs/<timestamp>_yolo11n_smoke/`. The first real run downloads the COCO-pretrained
-`yolo11n.pt` (~5 MB) into `weights/` (gitignored); its sha256 is recorded in `metadata.json`.
+Это весь пайплайн с переопределениями из секции `smoke_test` конфига: 1 эпоха, imgsz 320,
+около минуты на CPU. Результат — в `runs/<timestamp>_yolo11n_smoke/`.
 
-### 6. Train
+При первом настоящем запуске в `weights/` (в .gitignore) скачивается предобученная на COCO
+`yolo11n.pt` (около 5 МБ). Её sha256 записывается в `metadata.json`.
+
+### 6. Обучение
 
 ```bash
 uv run python -m src.run_experiment --config configs/yolo.yaml
 ```
 
-5 epochs at imgsz 640 on CPU, ~2 min. All settings are in [`configs/yolo.yaml`](configs/yolo.yaml).
-The CLI overrides `--name --model --data --epochs --imgsz --batch --device --seed` take
-precedence, and the resolved config is saved in the run.
+5 эпох с imgsz 640 на CPU, около 2 минут. Все настройки лежат в
+[`configs/yolo.yaml`](configs/yolo.yaml). Флаги командной строки
+`--name --model --data --epochs --imgsz --batch --device --seed` имеют приоритет над конфигом.
+Итоговый конфиг сохраняется в папке прогона.
 
-Training settings that differ from Ultralytics defaults, and why:
+Настройки обучения, которые отличаются от дефолтов Ultralytics:
 
-| Setting | Value | Default | Why |
+| Настройка | Значение | Дефолт | Почему |
 |---|---|---|---|
-| `nbs` (nominal batch) | = `batch` (4), always, also after `--batch` | 64 | With 64, gradients are accumulated over up to 16 batches. With 6 batches per epoch, that left 3 optimizer steps in 5 epochs, and the val metrics stayed flat |
-| `optimizer`, `lr0` | AdamW, 0.001 | `auto` | `auto` ignores `lr0` and picks the optimizer and lr itself, so the run record showed an lr that was not used |
-| `warmup_epochs` | 1 | 3 | With the default, 3 of 5 epochs would be warmup |
-| `warmup_bias_lr` | 0.0 | 0.1 | 0.1 is meant for SGD; with AdamW it is 100× `lr0` |
-| `close_mosaic` | 1 | 10 | 10 ≥ epochs switches mosaic off before the first epoch; now it is on for all but the last epoch |
+| `nbs` (номинальный батч) | = `batch` (4), всегда, в том числе после `--batch` | 64 | При 64 градиенты накапливаются до 16 батчей. При 6 батчах на эпоху за 5 эпох было всего 3 шага оптимизатора, и метрики на val не менялись |
+| `optimizer`, `lr0` | AdamW, 0.001 | `auto` | `auto` игнорирует `lr0` и сам выбирает оптимизатор и lr, поэтому в записи о прогоне стоял lr, который не использовался |
+| `warmup_epochs` | 1 | 3 | С дефолтом 3 из 5 эпох ушли бы на разогрев |
+| `warmup_bias_lr` | 0.0 | 0.1 | 0.1 рассчитано на SGD; с AdamW это в 100 раз больше `lr0` |
+| `close_mosaic` | 1 | 10 | Значение 10 при 5 эпохах выключает mosaic ещё до первой эпохи; теперь он работает во всех эпохах, кроме последней |
 
-Ultralytics NMS has a wall-clock limit (2 s + 0.05 s per image). On CPU with conf 0.001 the val
-batch of 8 images hit it, and the images left over got no detections. The val metrics then
-depended on machine load. The limit is switched off for the process (`disable_nms_time_limit`).
+**NMS без лимита времени.** У NMS в Ultralytics есть лимит по реальному времени: 2 с плюс 0.05 с на
+изображение. На CPU с conf 0.001 батч val из 8 изображений в него упирался, и оставшиеся
+изображения оставались без детекций. Из-за этого метрики на val зависели от загрузки машины.
+Для процесса лимит отключён (`disable_nms_time_limit`).
 
-How the run works:
-1. Training: the val split picks `best.pt`.
-2. `best.pt` is evaluated once on the test split.
-3. Our callbacks write the TensorBoard log, and example predictions of `best.pt` are drawn
-   for val and test.
+Как устроен прогон:
+1. Обучение; `best.pt` выбирается по val.
+2. `best.pt` один раз оценивается на test.
+3. Наши колбэки пишут лог TensorBoard; для val и test рисуются примеры предсказаний `best.pt`.
 
-Each run gets its own folder `runs/<timestamp>_<name>/`:
+У каждого прогона своя папка `runs/<timestamp>_<name>/`:
 
-| File | |
+| Файл | |
 |---|---|
-| `events.out.tfevents.*`, `hparams/` | our TensorBoard log, see below |
-| `config.yaml` | resolved config after CLI overrides |
-| `metadata.json` | git commit + dirty flag, dataset sha256 and split sizes, weights sha256, seed, device, thresholds, Python/torch/Ultralytics versions, platform, command |
-| `weights/best.pt`, `weights/last.pt` | checkpoints: `last.pt` after every epoch, `best.pt` when the val fitness (mAP50-95) improves |
-| `test_metrics.json` | test P/R/mAP, best val metrics, per class: test objects, evaluated or not, AP |
-| `predictions/{val,test}/` | example predictions of `best.pt` |
-| `test/` | Ultralytics plots of the test evaluation (confusion matrices, PR curves) |
-| `args.yaml`, `results.csv`, `*.png` | written by Ultralytics (`args.yaml` holds the absolute `project`/`save_dir` of the machine that ran it; our files use relative paths) |
+| `events.out.tfevents.*`, `hparams/` | наш лог TensorBoard, см. ниже |
+| `config.yaml` | итоговый конфиг с учётом флагов командной строки |
+| `metadata.json` | коммит git и флаг dirty, sha256 и размеры сплитов датасета, sha256 весов, seed, устройство, пороги, версии Python/torch/Ultralytics, платформа, команда запуска |
+| `weights/best.pt`, `weights/last.pt` | чекпоинты: `last.pt` после каждой эпохи, `best.pt` — когда улучшается fitness на val (mAP50-95) |
+| `test_metrics.json` | P/R/mAP на test, лучшие метрики на val; по каждому классу — число объектов в test, оценивался ли класс, AP |
+| `predictions/{val,test}/` | примеры предсказаний `best.pt` |
+| `test/` | графики Ultralytics по оценке на test: матрицы ошибок, PR-кривые |
+| `args.yaml`, `results.csv`, `*.png` | пишет Ultralytics. В `args.yaml` стоят абсолютные `project` и `save_dir` машины, где шёл прогон; наши файлы используют относительные пути |
 
-Reproducibility: `seed: 42`, `deterministic: true`, `workers: 0`, and no NMS time limit, on CPU.
-Two runs of the same commit give the same `results.csv` (only the time column differs) and the
-same `test_metrics.json`. This was checked.
+**Воспроизводимость.** На CPU заданы `seed: 42`, `deterministic: true`, `workers: 0` и NMS без
+лимита времени. Два прогона одного коммита дают одинаковые `results.csv` (отличается только колонка
+времени) и одинаковые `test_metrics.json`. Это проверено.
 
-Ultralytics' own TensorBoard callback and other integrations (W&B, MLflow, ClearML, ...) are
-switched off for the process, in memory only. The user's Ultralytics settings file is not
-modified.
+Встроенный колбэк TensorBoard в Ultralytics и остальные интеграции (W&B, MLflow, ClearML и др.)
+отключены только в памяти процесса. Файл настроек Ultralytics у пользователя не меняется.
 
 ### 7. TensorBoard
 
 ```bash
-uv run tensorboard --logdir runs
+uv run tensorboard --logdir runs     # или, при активированном .venv: tensorboard --logdir runs
 ```
 
-Open http://localhost:6006.
+Откройте http://localhost:6006.
 
-## TensorBoard logs
+## Логи TensorBoard
 
-Written by `src/tensorboard_logger.py` through `torch.utils.tensorboard.SummaryWriter`. One step =
-one epoch, starting at 1.
+Логи пишет `src/tensorboard_logger.py` через `torch.utils.tensorboard.SummaryWriter`.
+Один шаг — одна эпоха, нумерация с 1.
 
-| Tab | Tags | When |
+| Вкладка | Теги | Когда |
 |---|---|---|
-| Scalars | `loss/train_box`, `loss/train_cls`, `loss/train_dfl` | every epoch, mean over the epoch |
-| | `loss/val_box`, `loss/val_cls`, `loss/val_dfl` | every epoch |
-| | `val/precision`, `val/recall`, `val/mAP50`, `val/mAP50-95` | every epoch |
-| | `lr/pg0`, `lr/pg1`, `lr/pg2` | every epoch, per parameter group |
-| | `best_val/*` (same 4 metrics) | once: Ultralytics' final validation of `best.pt` |
-| | `test/*` (same 4 metrics) | once: `best.pt` on the test split |
-| | `hparam/val_*`, `hparam/test_*` (same 4 metrics) | once, step 0, written by the HParams entry below |
-| Images | `val/confusion_matrix`, `test/confusion_matrix` | once, for `best.pt`, normalized by true class |
-| | `predictions/val/<image>`, `predictions/test/<image>` | once, 4 images per split, `best.pt` at conf 0.25 |
-| Text | `config`, `metadata` | at the start: resolved config and `metadata.json` |
-| HParams | config (model, epochs, imgsz, batch, optimizer, lr0, seed, device) → best val and test metrics | once, at the end |
+| Scalars | `loss/train_box`, `loss/train_cls`, `loss/train_dfl` | каждую эпоху, среднее за эпоху |
+| | `loss/val_box`, `loss/val_cls`, `loss/val_dfl` | каждую эпоху |
+| | `val/precision`, `val/recall`, `val/mAP50`, `val/mAP50-95` | каждую эпоху |
+| | `lr/pg0`, `lr/pg1`, `lr/pg2` | каждую эпоху, по группам параметров |
+| | `best_val/*` (те же 4 метрики) | один раз: финальная валидация `best.pt` в Ultralytics |
+| | `test/*` (те же 4 метрики) | один раз: `best.pt` на test |
+| | `hparam/val_*`, `hparam/test_*` (те же 4 метрики) | один раз, шаг 0; их пишет запись HParams ниже |
+| Images | `val/confusion_matrix`, `test/confusion_matrix` | один раз, для `best.pt`, нормированы по истинному классу |
+| | `predictions/val/<image>`, `predictions/test/<image>` | один раз, по 4 изображения на сплит, `best.pt` с conf 0.25 |
+| Text | `config`, `metadata` | в начале: итоговый конфиг и `metadata.json` |
+| HParams | конфиг (model, epochs, imgsz, batch, optimizer, lr0, seed, device) → лучшие метрики на val и на test | один раз, в конце |
 
-The final validation of `best.pt` is logged as `best_val/*`. It is not logged as an extra epoch:
-Ultralytics calls the epoch callback once more after training, and the logger recognises that
-call.
+Финальная валидация `best.pt` пишется как `best_val/*`, а не как лишняя эпоха. Ultralytics после
+обучения вызывает колбэк эпохи ещё раз, и логгер распознаёт этот вызов.
 
-## Submitted run
+## Сдаваемый прогон
 
-`runs/` is not committed; only `runs/.gitkeep` is, as the task requires. The run described here is
-handed in as an archive with this one run folder in it. Unpack it in the repo root:
+`runs/` не коммитится: по регламенту задания логи в git не кладутся, в репозитории только
+`runs/.gitkeep`. Описанный здесь прогон передаётся отдельным архивом, в котором лежит только его
+папка. Распакуйте архив в корне репозитория:
 
 ```bash
 tar -xzf 2026-11-26T145225_yolo11n.tar.gz   # -> runs/2026-11-26T145225_yolo11n/
 uv run tensorboard --logdir runs
 ```
 
-Command: `python -m src.run_experiment --config configs/yolo.yaml`. Model: yolo11n
-(COCO-pretrained). Settings: 5 epochs, imgsz 640, batch 4, AdamW lr 0.001, CPU, seed 42.
-The run's `metadata.json` records commit `2337a93` (`dirty: false`) and dataset
-`52ba8e6a…`.
+Параметры прогона:
+- **команда:** `python -m src.run_experiment --config configs/yolo.yaml`;
+- **модель:** yolo11n, предобученная на COCO;
+- **настройки:** 5 эпох, imgsz 640, batch 4, AdamW lr 0.001, CPU, seed 42;
+- **версии:** в `metadata.json` записаны коммит `2337a93` (`dirty: false`) и датасет `52ba8e6a…`.
 
-| Epoch | train cls loss | val P | val R | val mAP50 | val mAP50-95 |
+| Эпоха | train cls loss | val P | val R | val mAP50 | val mAP50-95 |
 |---:|---:|---:|---:|---:|---:|
 | 1 | 3.035 | 0.737 | 0.062 | 0.038 | 0.021 |
 | 2 | 2.003 | 0.318 | 0.091 | 0.038 | 0.020 |
@@ -250,74 +288,73 @@ The run's `metadata.json` records commit `2337a93` (`dirty: false`) and dataset
 | 4 | 1.766 | 0.249 | 0.154 | 0.088 | 0.058 |
 | 5 | 2.151 | 0.239 | 0.193 | 0.155 | 0.115 |
 
-`best.pt` is from epoch 5. On the test split (8 images, 218 boxes, evaluated once) it scores:
+`best.pt` — с 5-й эпохи. Результат на test (8 изображений, 218 боксов, оценка один раз):
 
 | P | R | mAP50 | mAP50-95 |
 |---:|---:|---:|---:|
 | 0.394 | 0.055 | 0.038 | 0.017 |
 
-Per class (test mAP50):
+По классам (mAP50 на test):
 
-| Class | mAP50 | Test boxes |
+| Класс | mAP50 | Боксов в test |
 |---|---:|---:|
 | car | 0.22 | 125 |
 | pedestrian | 0.08 | 57 |
 | truck | 0.03 | 14 |
 | police | 0.01 | 5 |
-| motorcycle, bus, lorry, trailer, ambulance | 0 | 1–9 each |
+| motorcycle, bus, lorry, trailer, ambulance | 0 | от 1 до 9 у каждого |
 
-Bicycle and fire_truck are not in test.
+bicycle и fire_truck в test нет.
 
-What these numbers do and do not show:
-- **Not a usable detector.** 24 training images and 5 epochs show that the pipeline works, but
-  they do not train a detector worth using.
-- **Val jumps between epochs.** With 8 val images, a few boxes move the metrics a lot.
-- **Test is lower than val.** best.pt is picked on those same 8 val images, and test has other
-  cameras.
-- **The head is rebuilt.** Fine-tuning replaces the 80-class COCO head with an 11-class one, see
-  the limitations below.
-- **No tuning on test.** These are the numbers of the first run with the fixed settings.
+Что эти цифры показывают и чего не показывают:
+- **Это не рабочий детектор.** 24 обучающих изображения и 5 эпох показывают, что пайплайн
+  работает, но полезный детектор так не обучить.
+- **val прыгает между эпохами.** На 8 изображениях несколько боксов сильно двигают метрики.
+- **test ниже val.** `best.pt` выбран по тем же 8 изображениям val, а в test другие камеры.
+- **Голова пересобрана.** При дообучении голова COCO на 80 классов заменяется на голову
+  на 11 классов, см. ограничения ниже.
+- **На test ничего не подбиралось.** Это цифры первого прогона с исправленными настройками.
 
-## Repository layout
+## Структура репозитория
 
 ```text
-configs/yolo.yaml          experiment config
-src/validate_labels.py     image and label checks (report only)
-src/prelabel.py            COCO pre-labels + CVAT import zip
-src/annotation_changes.py  annotations/changes.csv from source vs final labels
-src/prepare_dataset.py     split, dataset.yaml, report, samples, manifest
-src/run_experiment.py      dry-run / smoke test / train + test evaluation
-src/tensorboard_logger.py  our SummaryWriter logging
-src/utils.py               label parsing and shared helpers
-annotations/               corrected labels, class rules, groups, audit trail
-test_data/traffic_v5_mini/ source set, read-only
-data/                      processed dataset (generated, gitignored), see data/README.md
-reports/                   dataset report, split, samples, manifest
-runs/                      experiment runs (gitignored)
+configs/yolo.yaml          конфиг эксперимента
+src/validate_labels.py     проверка изображений и разметки (только отчёт)
+src/prelabel.py            предразметка COCO-моделью + zip для импорта в CVAT
+src/annotation_changes.py  annotations/changes.csv: исходная разметка против итоговой
+src/prepare_dataset.py     разбиение, dataset.yaml, отчёт, примеры, манифест
+src/run_experiment.py      dry-run / smoke-test / обучение + оценка на test
+src/tensorboard_logger.py  наше логирование через SummaryWriter
+src/utils.py               разбор разметки и общие функции
+annotations/               исправленная разметка, правила классов, группы, журнал изменений
+test_data/traffic_v5_mini/ исходная выборка, только для чтения
+data/                      обработанный датасет (генерируется, в .gitignore), см. data/README.md
+reports/                   отчёт по датасету, разбиение, примеры, манифест
+runs/                      прогоны экспериментов (в .gitignore)
 tests/                     pytest
 ```
 
-## Assumptions and limitations
+## Допущения и ограничения
 
-- **Small data.** 40 images from 28 source groups, 8 images each in val and test. Metrics are
-  a check that the pipeline works, not an estimate of generalization. Classes absent from a split
-  (test: bicycle, fire_truck) are not evaluated there, which is not the same as AP = 0.
-  `test_metrics.json` lists which classes were evaluated.
-- **Rare classes.** `bicycle` exists only on COCO images, which are pinned to train. `lorry` has 2
-  boxes in the whole set.
-- **COCO overlap.** The 4 COCO train2017 images are kept in train, since the pretrained weights
-  have seen them.
-- **Pre-labels.** They are triage hints only. Every final box was reviewed by hand. The COCO
-  model has no police, ambulance, fire_truck, lorry or trailer classes; those were labeled by hand
-  following `annotations/README.md`.
-- **Dense crowds.** People who can be told apart get a box. People merged into one blob do not,
-  because YOLO has no ignore regions.
-- **No tuning.** Ultralytics defaults are used except the settings listed in
-  [Train](#6-train). Those changes are fixes; nothing was tuned on val or test.
-- **Classifier head.** Ultralytics copies the COCO classifier rows only for classes with
-  exactly the same name: bicycle, car, motorcycle, bus, truck (5 of 11). `pedestrian` does not
-  match COCO `person`, so it starts from scratch like police, ambulance, fire_truck, lorry and
-  trailer. Renaming it to `person` would keep those weights, but it would change the class names
-  given in `classes.txt`.
-- **CPU only.** The lock file pins CPU wheels of torch. On a CUDA machine, install a CUDA build of
-  torch 2.15.0 and pass `--device 0`.
+- **Мало данных.** 40 изображений из 28 групп источников, в val и test по 8 изображений. Метрики
+  проверяют, что пайплайн работает, и не оценивают обобщающую способность. Классы, которых нет
+  в сплите (в test — bicycle и fire_truck), там не оцениваются, и это не то же самое, что AP = 0.
+  Какие классы оценивались, записано в `test_metrics.json`.
+- **Редкие классы.** `bicycle` есть только на изображениях COCO, а они закреплены за train. У
+  `lorry` во всей выборке 2 бокса.
+- **Пересечение с COCO.** 4 изображения из COCO train2017 оставлены в train, потому что
+  предобученные веса их уже видели.
+- **Предразметка.** Это только подсказки. Каждый итоговый бокс проверен вручную. В COCO нет
+  классов police, ambulance, fire_truck, lorry и trailer; они размечены вручную по
+  `annotations/README.md`.
+- **Плотные толпы.** Бокс получает каждый человек, которого можно отличить от соседей. Люди,
+  слившиеся в одно пятно, бокса не получают, потому что в YOLO нет зон «игнорировать».
+- **Без подбора гиперпараметров.** Используются дефолты Ultralytics, кроме настроек из раздела
+  [Обучение](#6-обучение). Эти изменения — исправления; ничего не подбиралось ни на val, ни на test.
+- **Голова классификатора.** Ultralytics переносит строки классификатора COCO только для классов
+  с точно таким же именем: bicycle, car, motorcycle, bus, truck (5 из 11). `pedestrian` не
+  совпадает с COCO `person`, поэтому начинает с нуля, как police, ambulance, fire_truck, lorry и
+  trailer. Переименование в `person` сохранило бы эти веса, но изменило бы имена классов
+  из `classes.txt`.
+- **Только CPU.** В lock-файле зафиксированы CPU-сборки torch. На машине с CUDA установите
+  CUDA-сборку torch 2.15.0 и передайте `--device 0`.
