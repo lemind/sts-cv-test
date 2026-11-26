@@ -232,9 +232,10 @@ call.
 ## Submitted run
 
 `runs/` is not committed; only `runs/.gitkeep` is, as the task requires. The run described here is
-handed in as an archive with this one run folder in it. Unpack it in the repo root:
+handed in as an archive with this one run folder in it. It is attached to a [GitHub Release](https://github.com/lemind/sts-cv-test/releases/tag/run-2026-11-26T145225_yolo11n). Download and unpack it in the repo root:
 
 ```bash
+curl -LO https://github.com/lemind/sts-cv-test/releases/download/run-2026-11-26T145225_yolo11n/2026-11-26T145225_yolo11n.tar.gz
 tar -xzf 2026-11-26T145225_yolo11n.tar.gz   # -> runs/2026-11-26T145225_yolo11n/
 uv run tensorboard --logdir runs
 ```

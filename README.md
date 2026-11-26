@@ -267,9 +267,10 @@ uv run tensorboard --logdir runs     # или, при активированно
 
 `runs/` не коммитится: по регламенту задания логи в git не кладутся, в репозитории только
 `runs/.gitkeep`. Описанный здесь прогон передаётся отдельным архивом, в котором лежит только его
-папка. Распакуйте архив в корне репозитория:
+папка. Архив лежит в [GitHub Release](https://github.com/lemind/sts-cv-test/releases/tag/run-2026-11-26T145225_yolo11n). Скачайте и распакуйте его в корне репозитория:
 
 ```bash
+curl -LO https://github.com/lemind/sts-cv-test/releases/download/run-2026-11-26T145225_yolo11n/2026-11-26T145225_yolo11n.tar.gz
 tar -xzf 2026-11-26T145225_yolo11n.tar.gz   # -> runs/2026-11-26T145225_yolo11n/
 uv run tensorboard --logdir runs
 ```
