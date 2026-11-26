@@ -50,6 +50,8 @@ REQUIRED_KEYS = {
     "lr0": float,
     "warmup_epochs": int,
     "close_mosaic": int,
+    "freeze": int,
+    "class_aliases": dict,
     "conf": float,
     "iou": float,
     "prediction_examples": int,
@@ -64,11 +66,25 @@ MIN_VALUES = {
     "lr0": 1e-9,
     "warmup_epochs": 0,
     "close_mosaic": 0,
+    "freeze": 0,
     "conf": 0.0,
     "iou": 0.0,
     "prediction_examples": 0,
 }
-OVERRIDABLE = ("name", "model", "data", "epochs", "imgsz", "batch", "device", "seed")
+OVERRIDABLE = (
+    "name",
+    "model",
+    "data",
+    "epochs",
+    "imgsz",
+    "batch",
+    "device",
+    "seed",
+    "lr0",
+    "warmup_epochs",
+    "close_mosaic",
+    "freeze",
+)
 SPLITS = ("train", "val", "test")
 # Ultralytics writes labels/<split>.cache next to the labels; it is rebuilt, not part of the data.
 ULTRALYTICS_CACHE = ".cache"
@@ -101,6 +117,11 @@ def load_config(config_file: Path, overrides: dict, smoke_test: bool) -> dict:
         value = config.get(key)
         if isinstance(value, (int, float)) and not isinstance(value, bool) and value < minimum:
             problems.append(f"{key!r} must be >= {minimum}, got {value!r}")
+    aliases = config.get("class_aliases")
+    if isinstance(aliases, dict) and not all(
+        isinstance(k, str) and isinstance(v, str) for k, v in aliases.items()
+    ):
+        problems.append("'class_aliases' must map pretrained class names to dataset class names")
     for key in ("conf", "iou"):
         if isinstance(config.get(key), float) and config[key] > 1:
             problems.append(f"{key!r} must be <= 1, got {config[key]!r}")
@@ -224,6 +245,20 @@ def disable_nms_time_limit() -> None:
         nms.non_max_suppression = partial(nms.non_max_suppression, max_time_img=float("inf"))
 
 
+def alias_pretrained_class_names(model, aliases: dict[str, str]) -> list[str]:
+    """Rename classes of the pretrained model in memory, so that Ultralytics, which copies classifier
+    rows only between classes with the same name, also transfers e.g. COCO `person` to `pedestrian`.
+    Returns the applied renames; an alias that is not a pretrained class is an error."""
+    names = model.model.names
+    by_name = {name: index for index, name in names.items()}
+    unknown = sorted(set(aliases) - set(by_name))
+    if unknown:
+        raise ValueError(f"class_aliases: {unknown} are not classes of the pretrained model")
+    for source, target in aliases.items():
+        names[by_name[source]] = target
+    return [f"{source} -> {target}" for source, target in aliases.items()]
+
+
 def train_arguments(config: dict, data_file: Path, run_dir: Path) -> dict:
     """Keyword arguments for `YOLO.train`."""
     return {
@@ -240,6 +275,7 @@ def train_arguments(config: dict, data_file: Path, run_dir: Path) -> dict:
         "warmup_epochs": config["warmup_epochs"],
         "warmup_bias_lr": 0.0,  # default 0.1 is meant for SGD; with AdamW it is 100x lr0
         "close_mosaic": config["close_mosaic"],
+        "freeze": config["freeze"] or None,  # 0 = train all layers
         "device": config["device"],
         "workers": config["workers"],
         "seed": config["seed"],
@@ -282,7 +318,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     mode.add_argument("--smoke-test", action="store_true", help="one short epoch, full logging")
     parser.add_argument("--runs", type=Path, default=Path("runs"), help="parent of run directories")
     for key in OVERRIDABLE:
-        kind = int if REQUIRED_KEYS[key] is int else str
+        kind = REQUIRED_KEYS[key] if REQUIRED_KEYS[key] in (int, float) else str
         parser.add_argument(f"--{key}", type=kind, help=f"override `{key}` from the config")
     return parser.parse_args(argv)
 
@@ -307,6 +343,13 @@ def main(argv: list[str] | None = None) -> int:
         print("\n".join(f"error: {p}" for p in problems), file=sys.stderr)
         return 1
     spec, image_counts, problems = check_dataset(data_file)
+    names = (spec or {}).get("names") or {}
+    dataset_names = set(names.values() if isinstance(names, dict) else names)
+    for source, target in config["class_aliases"].items():
+        if target not in dataset_names:
+            problems.append(
+                f"class_aliases: {source} -> {target}, but {target!r} is not a dataset class"
+            )
     dataset_hash, manifest_problems = verify_manifest(manifest, data_file.parent)
     problems += manifest_problems[:10]
     if manifest_problems:
@@ -350,6 +393,8 @@ def main(argv: list[str] | None = None) -> int:
 
     weights.parent.mkdir(parents=True, exist_ok=True)
     model = YOLO(str(weights))  # downloads the pretrained weights into weights/ if missing
+    for rename in alias_pretrained_class_names(model, config["class_aliases"]):
+        print(f"pretrained class {rename}: its classifier weights are transferred")
     metadata = {
         "run": run_dir.name,
         "command": " ".join(["python -m src.run_experiment", *(argv or sys.argv[1:])]),
@@ -464,7 +509,17 @@ def main(argv: list[str] | None = None) -> int:
         )
         hparams = {
             key: config[key]
-            for key in ("model", "epochs", "imgsz", "batch", "optimizer", "lr0", "seed", "device")
+            for key in (
+                "model",
+                "epochs",
+                "imgsz",
+                "batch",
+                "optimizer",
+                "lr0",
+                "freeze",
+                "seed",
+                "device",
+            )
         }
         logger.log_hparams(
             hparams,

@@ -1,13 +1,13 @@
 # Experiment config for `python -m src.run_experiment --config configs/yolo.yaml`.
 # Paths are relative to the repo root. CLI overrides: name, model, data, epochs, imgsz, batch,
-# device, seed (see --help). Ultralytics' nominal batch (nbs) is always set to `batch`.
+# device, seed, lr0, warmup_epochs, close_mosaic, freeze (see --help). Ultralytics' nominal batch (nbs) is always set to `batch`.
 
 name: yolo11n                       # run directory: runs/<timestamp>_<name>
 model: weights/yolo11n.pt           # COCO-pretrained; Ultralytics downloads it on the first real run
 data: data/processed/dataset.yaml   # built by `python -m src.prepare_dataset`
 manifest: reports/manifest.sha256   # the dataset must match it; its sha256 is the dataset version
 
-epochs: 5                           # short CPU run: shows the pipeline, not a tuned model
+epochs: 50                          # ~8 min on CPU; chosen on val among 4 candidates (see README)
 imgsz: 640
 batch: 4
 device: cpu
@@ -18,9 +18,16 @@ patience: 100                       # no early stopping in a 5-epoch run
 
 # Optimization, set explicitly: with optimizer `auto` Ultralytics ignores lr0 and picks its own
 optimizer: AdamW
-lr0: 0.001
-warmup_epochs: 1                    # default 3 would make 3 of 5 epochs warmup
-close_mosaic: 1                     # mosaic for all but the last epoch (default 10 >= epochs: never on)
+lr0: 0.0003                         # 0.001 scored lower on val
+warmup_epochs: 3                    # Ultralytics default
+close_mosaic: 10                    # mosaic off for the last 10 epochs (Ultralytics default)
+freeze: 0                           # first N layers frozen (10 = the backbone); 0 = train all.
+                                    # Freezing the backbone scored lower on val
+
+# Pretrained class -> dataset class with another name. Ultralytics copies classifier weights only
+# between classes with the same name, so without this `pedestrian` would start from scratch.
+class_aliases:
+  person: pedestrian
 
 # Validation thresholds (Ultralytics defaults, written down so they are part of the run record)
 conf: 0.001
