@@ -22,10 +22,12 @@ classes (checked on crops of every special class), so corrections stay consisten
    - `fire_truck`: fire service vehicle (red, ladders/equipment).
    - No visible livery → classify by body type below.
 2. **`lorry`**: articulated truck, tractor unit with a semi-trailer, labeled as **one** box.
+   The semi-trailer never gets a separate `trailer` box.
 3. **`truck`**: rigid truck on one chassis: dump truck, flatbed, box truck, light flatbed (Gazelle-type).
 4. **`bus`**: vehicle built for passengers beyond a car: full-size bus, route minibus, passenger van
    (Sprinter, Vito-type).
-5. **`trailer`**: towed unit behind a car, labeled **separately** from the towing vehicle.
+5. **`trailer`**: a trailer on its own axles (behind a car or a rigid truck, or standing alone), labeled
+   **separately** from the towing vehicle.
 6. **`car`**: passenger car, SUV, pickup.
 7. **`motorcycle`**, **`bicycle`**: the vehicle; its rider is `pedestrian`.
 8. **`pedestrian`**: any person on foot or riding (officers, workers, cyclists' riders).
@@ -34,3 +36,7 @@ Box rules:
 - Cover the visible part only; never extend a box past the image border for a cut-off object.
 - Partly hidden object: box the visible part if the class is still recognisable.
 - Too small or too blurred to tell the class: leave it out and note the image in `changes.csv`.
+- Motion blur: box the vehicle's silhouette if it is recognisable, not the trail behind it.
+- Dense crowd: every person who can be told apart from the others gets a box. People merged into one
+  blob are not separate target objects and are not labeled (YOLO has no "ignore" regions, so this
+  residual is a known limitation; it applies to `Снимок экрана от 2023-06-05 16-05-35`).
