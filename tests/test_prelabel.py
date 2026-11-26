@@ -77,3 +77,30 @@ def test_one_prediction_matches_only_one_original_box():
     assert len(matches) == 1
     _, _, original, iou = matches[0]
     assert original in labeled and iou == pytest.approx(0.5)
+
+
+def test_diff_boxes_reports_each_kind_of_change():
+    from src.annotation_changes import diff_boxes
+
+    source = [
+        box(1, 0.2, 0.2, line=1),  # unchanged
+        box(1, 0.5, 0.5, line=2),  # adjusted
+        box(1, 0.8, 0.2, line=3),  # reclassified
+        box(10, 0.5, 0.9, line=4),  # shifted far away, same size -> moved
+        box(4, 0.1, 0.9, line=5),  # false box -> removed
+    ]
+    final = [
+        box(1, 0.2, 0.2),
+        box(1, 0.51, 0.5),
+        box(7, 0.8, 0.2),
+        box(10, 0.5, 0.7),
+        box(4, 0.9, 0.9, w=0.3, h=0.2),  # new object
+    ]
+    changes = sorted((change, s.line if s else None) for change, s, _ in diff_boxes(source, final))
+    assert changes == [
+        ("added", None),
+        ("adjusted", 2),
+        ("moved", 4),
+        ("reclassified", 3),
+        ("removed", 5),
+    ]

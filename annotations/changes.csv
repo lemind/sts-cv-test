@@ -1,1 +1,188 @@
-image,box_index,before,after,reason
+image,change,source_line,before,after,reason
+0 - 2025-04-16 16-59-56-449_00009570.jpg,added,,,truck 0.081875 0.243719 0.033000 0.047781,image had no label file: COCO pre-label reviewed and completed in CVAT
+0 - 2025-04-16 16-59-56-449_00009570.jpg,added,,,truck 0.253812 0.265883 0.054688 0.049766,image had no label file: COCO pre-label reviewed and completed in CVAT
+0 - 2025-04-16 16-59-56-449_00026790.jpg,added,,,truck 0.143516 0.218594 0.024219 0.037813,"object missing from the source labels, added in manual CVAT review"
+000000012993.jpg,added,,,pedestrian 0.078160 0.451261 0.083960 0.173994,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000012993.jpg,added,,,bus 0.745650 0.359715 0.371460 0.426396,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000012993.jpg,added,,,car 0.952880 0.399009 0.051240 0.071592,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000012993.jpg,added,,,pedestrian 0.987280 0.380390 0.024880 0.058619,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000012993.jpg,added,,,bicycle 0.077680 0.522658 0.077080 0.129099,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000012993.jpg,added,,,bicycle 0.987100 0.400360 0.025440 0.045766,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000137491.jpg,added,,,pedestrian 0.357750 0.054379 0.026125 0.100562,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000137491.jpg,added,,,pedestrian 0.932078 0.064415 0.030625 0.127330,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000137491.jpg,added,,,bicycle 0.721508 0.093501 0.071922 0.086019,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000137491.jpg,added,,,motorcycle 0.636125 0.550269 0.598344 0.734169,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000137491.jpg,added,,,motorcycle 0.361953 0.598044 0.595344 0.590656,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000137491.jpg,added,,,pedestrian 0.079547 0.037213 0.010781 0.050585,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000137491.jpg,added,,,pedestrian 0.005727 0.028302 0.011391 0.054450,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000137491.jpg,added,,,pedestrian 0.032039 0.027775 0.012891 0.051054,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000137491.jpg,added,,,pedestrian 0.045789 0.032881 0.013016 0.060515,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000137491.jpg,added,,,pedestrian 0.380984 0.056967 0.019219 0.091452,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000137491.jpg,added,,,pedestrian 0.091563 0.039087 0.013281 0.057471,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000137491.jpg,added,,,pedestrian 0.404422 0.054204 0.018438 0.092623,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000403134.jpg,added,,,pedestrian 0.215922 0.485329 0.248875 0.748920,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000403134.jpg,added,,,pedestrian 0.808523 0.575153 0.101422 0.278662,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000403134.jpg,added,,,pedestrian 0.432555 0.589331 0.098891 0.259178,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000403134.jpg,added,,,bicycle 0.819195 0.676021 0.207953 0.178052,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000403134.jpg,added,,,bicycle 0.437727 0.670082 0.197328 0.187066,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000566364.jpg,added,,,pedestrian 0.901422 0.452063 0.022469 0.072542,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000566364.jpg,added,,,pedestrian 0.396586 0.464552 0.018891 0.081146,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000566364.jpg,added,,,pedestrian 0.056523 0.474833 0.023547 0.087708,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000566364.jpg,added,,,pedestrian 0.080719 0.453250 0.022000 0.066208,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000566364.jpg,added,,,pedestrian 0.420773 0.481844 0.033922 0.051896,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000566364.jpg,added,,,pedestrian 0.364594 0.457604 0.021812 0.088125,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000566364.jpg,added,,,pedestrian 0.853109 0.472615 0.031906 0.113229,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000566364.jpg,added,,,pedestrian 0.224430 0.481229 0.025141 0.105792,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000566364.jpg,added,,,pedestrian 0.908273 0.490906 0.037391 0.137604,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000566364.jpg,added,,,pedestrian 0.517062 0.540073 0.156031 0.193646,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000566364.jpg,added,,,pedestrian 0.016992 0.480219 0.033953 0.084937,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000566364.jpg,added,,,pedestrian 0.576742 0.428010 0.015672 0.052437,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000566364.jpg,added,,,truck 0.381773 0.767927 0.697891 0.458854,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000566364.jpg,added,,,pedestrian 0.399055 0.671156 0.090797 0.101271,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000566364.jpg,added,,,pedestrian 0.313320 0.646990 0.052891 0.085312,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000566364.jpg,added,,,bicycle 0.051562 0.553594 0.079594 0.077312,image had no label file: COCO pre-label reviewed and completed in CVAT
+000000566364.jpg,added,,,pedestrian 0.201305 0.450104 0.018828 0.058292,image had no label file: COCO pre-label reviewed and completed in CVAT
+01-04-2023 183852.png,added,,,pedestrian 0.352084 0.193545 0.007056 0.023920,"object missing from the source labels, added in manual CVAT review"
+01-04-2023 183852.png,added,,,car 0.409482 0.206812 0.024455 0.026543,"object missing from the source labels, added in manual CVAT review"
+102_9aug202317009.png,added,,,car 0.845988 0.356924 0.010820 0.016625,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.852879 0.367708 0.009180 0.015444,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.827621 0.392201 0.012789 0.018958,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,pedestrian 0.553371 0.341785 0.005711 0.019514,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,pedestrian 0.934191 0.774882 0.007992 0.033514,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.681215 0.375694 0.018195 0.020167,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,trailer 0.506602 0.374375 0.021953 0.025361,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.837098 0.657333 0.034805 0.047722,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.728934 0.354250 0.014930 0.018000,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.714555 0.359347 0.013828 0.019528,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.699074 0.368937 0.017133 0.024542,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.656477 0.385111 0.021516 0.029667,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.481813 0.368132 0.026125 0.025375,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.660254 0.602139 0.043039 0.037944,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.976285 0.716000 0.031711 0.037528,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,pedestrian 0.958652 0.802590 0.009961 0.031653,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.030102 0.878368 0.048922 0.050042,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.018680 0.839632 0.037094 0.052042,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.369895 0.619243 0.047836 0.038403,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.003289 0.650639 0.006531 0.031861,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.770891 0.405965 0.017391 0.021125,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.761086 0.433507 0.017078 0.024292,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,pedestrian 0.908238 0.881028 0.011852 0.035833,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.202750 0.750215 0.053672 0.055514,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,truck 0.187664 0.502229 0.078312 0.091903,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.441480 0.707326 0.055680 0.056181,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.230246 0.776056 0.050211 0.051056,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.118051 0.891917 0.055586 0.055167,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.250406 0.679806 0.050641 0.051583,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.400098 0.677160 0.050836 0.046208,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.316020 0.646542 0.049383 0.044250,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.266230 0.820090 0.057836 0.061875,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.383035 0.647951 0.052211 0.049125,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.668918 0.507403 0.029242 0.035806,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.773402 0.445924 0.014086 0.022236,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.740695 0.351514 0.011813 0.009361,image had no label file: COCO pre-label reviewed and completed in CVAT
+102_9aug202317009.png,added,,,car 0.829094 0.352681 0.009516 0.008778,image had no label file: COCO pre-label reviewed and completed in CVAT
+10_9aug202317009.png,adjusted,20,car 0.508594 0.440278 0.029687 0.027778,car 0.506516 0.438431 0.029687 0.027778,box fitted to the object in manual CVAT review
+10_9aug202317009.png,added,,,pedestrian 0.541973 0.350986 0.005086 0.015500,"object missing from the source labels, added in manual CVAT review"
+10_9aug202317009.png,added,,,pedestrian 0.912984 0.817458 0.011063 0.029444,"object missing from the source labels, added in manual CVAT review"
+1649839828.0003297.jpg,added,,,car 0.029742 0.637863 0.053453 0.068959,image had no label file: COCO pre-label reviewed and completed in CVAT
+1649839828.0003297.jpg,added,,,car 0.276089 0.040473 0.020000 0.029110,image had no label file: COCO pre-label reviewed and completed in CVAT
+1649839828.0003297.jpg,added,,,pedestrian 0.646724 0.284822 0.006573 0.042000,image had no label file: COCO pre-label reviewed and completed in CVAT
+1649839828.0003297.jpg,added,,,car 0.569852 0.128021 0.032786 0.045384,image had no label file: COCO pre-label reviewed and completed in CVAT
+1649839828.0003297.jpg,added,,,car 0.353083 0.187623 0.027625 0.040370,image had no label file: COCO pre-label reviewed and completed in CVAT
+1649839828.0003297.jpg,added,,,car 0.610057 0.106479 0.028333 0.041507,image had no label file: COCO pre-label reviewed and completed in CVAT
+1649839828.0003297.jpg,added,,,truck 0.313490 0.102774 0.026469 0.049603,image had no label file: COCO pre-label reviewed and completed in CVAT
+1649839828.0003297.jpg,added,,,car 0.201849 0.018192 0.018656 0.031534,image had no label file: COCO pre-label reviewed and completed in CVAT
+1649839828.0003297.jpg,added,,,pedestrian 0.357477 0.030425 0.004474 0.031562,image had no label file: COCO pre-label reviewed and completed in CVAT
+1649839828.0003297.jpg,added,,,pedestrian 0.443096 0.084473 0.006099 0.036726,image had no label file: COCO pre-label reviewed and completed in CVAT
+1649839828.0003297.jpg,added,,,pedestrian 0.467341 0.108945 0.005807 0.036658,image had no label file: COCO pre-label reviewed and completed in CVAT
+1649839828.0003297.jpg,added,,,pedestrian 0.379516 0.032205 0.002615 0.034356,image had no label file: COCO pre-label reviewed and completed in CVAT
+1649839828.0003297.jpg,added,,,car 0.686596 0.567000 0.049609 0.071233,image had no label file: COCO pre-label reviewed and completed in CVAT
+1649839828.0003297.jpg,added,,,car 0.101703 0.601212 0.051229 0.062507,image had no label file: COCO pre-label reviewed and completed in CVAT
+1649839828.0003297.jpg,added,,,car 0.739763 0.494356 0.048307 0.061151,image had no label file: COCO pre-label reviewed and completed in CVAT
+1649839828.0003297.jpg,added,,,car 0.636474 0.323253 0.028042 0.058781,image had no label file: COCO pre-label reviewed and completed in CVAT
+1649839828.0003297.jpg,added,,,pedestrian 0.334914 0.737925 0.010161 0.058397,image had no label file: COCO pre-label reviewed and completed in CVAT
+1649839828.0003297.jpg,added,,,car 0.984714 0.732370 0.023979 0.055726,image had no label file: COCO pre-label reviewed and completed in CVAT
+1649839828.0003297.jpg,added,,,bus 0.889089 0.561753 0.133552 0.192274,image had no label file: COCO pre-label reviewed and completed in CVAT
+1649839828.0003297.jpg,added,,,car 0.669742 0.502240 0.048078 0.063630,image had no label file: COCO pre-label reviewed and completed in CVAT
+1649839828.0003297.jpg,added,,,truck 0.244208 0.108425 0.037385 0.093151,image had no label file: COCO pre-label reviewed and completed in CVAT
+1649839828.0003297.jpg,added,,,car 0.460362 0.293288 0.036057 0.053534,image had no label file: COCO pre-label reviewed and completed in CVAT
+1649839828.0003297.jpg,added,,,car 0.643771 0.092979 0.025646 0.035055,image had no label file: COCO pre-label reviewed and completed in CVAT
+1649839828.0003297.jpg,added,,,truck 0.811654 0.633815 0.079339 0.125740,image had no label file: COCO pre-label reviewed and completed in CVAT
+1649839828.0003297.jpg,added,,,car 0.774104 0.965781 0.063156 0.068438,image had no label file: COCO pre-label reviewed and completed in CVAT
+2ca2bd9s-1920.jpg,added,,,car 0.906475 0.332181 0.152377 0.061034,"object missing from the source labels, added in manual CVAT review"
+4d3c2d6s-1920.jpg,class_fix,2,police 0.821354 0.493981 0.357292 0.691667,car 0.821354 0.493981 0.357292 0.691667,labeled police but visually a private white Mazda with no police livery -> car
+4d3c2d6s-1920.jpg,added,,,trailer 0.343112 0.541204 0.582703 0.533000,"object missing from the source labels, added in manual CVAT review"
+Licoil_wide_1213.png,added,,,car 0.393086 0.524958 0.037193 0.039231,image had no label file: COCO pre-label reviewed and completed in CVAT
+Screenshot_112.jpg,added,,,car 0.085955 0.211691 0.036101 0.057267,image had no label file: COCO pre-label reviewed and completed in CVAT
+Screenshot_112.jpg,added,,,truck 0.311767 0.424069 0.140837 0.237267,image had no label file: COCO pre-label reviewed and completed in CVAT
+Screenshot_112.jpg,added,,,car 0.961141 0.252356 0.075069 0.070857,image had no label file: COCO pre-label reviewed and completed in CVAT
+Screenshot_112.jpg,added,,,car 0.478335 0.405340 0.122096 0.164830,image had no label file: COCO pre-label reviewed and completed in CVAT
+Screenshot_112.jpg,added,,,car 0.388952 0.204572 0.060195 0.065835,image had no label file: COCO pre-label reviewed and completed in CVAT
+Screenshot_112.jpg,added,,,car 0.145589 0.144380 0.040390 0.057356,image had no label file: COCO pre-label reviewed and completed in CVAT
+Screenshot_112.jpg,added,,,car 0.073578 0.142090 0.027969 0.037592,image had no label file: COCO pre-label reviewed and completed in CVAT
+Screenshot_112.jpg,added,,,truck 0.269326 0.240938 0.082843 0.107932,image had no label file: COCO pre-label reviewed and completed in CVAT
+Screenshot_112.jpg,added,,,car 0.052019 0.105074 0.024492 0.031123,image had no label file: COCO pre-label reviewed and completed in CVAT
+Screenshot_112.jpg,added,,,car 0.245727 0.108708 0.028578 0.030591,image had no label file: COCO pre-label reviewed and completed in CVAT
+Screenshot_112.jpg,added,,,car 0.087864 0.101056 0.020406 0.024032,image had no label file: COCO pre-label reviewed and completed in CVAT
+screenshot_1760.png,added,,,pedestrian 0.926570 0.213255 0.030813 0.174635,image had no label file: COCO pre-label reviewed and completed in CVAT
+screenshot_1760.png,added,,,pedestrian 0.990124 0.206387 0.019268 0.087044,image had no label file: COCO pre-label reviewed and completed in CVAT
+screenshot_1760.png,added,,,pedestrian 0.945410 0.226257 0.017452 0.139284,image had no label file: COCO pre-label reviewed and completed in CVAT
+screenshot_1760.png,added,,,car 0.833009 0.080326 0.031728 0.039115,image had no label file: COCO pre-label reviewed and completed in CVAT
+screenshot_1760.png,added,,,pedestrian 0.958587 0.242129 0.025051 0.161471,image had no label file: COCO pre-label reviewed and completed in CVAT
+screenshot_1760.png,added,,,pedestrian 0.889502 0.114870 0.014905 0.081536,image had no label file: COCO pre-label reviewed and completed in CVAT
+screenshot_1760.png,added,,,truck 0.337646 0.113307 0.117723 0.165599,image had no label file: COCO pre-label reviewed and completed in CVAT
+screenshot_1760.png,added,,,pedestrian 0.965937 0.390645 0.067731 0.336992,image had no label file: COCO pre-label reviewed and completed in CVAT
+screenshot_1760.png,added,,,pedestrian 0.627690 0.674408 0.136274 0.545951,image had no label file: COCO pre-label reviewed and completed in CVAT
+screenshot_1760.png,added,,,pedestrian 0.765838 0.639727 0.124004 0.635911,image had no label file: COCO pre-label reviewed and completed in CVAT
+screenshot_1760.png,added,,,car 0.621428 0.248294 0.224641 0.211667,image had no label file: COCO pre-label reviewed and completed in CVAT
+Снимок экрана от 2023-06-05 14-29-47.png,added,,,pedestrian 0.524148 0.397091 0.008639 0.037394,"object missing from the source labels, added in manual CVAT review"
+Снимок экрана от 2023-06-05 14-29-47.png,added,,,pedestrian 0.492362 0.400010 0.010855 0.036313,"object missing from the source labels, added in manual CVAT review"
+Снимок экрана от 2023-06-05 14-29-47.png,added,,,pedestrian 0.479990 0.374279 0.007237 0.031153,"object missing from the source labels, added in manual CVAT review"
+Снимок экрана от 2023-06-05 14-29-47.png,added,,,pedestrian 0.486856 0.376854 0.006528 0.032884,"object missing from the source labels, added in manual CVAT review"
+Снимок экрана от 2023-06-05 16-05-35.png,class_fix,15,fire_truck 0.501903 0.606225 0.093820 0.059540,police 0.501903 0.606225 0.093820 0.059540,labeled fire_truck but visually a police car (ДПС livery and light bar) -> police
+Снимок экрана от 2023-06-05 16-05-35.png,moved,31,pedestrian 0.331050 0.592395 0.010654 0.043302,pedestrian 0.334924 0.574479 0.010654 0.043302,"box shifted off its object in the source, moved onto it in manual CVAT review"
+Снимок экрана от 2023-06-05 16-05-35.png,moved,40,pedestrian 0.290548 0.445196 0.006849 0.032496,pedestrian 0.271172 0.444168 0.006849 0.032503,"box shifted off its object in the source, moved onto it in manual CVAT review"
+Снимок экрана от 2023-06-05 16-05-35.png,moved,43,pedestrian 0.323820 0.530449 0.006849 0.029990,pedestrian 0.323630 0.556982 0.006849 0.043058,"box shifted off its object in the source, moved onto it in manual CVAT review"
+Снимок экрана от 2023-06-05 16-05-35.png,moved,9,car 0.396912 0.392124 0.030441 0.043302,car 0.378158 0.371137 0.030441 0.043302,"box shifted off its object in the source, moved onto it in manual CVAT review"
+Снимок экрана от 2023-06-05 16-05-35.png,moved,45,pedestrian 0.286149 0.483962 0.010654 0.025910,pedestrian 0.254536 0.521434 0.010654 0.057808,"box shifted off its object in the source, moved onto it in manual CVAT review"
+Снимок экрана от 2023-06-05 16-05-35.png,moved,33,pedestrian 0.616438 0.930041 0.012199 0.055480,pedestrian 0.617873 0.735440 0.012199 0.055480,"box shifted off its object in the source, moved onto it in manual CVAT review"
+Снимок экрана от 2023-06-05 16-05-35.png,moved,36,pedestrian 0.661920 0.959104 0.014460 0.063599,pedestrian 0.661195 0.761935 0.014460 0.063599,"box shifted off its object in the source, moved onto it in manual CVAT review"
+Снимок экрана от 2023-06-05 16-05-35.png,moved,35,pedestrian 0.464992 0.963194 0.015221 0.064953,pedestrian 0.465715 0.762179 0.015221 0.064953,"box shifted off its object in the source, moved onto it in manual CVAT review"
+Снимок экрана от 2023-06-05 16-05-35.png,moved,37,pedestrian 0.606925 0.996346 0.015982 0.066306,pedestrian 0.608364 0.786373 0.015982 0.066306,"box shifted off its object in the source, moved onto it in manual CVAT review"
+Снимок экрана от 2023-06-05 16-05-35.png,moved,17,car 0.860350 0.991313 0.089519 0.119080,car 0.854589 0.776225 0.089513 0.119080,"box shifted off its object in the source, moved onto it in manual CVAT review"
+Снимок экрана от 2023-06-07 14-48-31.png,added,,,car 0.583155 0.049295 0.014212 0.025585,"object missing from the source labels, added in manual CVAT review"
+Снимок экрана от 2023-06-07 14-48-31.png,added,,,pedestrian 0.488310 0.116347 0.007555 0.034092,"object missing from the source labels, added in manual CVAT review"
+Снимок экрана от 2023-06-07 14-48-31.png,added,,,pedestrian 0.479301 0.124676 0.008137 0.051524,"object missing from the source labels, added in manual CVAT review"
+Снимок экрана от 2023-06-07 14-48-31.png,added,,,pedestrian 0.453241 0.101759 0.008329 0.040532,"object missing from the source labels, added in manual CVAT review"
+Снимок экрана от 2023-06-07 14-48-31.png,added,,,pedestrian 0.456524 0.097213 0.005638 0.037495,"object missing from the source labels, added in manual CVAT review"
+Снимок экрана от 2023-06-07 14-48-31.png,added,,,pedestrian 0.463305 0.093231 0.006022 0.043184,"object missing from the source labels, added in manual CVAT review"
+Снимок экрана от 2023-06-07 14-48-31.png,added,,,car 0.336588 0.139259 0.038185 0.042046,"object missing from the source labels, added in manual CVAT review"
+Снимок экрана от 2023-06-07 14-48-31.png,added,,,car 0.361196 0.140778 0.058729 0.045084,"object missing from the source labels, added in manual CVAT review"
+Снимок экрана от 2023-06-07 14-48-31.png,added,,,car 0.638991 0.023993 0.018409 0.017359,"object missing from the source labels, added in manual CVAT review"
+Снимок экрана от 2023-06-07 14-48-31.png,added,,,car 0.613991 0.016503 0.009167 0.016263,"object missing from the source labels, added in manual CVAT review"
+Снимок экрана от 2023-06-07 14-48-31.png,added,,,pedestrian 0.157613 0.267667 0.013209 0.058090,"object missing from the source labels, added in manual CVAT review"
+Снимок экрана от 2023-06-07 14-48-31.png,added,,,pedestrian 0.254103 0.277056 0.014709 0.079207,"object missing from the source labels, added in manual CVAT review"
+Снимок экрана от 2023-06-07 14-51-32.png,added,,,pedestrian 0.643135 0.195430 0.021262 0.037824,"object missing from the source labels, added in manual CVAT review"
+Снимок экрана от 2023-06-07 14-51-32.png,added,,,pedestrian 0.711698 0.185246 0.014526 0.059359,"object missing from the source labels, added in manual CVAT review"
+Снимок экрана от 2023-06-07 14-51-32.png,added,,,pedestrian 0.725694 0.182629 0.014177 0.055292,"object missing from the source labels, added in manual CVAT review"
+Снимок экрана от 2023-06-07 16-42-06.png,class_fix,34,11 0.433097 0.302263 0.025123 0.104526,pedestrian 0.433097 0.302263 0.025123 0.104526,unknown class 11; visually confirmed a person (traffic officer between cars) -> pedestrian
+Снимок экрана от 2023-06-07 16-42-06.png,class_fix,41,11 0.451393 0.127694 0.008192 0.033405,pedestrian 0.451393 0.127694 0.008192 0.033405,unknown class 11; visually confirmed a person at the crossing -> pedestrian
+Снимок экрана от 2023-06-07 16-42-06.png,reclassified,22,bus 0.036046 0.258621 0.012015 0.017241,car 0.036046 0.258621 0.012015 0.017241,class corrected in manual CVAT review
+Снимок экрана от 2023-06-08 11-38-38.png,added,,,pedestrian 0.968605 0.084616 0.016082 0.057111,"object missing from the source labels, added in manual CVAT review"
+Снимок экрана от 2023-06-08 11-38-38.png,added,,,car 0.133273 0.305260 0.085864 0.144831,"object missing from the source labels, added in manual CVAT review"
+Снимок экрана от 2023-06-08 11-38-38.png,added,,,truck 0.344857 0.114063 0.067255 0.159977,"object missing from the source labels, added in manual CVAT review"
+Снимок экрана от 2023-06-08 11-38-52.png,adjusted,9,truck 0.740122 0.225225 0.189121 0.222978,truck 0.742042 0.228153 0.144741 0.275676,box fitted to the object in manual CVAT review
+Снимок экрана от 2023-06-08 11-38-52.png,moved,1,fire_truck 0.597885 0.649775 0.200890 0.880681,fire_truck 0.596605 0.653716 0.198331 0.329730,"box shifted off its object in the source, moved onto it in manual CVAT review"
+Снимок экрана от 2023-06-08 11-38-52.png,adjusted,15,car 0.028651 0.249487 0.046188 0.088964,car 0.022983 0.249482 0.045965 0.088964,box fitted to the object in manual CVAT review
+Снимок экрана от 2023-06-08 11-38-52.png,adjusted,11,car 0.795214 0.685698 0.094602 0.172297,car 0.792321 0.636937 0.094602 0.172297,box fitted to the object in manual CVAT review
+Снимок экрана от 2023-06-08 11-38-52.png,adjusted,8,car 0.550640 0.447685 0.189677 0.125000,car 0.555314 0.445518 0.135671 0.129324,box fitted to the object in manual CVAT review
+Снимок экрана от 2023-06-08 11-38-52.png,moved,16,pedestrian 0.082276 0.128811 0.015582 0.078198,pedestrian 0.032148 0.119054 0.015582 0.078198,"box shifted off its object in the source, moved onto it in manual CVAT review"
+Снимок экрана от 2023-06-08 11-38-52.png,moved,2,ambulance 0.288781 0.019144 0.055648 0.086086,ambulance 0.233790 0.024792 0.055648 0.049583,"box shifted off its object in the source, moved onto it in manual CVAT review"
+Снимок экрана от 2023-06-08 11-38-52.png,moved,4,car 0.814418 0.140766 0.041180 0.117117,car 0.313703 0.133176 0.041152 0.112072,"box shifted off its object in the source, moved onto it in manual CVAT review"
+Снимок экрана от 2023-06-08 11-38-52.png,removed,6,car 0.882499 0.089414 0.089510 0.076577,,"no matching object in the image: false or duplicate box, removed in manual CVAT review"
+Снимок экрана от 2023-06-08 11-38-52.png,removed,7,car 0.284085 0.868806 0.062888 0.158784,,"no matching object in the image: false or duplicate box, removed in manual CVAT review"
+Снимок экрана от 2023-06-08 11-38-52.png,removed,13,car 0.819148 0.251126 0.048414 0.108108,,"no matching object in the image: false or duplicate box, removed in manual CVAT review"
+Снимок экрана от 2023-06-08 11-38-52.png,added,,,car 0.334213 0.885383 0.099521 0.199730,"object missing from the source labels, added in manual CVAT review"
+Снимок экрана от 2023-06-08 11-38-52.png,added,,,car 0.331647 0.041509 0.037963 0.083018,"object missing from the source labels, added in manual CVAT review"
+Снимок экрана от 2023-06-08 11-38-52.png,added,,,car 0.286583 0.370113 0.068681 0.162748,"object missing from the source labels, added in manual CVAT review"
+Снимок экрана от 2023-06-08 11-38-52.png,added,,,car 0.315556 0.242849 0.042009 0.117005,"object missing from the source labels, added in manual CVAT review"
