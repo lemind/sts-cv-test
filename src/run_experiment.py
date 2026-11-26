@@ -46,9 +46,27 @@ REQUIRED_KEYS = {
     "seed": int,
     "deterministic": bool,
     "patience": int,
+    "optimizer": str,
+    "lr0": float,
+    "warmup_epochs": int,
+    "close_mosaic": int,
     "conf": float,
     "iou": float,
     "prediction_examples": int,
+}
+# Smallest allowed value per numeric key; Ultralytics would fail only after the run dir is created.
+MIN_VALUES = {
+    "epochs": 1,
+    "imgsz": 32,
+    "batch": 1,
+    "workers": 0,
+    "patience": 1,
+    "lr0": 1e-9,
+    "warmup_epochs": 0,
+    "close_mosaic": 0,
+    "conf": 0.0,
+    "iou": 0.0,
+    "prediction_examples": 0,
 }
 OVERRIDABLE = ("name", "model", "data", "epochs", "imgsz", "batch", "device", "seed")
 SPLITS = ("train", "val", "test")
@@ -79,6 +97,13 @@ def load_config(config_file: Path, overrides: dict, smoke_test: bool) -> dict:
             expected is int and isinstance(config[key], bool)
         ):
             problems.append(f"{key!r} must be {expected.__name__}, got {config[key]!r}")
+    for key, minimum in MIN_VALUES.items():
+        value = config.get(key)
+        if isinstance(value, (int, float)) and not isinstance(value, bool) and value < minimum:
+            problems.append(f"{key!r} must be >= {minimum}, got {value!r}")
+    for key in ("conf", "iou"):
+        if isinstance(config.get(key), float) and config[key] > 1:
+            problems.append(f"{key!r} must be <= 1, got {config[key]!r}")
     unknown = sorted(set(config) - set(REQUIRED_KEYS))
     if unknown:
         problems.append(f"unknown keys {unknown}")
@@ -186,6 +211,51 @@ def disable_ultralytics_integrations() -> None:
             )  # in memory: SETTINGS[key] = ... would save to disk
 
 
+def disable_nms_time_limit() -> None:
+    """Ultralytics NMS stops after 2 s + 0.05 s per image of wall-clock time and drops the detections
+    of the remaining images. On CPU with conf 0.001 the 8 val images of one batch hit that limit, so
+    val metrics (and the choice of best.pt) depended on machine load. For this process only, NMS
+    always finishes."""
+    from functools import partial
+
+    from ultralytics.utils import nms
+
+    if not isinstance(nms.non_max_suppression, partial):
+        nms.non_max_suppression = partial(nms.non_max_suppression, max_time_img=float("inf"))
+
+
+def train_arguments(config: dict, data_file: Path, run_dir: Path) -> dict:
+    """Keyword arguments for `YOLO.train`."""
+    return {
+        "data": str(data_file),
+        "epochs": config["epochs"],
+        "imgsz": config["imgsz"],
+        "batch": config["batch"],
+        # Nominal batch = batch: one optimizer step per batch. The Ultralytics default (64) would
+        # accumulate gradients over up to 16 batches of 4; with 6 batches per epoch that left 3
+        # optimizer steps in 5 epochs. Derived from batch, so a --batch override keeps it.
+        "nbs": config["batch"],
+        "optimizer": config["optimizer"],
+        "lr0": config["lr0"],
+        "warmup_epochs": config["warmup_epochs"],
+        "warmup_bias_lr": 0.0,  # default 0.1 is meant for SGD; with AdamW it is 100x lr0
+        "close_mosaic": config["close_mosaic"],
+        "device": config["device"],
+        "workers": config["workers"],
+        "seed": config["seed"],
+        "deterministic": config["deterministic"],
+        "patience": config["patience"],
+        "conf": config["conf"],
+        "iou": config["iou"],
+        # Ultralytics puts a relative `project` under its own runs_dir setting, so the
+        # absolute path is computed at run time; nothing absolute is stored in the config.
+        "project": str(run_dir.parent.resolve()),
+        "name": run_dir.name,
+        "exist_ok": True,
+        "plots": True,
+    }
+
+
 def predict_examples(model, images: list[Path], out_dir: Path, config: dict) -> list[Path]:
     """Draw predictions of `model` on `images`; returns the written files."""
     from PIL import Image
@@ -271,6 +341,7 @@ def main(argv: list[str] | None = None) -> int:
     from src.tensorboard_logger import TensorBoardLogger
 
     disable_ultralytics_integrations()
+    disable_nms_time_limit()
     run_dir = args.runs / f"{datetime.now():%Y-%m-%dT%H%M%S}_{config['name']}"
     run_dir.mkdir(parents=True)
     (run_dir / "config.yaml").write_text(
@@ -308,25 +379,7 @@ def main(argv: list[str] | None = None) -> int:
         logger.log_run_info(config, metadata)
         model.add_callback("on_train_epoch_end", logger.on_train_epoch_end)
         model.add_callback("on_fit_epoch_end", logger.on_fit_epoch_end)
-        # Ultralytics puts a relative `project` under its own runs_dir setting, so the
-        # absolute path is computed at run time; nothing absolute is stored in the config.
-        model.train(
-            data=str(data_file),
-            epochs=config["epochs"],
-            imgsz=config["imgsz"],
-            batch=config["batch"],
-            device=config["device"],
-            workers=config["workers"],
-            seed=config["seed"],
-            deterministic=config["deterministic"],
-            patience=config["patience"],
-            conf=config["conf"],
-            iou=config["iou"],
-            project=str(run_dir.parent.resolve()),
-            name=run_dir.name,
-            exist_ok=True,
-            plots=True,
-        )
+        model.train(**train_arguments(config, data_file, run_dir))
         last_step = logger.logged_steps[-1] if logger.logged_steps else 0
         logger.log_image(
             "val/confusion_matrix", run_dir / "confusion_matrix_normalized.png", last_step
@@ -410,7 +463,8 @@ def main(argv: list[str] | None = None) -> int:
             json.dumps(test_report, indent=2, ensure_ascii=False), encoding="utf-8"
         )
         hparams = {
-            key: config[key] for key in ("model", "epochs", "imgsz", "batch", "seed", "device")
+            key: config[key]
+            for key in ("model", "epochs", "imgsz", "batch", "optimizer", "lr0", "seed", "device")
         }
         logger.log_hparams(
             hparams,

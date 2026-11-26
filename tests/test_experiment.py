@@ -6,7 +6,7 @@ from PIL import Image
 from tensorboard.backend.event_processing.event_accumulator import EventAccumulator
 
 from src.prepare_dataset import write_manifest
-from src.run_experiment import load_config, main, verify_manifest
+from src.run_experiment import load_config, main, train_arguments, verify_manifest
 from src.tensorboard_logger import TensorBoardLogger
 
 BASE_CONFIG = {
@@ -22,6 +22,10 @@ BASE_CONFIG = {
     "seed": 42,
     "deterministic": True,
     "patience": 100,
+    "optimizer": "AdamW",
+    "lr0": 0.001,
+    "warmup_epochs": 1,
+    "close_mosaic": 1,
     "conf": 0.001,
     "iou": 0.7,
     "prediction_examples": 2,
@@ -47,13 +51,24 @@ def test_cli_overrides_and_smoke_test_settings(tmp_path):
     [
         ({"epochs": "5"}, "'epochs' must be int"),
         ({"deterministic": "yes"}, "'deterministic' must be bool"),
-        ({"lr0": 0.01}, "unknown keys"),
+        ({"momentum": 0.9}, "unknown keys"),
         ({"data": "/abs/dataset.yaml"}, "relative to the repo root"),
+        ({"batch": 0}, "'batch' must be >= 1"),
+        ({"iou": 1.5}, "'iou' must be <= 1"),
     ],
 )
 def test_bad_config_is_rejected(tmp_path, changes, error):
     with pytest.raises(ValueError, match=error):
         load_config(write_config(tmp_path / "c.yaml", **changes), {}, smoke_test=False)
+
+
+def test_nominal_batch_follows_batch_override(tmp_path):
+    # nbs != batch makes Ultralytics accumulate gradients: 3 optimizer steps in a 5-epoch run.
+    config = load_config(write_config(tmp_path / "c.yaml"), {"batch": 2}, smoke_test=False)
+    arguments = train_arguments(config, Path("d.yaml"), tmp_path / "runs" / "r")
+    assert arguments["batch"] == arguments["nbs"] == 2
+    assert arguments["optimizer"] == "AdamW" and arguments["lr0"] == 0.001
+    assert arguments["close_mosaic"] == 1 and arguments["warmup_bias_lr"] == 0.0
 
 
 def make_processed_dataset(root):

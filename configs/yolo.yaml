@@ -1,5 +1,6 @@
 # Experiment config for `python -m src.run_experiment --config configs/yolo.yaml`.
-# Paths are relative to the repo root. Any key can be overridden from the CLI (see --help).
+# Paths are relative to the repo root. CLI overrides: name, model, data, epochs, imgsz, batch,
+# device, seed (see --help). Ultralytics' nominal batch (nbs) is always set to `batch`.
 
 name: yolo11n                       # run directory: runs/<timestamp>_<name>
 model: weights/yolo11n.pt           # COCO-pretrained; Ultralytics downloads it on the first real run
@@ -14,6 +15,12 @@ workers: 0                          # no dataloader worker processes: determinis
 seed: 42
 deterministic: true
 patience: 100                       # no early stopping in a 5-epoch run
+
+# Optimization, set explicitly: with optimizer `auto` Ultralytics ignores lr0 and picks its own
+optimizer: AdamW
+lr0: 0.001
+warmup_epochs: 1                    # default 3 would make 3 of 5 epochs warmup
+close_mosaic: 1                     # mosaic for all but the last epoch (default 10 >= epochs: never on)
 
 # Validation thresholds (Ultralytics defaults, written down so they are part of the run record)
 conf: 0.001
