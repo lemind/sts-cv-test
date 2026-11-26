@@ -6,8 +6,8 @@ Validation, correction and splitting of a small traffic detection set (`test_dat
 40 images, 11 classes), and a reproducible Ultralytics YOLO experiment logged to TensorBoard with
 our own `SummaryWriter`.
 
-The focus is the data and the reproducibility of the pipeline, not mAP: 24 training images and a
-5-epoch CPU run are enough to show the pipeline, not to train a useful detector.
+The focus is the data and the reproducibility of the pipeline, not mAP: 24 training images cannot
+train a useful detector; the goal is a sound, reproducible experiment.
 
 ## Contents
 
@@ -153,19 +153,31 @@ in `runs/<timestamp>_yolo11n_smoke/`. The first real run downloads the COCO-pret
 uv run python -m src.run_experiment --config configs/yolo.yaml
 ```
 
-5 epochs at imgsz 640 on CPU, ~2 min. All settings are in [`configs/yolo.yaml`](configs/yolo.yaml).
-The CLI overrides `--name --model --data --epochs --imgsz --batch --device --seed` take
-precedence, and the resolved config is saved in the run.
+50 epochs at imgsz 640 on CPU, ~8 min. All settings are in [`configs/yolo.yaml`](configs/yolo.yaml).
+The CLI overrides `--name --model --data --epochs --imgsz --batch --device --seed --lr0
+--warmup_epochs --close_mosaic --freeze` take precedence, and the resolved config is saved in the run.
 
 Training settings that differ from Ultralytics defaults, and why:
 
 | Setting | Value | Default | Why |
 |---|---|---|---|
-| `nbs` (nominal batch) | = `batch` (4), always, also after `--batch` | 64 | With 64, gradients are accumulated over up to 16 batches. With 6 batches per epoch, that left 3 optimizer steps in 5 epochs, and the val metrics stayed flat |
-| `optimizer`, `lr0` | AdamW, 0.001 | `auto` | `auto` ignores `lr0` and picks the optimizer and lr itself, so the run record showed an lr that was not used |
-| `warmup_epochs` | 1 | 3 | With the default, 3 of 5 epochs would be warmup |
-| `warmup_bias_lr` | 0.0 | 0.1 | 0.1 is meant for SGD; with AdamW it is 100× `lr0` |
-| `close_mosaic` | 1 | 10 | 10 ≥ epochs switches mosaic off before the first epoch; now it is on for all but the last epoch |
+| `nbs` (nominal batch) | = `batch` (4), always, also after `--batch` | 64 | With 64, gradients are accumulated over up to 16 batches. With 6 batches per epoch, a short run got 3 optimizer steps and the val metrics stayed flat |
+| `optimizer`, `lr0` | AdamW, 0.0003 | `auto` | `auto` ignores `lr0` and picks the optimizer and lr itself, so the run record showed an lr that was not used. 0.0003 was chosen on val |
+| `warmup_bias_lr` | 0.0 | 0.1 | 0.1 is meant for SGD; with AdamW it is 300× `lr0` |
+| `class_aliases` | `person: pedestrian` | — | Ultralytics copies classifier weights only between classes with the same name. Without this, `pedestrian` would start from scratch instead of from COCO `person` |
+
+**Tuning.** A first 5-epoch run scored test mAP50 0.038, below the COCO model without fine-tuning.
+Then 4 candidates of 50 epochs were trained and one was chosen on val only (mAP50-95 of `best.pt`):
+
+| Candidate | `lr0` | `freeze` | val mAP50 | val mAP50-95 |
+|---|---|---|---:|---:|
+| A | 0.001 | 0 (whole network trains) | 0.272 | 0.170 |
+| B | 0.001 | 10 (backbone frozen) | 0.425 | 0.258 |
+| **C** | **0.0003** | **0** | **0.473** | **0.336** |
+| D | 0.0003 | 10 | 0.390 | 0.271 |
+
+The settings of C are in the config. With 8 val images the choice is noisy; test was not used
+for it.
 
 Ultralytics NMS has a wall-clock limit (2 s + 0.05 s per image). On CPU with conf 0.001 the val
 batch of 8 images hit it, and the images left over got no detections. The val metrics then
@@ -223,7 +235,7 @@ one epoch, starting at 1.
 | Images | `val/confusion_matrix`, `test/confusion_matrix` | once, for `best.pt`, normalized by true class |
 | | `predictions/val/<image>`, `predictions/test/<image>` | once, 4 images per split, `best.pt` at conf 0.25 |
 | Text | `config`, `metadata` | at the start: resolved config and `metadata.json` |
-| HParams | config (model, epochs, imgsz, batch, optimizer, lr0, seed, device) → best val and test metrics | once, at the end |
+| HParams | config (model, epochs, imgsz, batch, optimizer, lr0, freeze, seed, device) → best val and test metrics | once, at the end |
 
 The final validation of `best.pt` is logged as `best_val/*`. It is not logged as an extra epoch:
 Ultralytics calls the epoch callback once more after training, and the logger recognises that
@@ -232,54 +244,60 @@ call.
 ## Submitted run
 
 `runs/` is not committed; only `runs/.gitkeep` is, as the task requires. The run described here is
-handed in as an archive with this one run folder in it. It is attached to a [GitHub Release](https://github.com/lemind/sts-cv-test/releases/tag/run-2026-11-26T145225_yolo11n). Download and unpack it in the repo root:
+handed in as an archive with this one run folder in it. It is attached to a [GitHub Release](https://github.com/lemind/sts-cv-test/releases/tag/run-2026-11-26T171458_yolo11n).
+Download and unpack it in the repo root:
 
 ```bash
-curl -LO https://github.com/lemind/sts-cv-test/releases/download/run-2026-11-26T145225_yolo11n/2026-11-26T145225_yolo11n.tar.gz
-tar -xzf 2026-11-26T145225_yolo11n.tar.gz   # -> runs/2026-11-26T145225_yolo11n/
+curl -LO https://github.com/lemind/sts-cv-test/releases/download/run-2026-11-26T171458_yolo11n/2026-11-26T171458_yolo11n.tar.gz
+tar -xzf 2026-11-26T171458_yolo11n.tar.gz   # -> runs/2026-11-26T171458_yolo11n/
 uv run tensorboard --logdir runs
 ```
 
-Command: `python -m src.run_experiment --config configs/yolo.yaml`. Model: yolo11n
-(COCO-pretrained). Settings: 5 epochs, imgsz 640, batch 4, AdamW lr 0.001, CPU, seed 42.
-The run's `metadata.json` records commit `2337a93` (`dirty: false`) and dataset
-`52ba8e6a…`.
+Run settings:
+- **Command:** `python -m src.run_experiment --config configs/yolo.yaml`.
+- **Model:** yolo11n, COCO-pretrained; the `person` weights are transferred to `pedestrian`.
+- **Training:** 50 epochs, imgsz 640, batch 4, AdamW lr 0.0003, CPU, seed 42.
+- **Versions:** `metadata.json` records commit `9cd04b2` (`dirty: false`) and dataset `52ba8e6a…`.
+
+It is the same run as candidate C: rerun, it gave identical `results.csv` and `test_metrics.json`.
+
+Val metrics during training (selected epochs):
 
 | Epoch | train cls loss | val P | val R | val mAP50 | val mAP50-95 |
 |---:|---:|---:|---:|---:|---:|
-| 1 | 3.035 | 0.737 | 0.062 | 0.038 | 0.021 |
-| 2 | 2.003 | 0.318 | 0.091 | 0.038 | 0.020 |
-| 3 | 1.755 | 0.036 | 0.204 | 0.045 | 0.025 |
-| 4 | 1.766 | 0.249 | 0.154 | 0.088 | 0.058 |
-| 5 | 2.151 | 0.239 | 0.193 | 0.155 | 0.115 |
+| 1 | 3.225 | 0.375 | 0.394 | 0.206 | 0.140 |
+| 10 | 1.143 | 0.158 | 0.524 | 0.233 | 0.146 |
+| 20 | 0.893 | 0.336 | 0.314 | 0.342 | 0.244 |
+| 30 | 0.798 | 0.433 | 0.493 | 0.411 | 0.293 |
+| 37 (best.pt) | 0.685 | 0.480 | 0.435 | 0.473 | 0.336 |
+| 50 | 0.653 | 0.348 | 0.352 | 0.353 | 0.198 |
 
-`best.pt` is from epoch 5. On the test split (8 images, 218 boxes, evaluated once) it scores:
+`best.pt` is from epoch 37. On the test split (8 images, 218 boxes, evaluated once) it scores:
 
 | P | R | mAP50 | mAP50-95 |
 |---:|---:|---:|---:|
-| 0.394 | 0.055 | 0.038 | 0.017 |
+| 0.390 | 0.166 | 0.128 | 0.071 |
 
 Per class (test mAP50):
 
 | Class | mAP50 | Test boxes |
 |---|---:|---:|
-| car | 0.22 | 125 |
-| pedestrian | 0.08 | 57 |
-| truck | 0.03 | 14 |
-| police | 0.01 | 5 |
-| motorcycle, bus, lorry, trailer, ambulance | 0 | 1–9 each |
+| car | 0.48 | 125 |
+| police | 0.29 | 5 |
+| pedestrian | 0.21 | 57 |
+| truck | 0.15 | 14 |
+| motorcycle | 0.02 | 9 |
+| bus, lorry, trailer, ambulance | 0 | 1–3 each |
 
 Bicycle and fire_truck are not in test.
 
 What these numbers do and do not show:
-- **Not a usable detector.** 24 training images and 5 epochs show that the pipeline works, but
-  they do not train a detector worth using.
-- **Val jumps between epochs.** With 8 val images, a few boxes move the metrics a lot.
-- **Test is lower than val.** best.pt is picked on those same 8 val images, and test has other
-  cameras.
-- **The head is rebuilt.** Fine-tuning replaces the 80-class COCO head with an 11-class one, see
-  the limitations below.
-- **No tuning on test.** These are the numbers of the first run with the fixed settings.
+- **Not a usable detector.** With 24 training images, classes with 1–5 boxes are not learned. The
+  frequent classes (car, pedestrian) and police are learned noticeably.
+- **Test is much lower than val.** Each split has 8 images from different cameras, and val was also
+  used to pick `best.pt` and the settings. The test estimate is honest but noisy.
+- **Val drops after epoch 37.** That is overfitting; `best.pt` is taken at the peak.
+- **No tuning on test.** Choices were made on val only, and test was evaluated once.
 
 ## Repository layout
 
@@ -315,12 +333,10 @@ tests/                     pytest
   following `annotations/README.md`.
 - **Dense crowds.** People who can be told apart get a box. People merged into one blob do not,
   because YOLO has no ignore regions.
-- **No tuning.** Ultralytics defaults are used except the settings listed in
-  [Train](#6-train). Those changes are fixes; nothing was tuned on val or test.
-- **Classifier head.** Ultralytics copies the COCO classifier rows only for classes with
-  exactly the same name: bicycle, car, motorcycle, bus, truck (5 of 11). `pedestrian` does not
-  match COCO `person`, so it starts from scratch like police, ambulance, fire_truck, lorry and
-  trailer. Renaming it to `person` would keep those weights, but it would change the class names
-  given in `classes.txt`.
+- **Tuned on val.** `lr0` and backbone freezing were chosen among 4 candidates on val (see
+  [Train](#6-train)); everything else is Ultralytics defaults or fixes. Nothing was tuned on test.
+- **Classifier head.** COCO classifier weights are transferred to 6 of 11 classes: bicycle, car,
+  motorcycle, bus, truck by name, and pedestrian through `class_aliases`. COCO has no police,
+  ambulance, fire_truck, lorry or trailer; those are learned from scratch.
 - **CPU only.** The lock file pins CPU wheels of torch. On a CUDA machine, install a CUDA build of
   torch 2.15.0 and pass `--device 0`.
